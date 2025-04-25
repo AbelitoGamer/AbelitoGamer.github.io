@@ -1,0 +1,24 @@
+{
+    "siteInfo": {
+        "name": "Funky Atlas - Workshop",
+        "title": "Workshop",
+        "subtitle": "Experimentos o herramientas al azar",
+        "copyright": "© 2025 Funky Atlas. Contenidos de terceros pertenecen a sus autores."
+    },
+    "cards": [
+        {
+            "title": "Funkin to Funky!",
+            "image": "/Resources/images/Banner_FtoF.png",
+            "backgroundImage": "/Resources/images/Banner_FtoF.png",
+            "link": "/FunkIntoFunky/FunkIntoFunky.html",
+            "description": "Usa un XML y un Spritesheet en el atlas texture extractor, y luego usa el .zip de resultado aqui dentro. Esta pagina automaticamente acomodara cada imagen en un conveniente spritesheet listo para usar dentro de FMM"
+        },
+        {
+            "title": "Funky Fixer (Obsoleto)",
+            "image": "/Resources/images/Banner_FFix.png",
+            "backgroundImage": "/Resources/images/Banner_FFix.png",
+            "link": "/FNMMFixer/FNMMFixer.html",
+            "description": "En raras ocaciones, Funky Maker podria exportar tu nivel con un archivo duplicado que es imposible que exista. Esta pagina intentara encontrar y eliminar estos archivos duplicados, aveces haciendo que pueda abrirse y jugarse nuevamente."
+        }
+    ]
+}

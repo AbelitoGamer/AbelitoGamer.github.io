@@ -1,0 +1,18 @@
+{
+    "siteInfo": {
+        "name": "Funky Atlas - About",
+        "title": "About",
+        "subtitle": "Pagina placeholder jeje",
+        "copyright": "© 2025 Funky Atlas. Contenidos de terceros pertenecen a sus autores."
+    },
+    "cards": [
+        {
+            "title": "Próximamente",
+            "image": "/Resources/images/Placeholder.png",
+            "backgroundImage": "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)",
+            "link": "#",
+            "description": "Se acabo la cuota de uso de la ia we perdon, luego hago esta pagina mas en condiciones."
+        }
+    ]
+
+}
