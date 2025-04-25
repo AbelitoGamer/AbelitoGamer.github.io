@@ -106,10 +106,10 @@
         },
         {
             "title": "Próximamente",
-            "image": "/api/placeholder/400/320",
+            "image": "/Resources/images/Placeholder.png",
             "backgroundImage": "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)",
             "link": "#",
-            "description": "Más contenido y creaciones están en camino. Mantente atento para futuras actualizaciones y nuevos proyectos que pronto estarán disponibles en Funky Atlas."
+            "description": "Pronto... Quizas."
         }
     ]
 }
