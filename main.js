@@ -1,5 +1,7 @@
 // Global reference to default navigation data
 let defaultNavigationData = null;
+// Global reference to background animation state
+let backgroundAnimationActive = false;
 
 // Function to fetch data from the configured JSON file
 async function fetchNavigationData(source = DATA_SOURCE, isDefaultFetch = false) {
@@ -85,11 +87,37 @@ function handleNavigation(item, event) {
     return false; // Navigation not handled
 }
 
+// Initialize the background animation only once
+function initializeBackgroundAnimation() {
+    if (backgroundAnimationActive) return; // Skip if already initialized
+    
+    // Mark as initialized
+    backgroundAnimationActive = true;
+    
+    // Ensure the animation runs continuously
+    const bgContainer = document.querySelector('.bg-container');
+    if (!bgContainer) return;
+    
+    // Make sure we have only one scrolling-bg element
+    let scrollingBg = bgContainer.querySelector('.scrolling-bg');
+    if (!scrollingBg) {
+        scrollingBg = document.createElement('div');
+        scrollingBg.className = 'scrolling-bg';
+        bgContainer.appendChild(scrollingBg);
+    }
+    
+    console.log('Background animation initialized');
+}
+
 // Initialize the website
 async function initializeWebsite() {
+    // Initialize background animation first (only runs once)
+    initializeBackgroundAnimation();
+    
     // Show loading state
     document.getElementById('topNavLinks').innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading navigation...</div>';
     document.getElementById('cardContainer').innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading content...</div>';
+    document.getElementById('textPageContainer').innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading content...</div>';
     document.getElementById('footerLinks').innerHTML = '<div class="loading">Loading...</div>';
     
     // Make sure default data is available
@@ -121,10 +149,16 @@ async function initializeWebsite() {
     // Populate top navigation
     populateTopNavigation(finalData.topNavigation);
     
-    // Populate content area with either cards or textpage
+    // Determine which content type to display (cards or textpage)
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
     if (finalData.textpage) {
+        // Show textpage content
+        contentWrapper.classList.add('textpage-active');
         populateTextPage(finalData.textpage);
     } else {
+        // Show cards content
+        contentWrapper.classList.remove('textpage-active');
         populateCards(finalData.cards);
     }
     
@@ -217,7 +251,10 @@ function populateTopNavigation(items) {
 function populateCards(cards) {
     const cardContainer = document.getElementById('cardContainer');
     cardContainer.innerHTML = '';
-    cardContainer.className = 'card-container'; // Reset to default class
+    
+    // Show card container and hide text page container
+    document.getElementById('cardsWrapper').style.display = 'block';
+    document.getElementById('textpageWrapper').style.display = 'none';
 
     if (!cards || cards.length === 0) {
         cardContainer.innerHTML = '<div class="error-message">No cards found</div>';
@@ -306,37 +343,38 @@ function populateCards(cards) {
 
 // Function to populate text page content
 function populateTextPage(textpage) {
-    const contentContainer = document.getElementById('cardContainer');
-    contentContainer.innerHTML = '';
+    const textPageContainer = document.getElementById('textPageContainer');
+    textPageContainer.innerHTML = '';
     
-    // Add text page class to apply specific styling
-    contentContainer.className = 'text-page-container';
+    // Hide card container and show text page container
+    document.getElementById('cardsWrapper').style.display = 'none';
+    document.getElementById('textpageWrapper').style.display = 'block';
     
     if (!textpage || (!textpage.sections && !textpage.content)) {
-        contentContainer.innerHTML = '<div class="error-message">No text page content found</div>';
+        textPageContainer.innerHTML = '<div class="error-message">No text page content found</div>';
         return;
     }
     
     // Create a wrapper for the text page content
-    const textPageWrapper = document.createElement('div');
-    textPageWrapper.className = 'text-page-wrapper';
+    const textPageContent = document.createElement('div');
+    textPageContent.className = 'text-page-content';
     
     // If there's direct content (simple text page)
     if (textpage.content) {
         // Create the content section
         const contentSection = createTextPageSection(textpage);
-        textPageWrapper.appendChild(contentSection);
+        textPageContent.appendChild(contentSection);
     } 
     // If there are multiple sections
     else if (textpage.sections && textpage.sections.length > 0) {
         // Process each section
         textpage.sections.forEach(section => {
             const sectionElement = createTextPageSection(section);
-            textPageWrapper.appendChild(sectionElement);
+            textPageContent.appendChild(sectionElement);
         });
     }
     
-    contentContainer.appendChild(textPageWrapper);
+    textPageContainer.appendChild(textPageContent);
     
     // Process any interactive elements after adding to DOM
     setupTextPageInteractions();
@@ -655,7 +693,7 @@ function initializeEventListeners() {
 function addTextPageStyles() {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
-        /* Text Page Styles */
+        /* Text Page Styles - Improved Margins for Desktop */
         .text-page-container {
             padding: 0;
             overflow-x: hidden;
@@ -665,30 +703,35 @@ function addTextPageStyles() {
         }
         
         .text-page-wrapper {
-            max-width: 1000px;
+            max-width: 800px; /* Reduced from 1000px for better readability */
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px; /* Increased from 20px */
+        }
+        
+        .text-page-content {
+            margin: 0 auto;
+            line-height: 1.6;
         }
         
         .text-page-section {
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* Increased from 30px */
+            padding: 0 15px; /* Added horizontal padding */
             line-height: 1.6;
         }
         
         .text-page-title {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color, #333);
+            margin-bottom: 1.5rem; /* Increased from 1rem */
         }
         
         .text-page-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color, #555);
+            margin-bottom: 1.5rem; /* Increased from 1rem */
         }
         
         .text-page-paragraph {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; /* Increased from 1rem */
+            line-height: 1.7; /* Increased from 1.6 */
         }
         
         .text-page-image-wrapper {
@@ -769,7 +812,20 @@ function addTextPageStyles() {
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .text-page-wrapper {
-                padding: 15px;
+                padding: 20px; /* Reduced padding on mobile */
+            }
+            
+            .text-page-section {
+                padding: 0 10px; /* Reduced side padding on mobile */
+                margin-bottom: 30px;
+            }
+            
+            .text-page-title {
+                font-size: 1.8rem;
+            }
+            
+            .text-page-subtitle {
+                font-size: 1.3rem;
             }
             
             .image-align-left,
@@ -779,13 +835,16 @@ function addTextPageStyles() {
                 max-width: 100%;
                 text-align: center;
             }
-            
-            .text-page-title {
-                font-size: 1.8rem;
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .text-page-wrapper {
+                padding: 15px 10px;
             }
             
-            .text-page-subtitle {
-                font-size: 1.3rem;
+            .text-page-section {
+                padding: 0 5px;
             }
         }
     `;
@@ -796,6 +855,9 @@ function addTextPageStyles() {
 // Load the website when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     addTextPageStyles();
+    // Initialize background animation first, before any content is loaded
+    initializeBackgroundAnimation();
+    // Then initialize the website content
     initializeWebsite();
     initializeEventListeners();
 });

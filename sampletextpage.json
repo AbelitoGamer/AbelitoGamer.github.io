@@ -1,0 +1,145 @@
+{
+  "siteInfo": {
+      "name": "Sample - About",
+      "title": "Sample Textpage",
+      "subtitle": "Página de ejemplo para la propiedad de textpage",
+      "copyright": "© 2025 Funky Atlas. Los contenidos de terceros pertenecen a sus autores."
+  },
+  "textpage": {
+      "sections": [
+        {
+          "title": "Bienvenido a la demo de textpage",
+          "subtitle": "Más text que nunca",
+          "align": "center",
+          "style": {
+            "marginBottom": "40px",
+            "backgroundColor": "rgba(43, 16, 85, 0.2)",
+            "padding": "20px",
+            "borderRadius": "10px"
+          },
+          "content": "Aquí estará todo lo que se puede meter dentro de esta propiedad para mostrarse aquí, como links, imágenes, colores de texto, fondos, etc."
+        },
+        {
+          "title": "Formateo básico",
+          "style": {
+            "borderLeft": "4px solid #ff4444",
+            "paddingLeft": "20px"
+          },
+          "content": [
+            "Se puede formatear el texto en los clásicos, como [b]bold[/b], [i]italic[/i], o [u]underlined[/u]. No me pregunten las traducciones.",
+            "También se puede [color:#ff4444]colorear[/color] el texto o añadir [bg:#2b1055]colores de fondo[/bg] para resaltar información importante.",
+            "Se pueden hacer [highlight]énfasis[/highlight] o, al contrario, hacer texto [subdued]menos llamativo[/subdued] si se ocupa.",
+            "Cómo no, también puedes cambiar el [size:1.5rem]tamaño del texto[/size] para títulos pero sí pero no o [size:0.8rem]detalles más pequeños[/size] que no son importantes."
+          ]
+        },
+        {
+          "title": "Links y navegación",
+          "content": [
+            "Puedes incluir [link:https://example.com]links externos[/link] a otros sitios web.",
+            "También se puede cambiar el JSON de navegación con estos [json:index.json]ir a home[/json] o [json:workshop.json]ir a workshop[/json]."
+          ]
+        },
+        {
+          "title": "Alineación de texto",
+          "content": [
+            "[align:left]Este texto está alineado a la izquierda. Es la alineación por defecto.[/align]",
+            "[align:center]Este texto está alineado al centro.[/align]",
+            "[align:right]Este texto está alineado a la derecha.[/align]",
+            "[align:justify]Este texto está justificado. Ahora tengo que escribir pura mamada para que haya más texto y se note dicha justificación oye sí mira qué texto tan interesante y tan justificado qué increíble diseño.[/align]"
+          ]
+        },
+        {
+          "title": "Imágenes",
+          "image": "/Resources/images/Placeholder.png",
+          "imageAlt": "Imagen placeholder para ilustrar",
+          "imageCaption": "Se pueden incluir subtextos para la imagen.",
+          "imageAlign": "center",
+          "imageStyle": {
+            "maxWidth": "600px",
+            "borderRadius": "15px",
+            "boxShadow": "0 8px 20px rgba(0,0,0,0.4)"
+          },
+          "content": "Se pueden añadir imágenes a cualquier sección con diferentes alineaciones, tamaño, sombra, borde y otros tantos."
+        },
+        {
+          "title": "Imagen alineada a la izquierda",
+          "image": "/Resources/images/Placeholder.png",
+          "imageAlt": "Sample side image",
+          "imageCaption": "Las imágenes se pueden alinear a la izquierda",
+          "imageAlign": "left",
+          "imageStyle": {
+            "maxWidth": "300px"
+          },
+          "content": "Imagen alineada a la izquierda. Lamentablemente, el texto no se acomoda como debería."
+        },
+        {
+          "title": "Imagen alineada a la derecha",
+          "image": "/Resources/images/Placeholder.png",
+          "imageAlt": "Sample side image",
+          "imageCaption": "Las imágenes se pueden alinear a la derecha",
+          "imageAlign": "right",
+          "imageStyle": {
+            "maxWidth": "300px"
+          },
+          "content": "Imagen alineada a la derecha. Lamentablemente, el texto tampoco se acomoda aquí como debería."
+        },
+        {
+          "title": "Estilo custom",
+          "style": {
+            "backgroundColor": "rgba(255, 68, 68, 0.1)",
+            "padding": "20px",
+            "borderRadius": "15px",
+            "border": "2px solid #ff4444",
+            "marginTop": "30px",
+            "marginBottom": "30px"
+          },
+          "titleStyle": {
+            "color": "#ff4444",
+            "textAlign": "center",
+            "textTransform": "uppercase",
+            "letterSpacing": "2px"
+          },
+          "content": [
+            "Cada sección puede tener estilos personalizados aplicados con el objeto style. Esto permite personalizarla mucho más.",
+            "Puedes cambiar el fondo, borde, márgenes, padding y otras propiedades CSS directamente desde el JSON de navegación.",
+            "Los elementos individuales como títulos y subtítulos también pueden estilizarse con los objetos titleStyle y subtitleStyle."
+          ]
+        },
+        {
+          "classes": [],
+          "title": "Clases personalizadas",
+          "content": "En lugar de usar estilos, también puedes usar clases del CSS para personalizar una sección. Lamentablemente, el CSS maestro es putísimamente enorme, así que no me dio la gana de buscar una digna para colocar aquí. Pero hey, se podría."
+        },
+        {
+          "title": "Combinando",
+          "subtitle": "[color:#ff4444]Muchas formas[/color] de usar las opciones juntas",
+          "image": "/Resources/images/Placeholder.png",
+          "imageAlign": "right",
+          "imageStyle": {
+            "maxWidth": "250px",
+            "borderRadius": "50%"
+          },
+          "style": {
+            "backgroundColor": "rgba(43, 16, 85, 0.15)",
+            "padding": "20px",
+            "borderRadius": "10px"
+          },
+          "content": [
+            "Puedes combinar [highlight]múltiples técnicas de formato[/highlight] en una sola sección para crear contenido visualmente atractivo.",
+            "Por ejemplo, puedes tener texto en [b]negrita[/b] junto con texto [color:#ff9e9e]coloreado[/color] y [bg:#2b1055]fondos resaltados[/bg], todo en el mismo párrafo.",
+            "Agrega imágenes con alineaciones y estilos personalizados, y luego envuelve el texto alrededor con diferentes opciones de formato.",
+            "Limitado no está."
+          ]
+        },
+        {
+          "title": "Ejemplo Interactivo",
+          "content": "Haz clic en estos enlaces para ver cómo funciona la navegación interna: [json:index.json]Inicio[/json] | [json:about.json]Acerca de[/json] | [json:workshop.json]Workshop[/json]"
+        },
+        {
+          "title": "Usando Contenido HTML",
+          "content": "<div style='padding: 15px; background: linear-gradient(135deg, rgba(43,16,85,0.3), rgba(255,68,68,0.2)); border-radius: 10px;'><h3 style='color: #ff4444;'>Ejemplo de Contenido HTML</h3><p>Puedes incluir HTML directamente en tu contenido para diseños más complejos y elementos interactivos.</p><ul style='margin-top: 10px;'><li>Crear listas</li><li>Agregar elementos HTML personalizados</li><li>Usar estilos en línea</li><li>Este ejemplo de HTML no es el más trabajado, pero sirve de muestra.</li></ul></div>"
+        }
+      ]
+  }
+}
+  

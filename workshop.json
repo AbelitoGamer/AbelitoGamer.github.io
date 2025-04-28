@@ -14,6 +14,13 @@
             "description": "Usa un XML y un Spritesheet en el atlas texture extractor, y luego usa el .zip de resultado aqui dentro. Esta pagina automaticamente acomodara cada imagen en un conveniente spritesheet listo para usar dentro de FMM"
         },
         {
+            "title": "Fade-inator 3000",
+            "image": "/Resources/images/Banner_FFix.png",
+            "backgroundImage": "/Resources/images/Banner_FFix.png",
+            "link": "/Fadeinator/Fadeinator3000.html",
+            "description": "Introduce una imagen y genera un spritesheet donde este aumentara o disminuira su opacidad progresivamente. Util para hacer apariciones o desapariciones suaves."
+        },
+        {
             "title": "Funky Fixer (Obsoleto)",
             "image": "/Resources/images/Banner_FFix.png",
             "backgroundImage": "/Resources/images/Banner_FFix.png",

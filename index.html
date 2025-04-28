@@ -35,16 +35,33 @@
             <h2 id="pageSubtitle">Please wait while content loads</h2>
         </div>
 
-        <div class="cards-wrapper">
-            <div class="card-container" id="cardContainer">
-                <!-- Cards will be loaded from index.json -->
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                    Loading cards...
+        <!-- Content Container - holds either cards or textpage -->
+        <div class="content-wrapper">
+            <!-- Cards View -->
+            <div class="cards-wrapper" id="cardsWrapper">
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be loaded from JSON -->
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading cards...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Page View -->
+            <div class="textpage-wrapper" id="textpageWrapper">
+                <div class="text-page-container" id="textPageContainer">
+                    <!-- Text page content will be loaded from JSON -->
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading content...
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
 
     <!-- Footer -->
     <div class="footer">
@@ -66,7 +83,6 @@
     <script>
         // Default JSON source - set to index.json
         let DATA_SOURCE = 'index.json';
-        
         // Get any JSON parameter from URL if present
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('json')) {

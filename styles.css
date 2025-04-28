@@ -36,7 +36,7 @@ body {
 .scrolling-bg {
     width: 200%;
     height: 100%;
-    background-image: url('Resources/images/bg.jpg');
+    background-image: url('Resources/images/FMMBG.png');
     background-size: 50% 100%;
     background-repeat: repeat-x;
     position: absolute;
@@ -706,5 +706,209 @@ body {
         height: 4px;
         background: rgba(255, 68, 68, 0.5);
         border-radius: 2px;
+    }
+
+    .textpage-wrapper {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-x: hidden;
+    }
+
+    /* When in text page mode */
+    .content-wrapper.textpage-active .cards-wrapper {
+        display: none;
+    }
+
+    .content-wrapper.textpage-active .textpage-wrapper {
+        display: block;
+    }
+
+    /* Text page container */
+    .text-page-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Override any fixed heights that might prevent scrolling */
+    #textPageContainer, #cardContainer {
+        height: auto;
+        min-height: 100%;
+    }
+}
+
+/* Text Page Styles - Improved with proper image alignment fixes */
+.text-page-container {
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.text-page-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.text-page-content {
+    margin: 0 auto;
+    line-height: 1.6;
+    overflow: hidden; /* Contains floated content */
+}
+
+/* FIXED: Text Page Section with improved overflow handling */
+.text-page-section {
+    margin-bottom: 40px;
+    padding: 0 15px;
+    line-height: 1.6;
+    clear: both; /* Prevents overlap with previous sections */
+    overflow: hidden; /* Contains the floated images */
+    position: relative; /* Establish positioning context */
+}
+
+.text-page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    clear: both; /* Ensure title appears after any floated elements */
+}
+
+.text-page-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    clear: both; /* Ensure subtitle appears after any floated elements */
+}
+
+/* FIXED: Paragraph text that wraps around images properly */
+.text-page-paragraph {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    overflow: auto; /* Help with float containment */
+}
+
+/* FIXED: Image wrapper that properly contains the image */
+.text-page-image-wrapper {
+    margin: 1.5rem 0;
+    display: block; /* Ensure block behavior */
+}
+
+.text-page-image {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.text-page-image-caption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* FIXED: Improved alignment classes */
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-justify {
+    text-align: justify;
+}
+
+/* FIXED: Image alignment with proper float handling */
+.image-align-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    max-width: 40%;
+    clear: left; /* Add this to ensure proper stacking */
+}
+
+.image-align-right {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    max-width: 40%;
+    clear: right; /* Add this to ensure proper stacking */
+}
+
+.image-align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    clear: both; /* Add this for cleaner layout */
+    max-width: 80%;
+}
+
+/* Section separator for cleaner division between content blocks */
+.section-separator {
+    clear: both;
+    margin: 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Force content after images to clear floats */
+.text-page-content::after,
+.text-page-section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Ensure sections don't overlap */
+.text-page-section + .text-page-section {
+    clear: both;
+    padding-top: 20px; /* Add spacing between sections */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .text-page-wrapper {
+        padding: 20px;
+    }
+    
+    .text-page-section {
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+    
+    .text-page-title {
+        font-size: 1.8rem;
+    }
+    
+    .text-page-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    /* FIXED: Mobile image handling - stack instead of float on small screens */
+    .image-align-left,
+    .image-align-right {
+        float: none;
+        margin: 1rem auto;
+        max-width: 100%;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .text-page-wrapper {
+        padding: 15px 10px;
+    }
+    
+    .text-page-section {
+        padding: 0 5px;
     }
 }
