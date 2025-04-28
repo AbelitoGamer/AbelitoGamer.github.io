@@ -24,7 +24,7 @@ const processingProgress = document.getElementById('processing-progress');
 
 // UI text configuration
 const uiText = {
-    pageTitle: "Fade generator",
+    pageTitle: "Fade-inator 3000",
     inputHeader: "Sube una imagen",
     dropText: "Arrastra y suelta una imagen aqui o",
     selectButton: "Selecciona una imagen",
