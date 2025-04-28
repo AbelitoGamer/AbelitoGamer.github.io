@@ -4,7 +4,7 @@ let inputFileName = ''; // <--- AÑADIDO para guardar el nombre del archivo
 let processingModalVisible = false;
 let isGenerating = false;
 
-// DOM elements
+// DOM elements 
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
 const previewContainer = document.getElementById('preview-container');
