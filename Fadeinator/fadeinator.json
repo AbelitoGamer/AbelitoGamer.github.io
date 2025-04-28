@@ -48,7 +48,7 @@
         {
             "title": "About",
             "icon": "fas fa-info-circle",
-            "json": "/index.html?json=about.json"
+            "link": "/index.html?json=about.json"
         }
     ],
     "footerNavigation": [
