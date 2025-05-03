@@ -3,315 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Frame Combiner</title>
-    <link href="/Bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style>
-        .drop-zone {
-            border: 2px dashed #ccc;
-            border-radius: 4px;
-            padding: 20px;
-            text-align: center;
-            background: #f8f9fa;
-            transition: all 0.3s ease;
-        }
-        .drop-zone.dragover {
-            background: #e9ecef;
-            border-color: #0d6efd;
-        }
-        #progress-container {
-            display: none;
-        }
-        .language-selector {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-        }
-    </style>
+    <title>Funky Atlas</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="FunkinToFunky.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="language-selector">
-        <select id="language-select" class="form-select">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="pt">Português</option>
-        </select>
+    <!-- Scrolling Background -->
+    <div class="bg-container">
+        <div class="scrolling-bg"></div>
     </div>
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4" data-text="title">Animation Frame Combiner</h1>
-        
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="rotate-frames">
-                    <label class="form-check-label" for="rotate-frames" data-text="rotateFrames">
-                        Rotate frames 90° clockwise
-                    </label>
-                </div>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-globe"></i></div>
+            <div class="logo-text" id="siteName">Loading...</div>
+        </div>
+        <div class="nav-links" id="topNavLinks">
+            <!-- Navigation links will be loaded from index.json -->
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                Loading navigation...
+            </div>
+        </div>
+    </div>
 
-                <div class="drop-zone mb-3">
-                    <p class="mb-0" data-text="dropText">Drag and drop your ZIP file here or</p>
-                    <input type="file" id="file-input" accept=".zip" class="d-none">
-                    <button class="btn btn-primary mt-2" onclick="document.getElementById('file-input').click()" data-text="selectButton">
-                        Select File
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-title">
+            <h1 id="pageTitle">Loading...</h1>
+            <h2 id="pageSubtitle">Please wait while content loads</h2>
+        </div>
+
+        <!-- Main Content -->
+<div class="main-content">
+    <div class="page-title">
+        <h1 id="pageTitle">Loading...</h1>
+        <h2 id="pageSubtitle">Please wait while content loads</h2>
+    </div>
+
+    <div class="customContentContainer">
+        <div class="funky-tool-container">
+            <h1 class="tool-title">Funkin To Funky!</h1>
+            
+            <!-- Upload Panel -->
+            <div class="funky-panel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-file-zipper"></i> <span class="header-text">Subir ZIP</span></h3>
+                </div>
+                
+                <div class="drop-zone">
+                    <p>Arrastre y suelte su archivo ZIP aquí o</p>
+                    <input type="file" id="file-input" accept=".zip" style="display: none;">
+                    <button class="funky-button select-file-button" onclick="document.getElementById('file-input').click()">
+                        <i class="fas fa-file-upload"></i> Seleccionar Archivo
                     </button>
                 </div>
-
-                <div id="progress-container" class="mt-3">
-                    <div class="progress mb-2">
-                        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+            </div>
+            
+            <!-- Settings Panel -->
+            <div class="funky-panel settings-panel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-sliders-h"></i> <span class="header-text">Configuración</span></h3>
+                </div>
+                
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remove-duplicates">
+                        <label class="form-check-label" for="remove-duplicates">
+                            Eliminar frames duplicados
+                        </label>
                     </div>
-                    <p id="status-text" class="text-center"></p>
+                    
+                    <div id="progress-container" class="progress-container">
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <p id="status-text"></p>
+                    </div>
+                    
+                    <div class="generate-button-container">
+                        <button id="generate-button" class="funky-button generate-button" disabled>
+                            Generar Spritesheet
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Result Panel (initially hidden) -->
+            <div class="funky-panel result-panel" id="result-panel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-image"></i> <span class="header-text">Spritesheet Generado</span></h3>
+                    <button class="download-button" id="download-again">Descargar</button>
+                </div>
+                
+                <div class="result-content">
+                    <p id="result-info"></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/Bootstrap/js/jquery-3.7.1.js"></script>
-    <script src="/Bootstrap/js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+        <!-- Content Container - holds either cards or textpage -->
+        <div class="content-wrapper">
+            <!-- Cards View -->
+            <div class="cards-wrapper" id="cardsWrapper">
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be loaded from JSON -->
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading cards...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Page View -->
+            <div class="textpage-wrapper" id="textpageWrapper">
+                <div class="text-page-container" id="textPageContainer">
+                    <!-- Text page content will be loaded from JSON -->
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading content...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-links" id="footerLinks">
+                <!-- Footer links will be loaded from index.json -->
+                <div class="loading">Loading...</div>
+            </div>
+            <div class="copyright" id="copyright">
+                © 2025 Funky Atlas
+            </div>
+            <div class="social-links" id="socialLinks">
+                <!-- Social links will be loaded from index.json -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration - Data source filename -->
     <script>
-        const translations = {
-            en: {
-                title: "Funkin' To Funky!",
-                dropText: "Drag and drop your ZIP file here or",
-                selectButton: "Select File",
-                readingZip: "Reading ZIP file...",
-                processingAnimation: "Processing animation: ",
-                creatingDownload: "Creating download file...",
-                processComplete: "Processing complete!",
-                errorProcessing: "Error processing file: ",
-                rotateFrames: "Rotate frames 90° clockwise"
-            },
-            es: {
-                title: "Funkin' To Funky!",
-                dropText: "Arrastra y suelta tu archivo ZIP aquí o",
-                selectButton: "Seleccionar Archivo",
-                readingZip: "Leyendo archivo ZIP...",
-                processingAnimation: "Procesando animación: ",
-                creatingDownload: "Creando archivo de descarga...",
-                processComplete: "¡Procesamiento completado!",
-                errorProcessing: "Error al procesar el archivo: ",
-                rotateFrames: "Rotar cuadros 90° en sentido horario"
-            },
-            pt: {
-                title: "Funkin' To Funky!",
-                dropText: "Arraste e solte seu arquivo ZIP aqui ou",
-                selectButton: "Selecionar Arquivo",
-                readingZip: "Lendo arquivo ZIP...",
-                processingAnimation: "Processando animação: ",
-                creatingDownload: "Criando arquivo para download...",
-                processComplete: "Processamento completo!",
-                errorProcessing: "Erro ao processar arquivo: ",
-                rotateFrames: "Rotacionar quadros 90° no sentido horário"
-            }
-        };
-
-        let currentLanguage = 'en';
-
-        function updateLanguage(lang) {
-            currentLanguage = lang;
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[data-text]').forEach(element => {
-                const textKey = element.getAttribute('data-text');
-                if (translations[lang][textKey]) {
-                    element.textContent = translations[lang][textKey];
-                }
-            });
+        // Default JSON source - set to index.json
+        let DATA_SOURCE = 'FunkinToFunky.json';
+        // Get any JSON parameter from URL if present
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('json')) {
+            DATA_SOURCE = urlParams.get('json');
         }
-
-        document.getElementById('language-select').addEventListener('change', (e) => {
-            updateLanguage(e.target.value);
-        });
-
-        function getText(key, ...params) {
-            let text = translations[currentLanguage][key] || translations['en'][key];
-            params.forEach((param, index) => {
-                text = text.replace(`{${index}}`, param);
-            });
-            return text;
-        }
-
-        const dropZone = document.querySelector('.drop-zone');
-        const fileInput = document.getElementById('file-input');
-        const progressBar = document.getElementById('progress-bar');
-        const progressContainer = document.getElementById('progress-container');
-        const statusText = document.getElementById('status-text');
-        const rotateCheckbox = document.getElementById('rotate-frames');
-
-        async function rotateImage(img) {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = img.height;
-            canvas.height = img.width;
-            
-            ctx.translate(canvas.width, 0);
-            ctx.rotate(90 * Math.PI / 180);
-            
-            ctx.drawImage(img, 0, 0);
-            
-            return createImageBitmap(canvas);
-        }
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0 && files[0].type === 'application/zip') {
-                processZipFile(files[0]);
-            }
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                processZipFile(e.target.files[0]);
-            }
-        });
-
-        async function processZipFile(file) {
-    progressContainer.style.display = 'block';
-    progressBar.style.width = '0%';
-    statusText.textContent = getText('readingZip');
-    const shouldRotate = rotateCheckbox.checked;
-
-    try {
-        const zip = await JSZip.loadAsync(file);
-        const imageFiles = {};
-        const tempGroups = {};
-
-        // First pass: Collect all PNG files and their potential base names
-        for (const [filename, zipEntry] of Object.entries(zip.files)) {
-            if (!filename.endsWith('.png')) continue;
-            
-            // Extract name without extension
-            const nameWithoutExt = filename.slice(0, -4);
-            
-            // Try to find a number at the end
-            const numberMatch = nameWithoutExt.match(/^(.*?)(\d+)?$/);
-            if (!numberMatch) continue;
-            
-            const [_, baseName, frameNumber] = numberMatch;
-            const normalizedBaseName = baseName.endsWith('_') || baseName.endsWith('-') 
-                ? baseName.slice(0, -1) 
-                : baseName;
-
-            // Store in temporary groups to help identify base names
-            if (!tempGroups[normalizedBaseName]) {
-                tempGroups[normalizedBaseName] = [];
-            }
-            
-            tempGroups[normalizedBaseName].push({
-                name: filename,
-                frameNumber: frameNumber ? parseInt(frameNumber) : 0,
-                entry: zipEntry
-            });
-        }
-
-        // Second pass: Process groups and create final imageFiles object
-        for (const [baseName, files] of Object.entries(tempGroups)) {
-            // If there's only one file and it has no number, skip grouping
-            if (files.length === 1 && files[0].frameNumber === 0) {
-                continue;
-            }
-
-            imageFiles[baseName] = files;
-        }
-
-        const newZip = new JSZip();
-        let processedCount = 0;
-        const totalAnimations = Object.keys(imageFiles).length;
-
-        for (const [animName, files] of Object.entries(imageFiles)) {
-            statusText.textContent = getText('processingAnimation') + animName;
-            
-            // Sort files by frame number
-            files.sort((a, b) => a.frameNumber - b.frameNumber);
-
-            // Load all images first
-            const images = await Promise.all(files.map(async file => {
-                const blob = await file.entry.async('blob');
-                let img = await createImageBitmap(blob);
-                if (shouldRotate) {
-                    img = await rotateImage(img);
-                }
-                return img;
-            }));
-
-            // Find maximum dimensions
-            let maxWidth = 0;
-            let maxHeight = 0;
-            images.forEach(img => {
-                maxWidth = Math.max(maxWidth, img.width);
-                maxHeight = Math.max(maxHeight, img.height);
-            });
-
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Set canvas size to accommodate all normalized frames
-            canvas.height = maxHeight;
-            canvas.width = maxWidth * images.length;
-
-            // Draw each image centered in its frame
-            images.forEach((img, index) => {
-                const x = index * maxWidth;
-                const y = (maxHeight - img.height) / 2;
-                ctx.drawImage(
-                    img,
-                    x + (maxWidth - img.width) / 2,  // Center horizontally
-                    y,  // Center vertically
-                    img.width,
-                    img.height
-                );
-            });
-
-            const blob = await new Promise(resolve => canvas.toBlob(resolve));
-            newZip.file(`${animName}.png`, blob);
-
-            processedCount++;
-            progressBar.style.width = `${(processedCount / totalAnimations) * 100}%`;
-        }
-
-        statusText.textContent = getText('creatingDownload');
-        const content = await newZip.generateAsync({
-            type: 'blob',
-            compression: 'DEFLATE'
-        });
-
-        const url = URL.createObjectURL(content);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = "funky'ed_" + file.name;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        statusText.textContent = getText('processComplete');
-        progressBar.style.width = '100%';
-        progressBar.classList.add('bg-success');
-
-    } catch (error) {
-        console.error(error);
-        statusText.textContent = getText('errorProcessing') + error.message;
-        progressBar.classList.add('bg-danger');
-    }
-}
-
-        updateLanguage('en');
     </script>
-</body>
-</html>
-    </script>
+    
+    <!-- Include the main JavaScript file -->
+    <script src="/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="FunkinToFunky.js"></script>
 </body>
 </html>

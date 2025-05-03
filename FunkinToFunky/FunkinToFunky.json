@@ -9,12 +9,12 @@
         {
             "title": "Home",
             "icon": "fas fa-home",
-            "json": "index.json"
+            "link": "/index.html"
         },
         {
             "title": "Ports",
             "icon": "fas fa-gamepad",
-            "link": "#",
+            "link": " ",
             "dropdown": [
                 {
                     "title": "Mario's Madness",
@@ -29,11 +29,11 @@
         {
             "title": "Workshop",
             "icon": "fas fa-tools",
-            "json": "workshop.json",
+            "link": "/index.html?json=workshop.json",
             "dropdown": [
                 {
                     "title": "Funkin to Funky!",
-                    "link": "/FunkinToFunky/FunkinToFunky.html"
+                    "link": "/FunkIntoFunky/FunkIntoFunky.html"
                 },
                 {
                     "title": "Fade-inator 3000",
@@ -48,7 +48,7 @@
         {
             "title": "About",
             "icon": "fas fa-info-circle",
-            "json": "about.json"
+            "link": "/index.html?json=about.json"
         }
     ],
     "footerNavigation": [

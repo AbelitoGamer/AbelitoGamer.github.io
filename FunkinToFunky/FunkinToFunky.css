@@ -1,0 +1,268 @@
+/* Frame Combiner Styles - Matching Fade Generator */
+.funky-tool-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+
+
+.tool-title {
+    color: #ff6b6b;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.funky-panel {
+    background-color: rgba(30, 30, 60, 0.8);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    overflow: hidden;
+}
+
+.panel-header {
+    background-color: rgba(255, 107, 107, 0.8);
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drop-zone {
+    border: 2px dashed rgba(255, 107, 107, 0.5);
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(30, 30, 60, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+    margin: 1rem;
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
+}
+
+.funky-button {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    border: none;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+}
+
+.funky-button:hover {
+    background: linear-gradient(135deg, #ff8e53, #ff6b6b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.funky-button:disabled {
+    background: #888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.settings-panel {
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.form-check {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+    width: 18px;
+    height: 18px;
+    accent-color: #ff6b6b;
+    cursor: pointer;
+}
+
+.form-check-label {
+    color: white;
+    cursor: pointer;
+}
+
+.progress-container {
+    margin: 1rem;
+}
+
+.progress {
+    background-color: rgba(30, 30, 60, 0.4);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    height: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+    transition: width 0.3s ease;
+    border-radius: 100px;
+}
+
+.progress-bar.bg-success {
+    background: linear-gradient(to right, #52c41a, #b7eb8f);
+}
+
+.progress-bar.bg-danger {
+    background: linear-gradient(to right, #ff4d4f, #ffccc7);
+}
+
+#progress-container {
+    display: none;
+}
+
+#status-text {
+    color: white;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.result-panel {
+    margin-top: 1rem;
+    overflow: hidden;
+    display: none;
+}
+
+.result-content {
+    padding: 1.5rem;
+    color: white;
+    text-align: center;
+    background: rgba(30, 30, 60, 0.4);
+    border-radius: 4px;
+    margin: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add to FunkinToFunky.css - Green file selection button styles */
+
+.select-file-button.file-selected {
+    background: linear-gradient(135deg, #52c41a, #b7eb8f);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.select-file-button.file-selected:hover {
+    background: linear-gradient(135deg, #b7eb8f, #52c41a);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* GIF format warning message */
+.gif-warning {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 193, 7, 0.2);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: center;
+    color: #fff;
+    border-left: 4px solid #ffc107;
+}
+.download-button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.generate-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.generate-button {
+    width: 100%;
+    max-width: 250px;
+    background: linear-gradient(135deg, #4ecdc4, #2ab7ca);
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+}
+
+.generate-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #2ab7ca, #4ecdc4);
+    transform: translateY(-2px);
+}
+
+.generate-button:disabled {
+    background: #888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.6;
+}
+.download-button:hover {
+    background: #ff5252;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.content-wrapper {
+    display: none;
+ }
+
+ .page-title {
+    display: none;
+ }
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .funky-tool-container {
+        width: 95%;
+    }
+    
+    .funky-panel {
+        padding: 0;
+    }
+    
+    .panel-header {
+        padding: 0.8rem;
+    }
+    
+    .drop-zone {
+        padding: 1.5rem 1rem;
+    }
+
+    
+}
