@@ -1,184 +1,144 @@
-// Variables to store the input image
+// State variables
 let inputImage = null;
-let inputFileName = ''; // <--- AÑADIDO para guardar el nombre del archivo
-let processingModalVisible = false;
+let inputFileName = '';
 let isGenerating = false;
 
-// DOM elements 
-const dropZone = document.getElementById('drop-zone');
-const fileInput = document.getElementById('file-input');
-const previewContainer = document.getElementById('preview-container');
-const previewImage = document.getElementById('preview-image');
-const frameCountSlider = document.getElementById('frame-count');
-const frameCountInput = document.getElementById('frame-count-input');
-const targetOpacitySlider = document.getElementById('target-opacity');
-const targetOpacityInput = document.getElementById('target-opacity-input');
-const reverseCheckbox = document.getElementById('reverse-effect');
-const generateBtn = document.getElementById('generate-btn');
-const resultCard = document.getElementById('result-card');
-const spritesheetResult = document.getElementById('spritesheet-result');
-const spritesheetInfo = document.getElementById('spritesheet-info');
-const downloadBtn = document.getElementById('download-btn');
-const processingModal = document.getElementById('processing-modal');
-const processingProgress = document.getElementById('processing-progress');
-
-// UI text configuration
-const uiText = {
-    pageTitle: "Fade-inator 3000",
-    inputHeader: "Sube una imagen",
-    dropText: "Arrastra y suelta una imagen aqui o",
-    selectButton: "Selecciona una imagen",
-    settingsHeader: "Ajustes",
-    frameCountLabel: "Frames maximos:",
-    targetOpacityLabel: "Opacidad deseada (del frame final):",
-    reverseLabel: "Reverso (Inicia invisible y se vuelve visible, al contrario de si no marcas esto)",
-    generateButton: "Generar Spritesheet",
-    generatingText: "Generando...",
-    resultHeader: "Spritesheet generado",
-    downloadButton: "Descargar",
-    processingText: "Generando...",
-    spritesheetInfoTemplate: "Spritesheet: {0} frames, {1}x{2} pixeles por frame, Tamaño total: {3}x{4}"
+// DOM elements
+const elements = {
+    dropZone: document.getElementById('drop-zone'),
+    fileInput: document.getElementById('file-input'),
+    previewContainer: document.getElementById('preview-container'),
+    previewImage: document.getElementById('preview-image'),
+    frameCountSlider: document.getElementById('frame-count'),
+    frameCountInput: document.getElementById('frame-count-input'),
+    targetOpacitySlider: document.getElementById('target-opacity'),
+    targetOpacityInput: document.getElementById('target-opacity-input'),
+    reverseCheckbox: document.getElementById('reverse-effect'),
+    generateBtn: document.getElementById('generate-btn'),
+    resultCard: document.getElementById('result-card'),
+    spritesheetResult: document.getElementById('spritesheet-result'),
+    spritesheetInfo: document.getElementById('spritesheet-info'),
+    downloadBtn: document.getElementById('download-btn'),
+    processingModal: document.getElementById('processing-modal'),
+    processingProgress: document.getElementById('processing-progress')
 };
 
-// Event listeners for drag and drop
-dropZone.addEventListener('dragover', (e) => {
+// Utility functions
+const toggleModal = (show) => {
+    elements.processingModal.style.display = show ? 'flex' : 'none';
+    if (show) elements.processingProgress.style.width = '0%';
+};
+
+const setGeneratingState = (generating) => {
+    isGenerating = generating;
+    elements.generateBtn.innerHTML = generating ? 
+        '<span class="spinner-inline"></span> Generando...' : 
+        'Generar Spritesheet';
+    elements.generateBtn.classList.toggle('generating', generating);
+    elements.generateBtn.disabled = generating || !inputImage;
+};
+
+const syncSliderInput = (slider, input) => {
+    slider.addEventListener('input', () => input.value = slider.value);
+    input.addEventListener('input', () => {
+        const value = parseInt(input.value);
+        const min = parseInt(input.min);
+        const max = parseInt(input.max);
+        if (value >= min && value <= max) slider.value = value;
+    });
+};
+
+// Event listeners
+elements.dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('dragover');
+    elements.dropZone.classList.add('dragover');
 });
 
-dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('dragover');
+elements.dropZone.addEventListener('dragleave', () => {
+    elements.dropZone.classList.remove('dragover');
 });
 
-dropZone.addEventListener('drop', (e) => {
+elements.dropZone.addEventListener('drop', (e) => {
     e.preventDefault();
-    dropZone.classList.remove('dragover');
-    
+    elements.dropZone.classList.remove('dragover');
     if (e.dataTransfer.files.length > 0) {
         handleFileSelect(e.dataTransfer.files[0]);
     }
 });
 
-// Event listener for file input
-fileInput.addEventListener('change', (e) => {
+// Hide the default file input
+elements.fileInput.style.display = 'none';
+
+elements.fileInput.addEventListener('change', (e) => {
     if (e.target.files.length > 0) {
         handleFileSelect(e.target.files[0]);
     }
 });
 
-// Event listeners for sliders and inputs
-frameCountSlider.addEventListener('input', () => {
-    frameCountInput.value = frameCountSlider.value;
-});
+// Sync sliders with inputs
+syncSliderInput(elements.frameCountSlider, elements.frameCountInput);
+syncSliderInput(elements.targetOpacitySlider, elements.targetOpacityInput);
 
-frameCountInput.addEventListener('input', () => {
-    const value = parseInt(frameCountInput.value);
-    if (value >= 2 && value <= 100) {
-        frameCountSlider.value = value;
-    }
-});
+elements.generateBtn.addEventListener('click', startGenerate);
+elements.downloadBtn.addEventListener('click', downloadSpritesheet);
 
-targetOpacitySlider.addEventListener('input', () => {
-    targetOpacityInput.value = targetOpacitySlider.value;
-});
-
-targetOpacityInput.addEventListener('input', () => {
-    const value = parseInt(targetOpacityInput.value);
-    if (value >= 0 && value <= 100) {
-        targetOpacitySlider.value = value;
-    }
-});
-
-// Event listener for generate button
-generateBtn.addEventListener('click', startGenerate);
-
-// Event listener for download button
-downloadBtn.addEventListener('click', downloadSpritesheet);
-
-// Handle file selection
+// File handling
 function handleFileSelect(file) {
     if (!file.type.match('image.*')) {
         alert('Please select an image file.');
         return;
     }
     
-    inputFileName = file.name.replace(/\.[^/.]+$/, ""); // <--- GUARDAMOS el nombre base
+    inputFileName = file.name.replace(/\.[^/.]+$/, "");
     
     const reader = new FileReader();
     reader.onload = (e) => {
         const img = new Image();
         img.onload = () => {
             inputImage = img;
-            previewImage.src = img.src;
-            previewContainer.style.display = 'block';
-            generateBtn.disabled = false;
+            elements.previewImage.src = img.src;
+            elements.previewContainer.style.display = 'block';
+            elements.generateBtn.disabled = false;
         };
         img.src = e.target.result;
     };
     reader.readAsDataURL(file);
 }
 
-// Show the processing modal
-function showProcessingModal() {
-    processingModal.style.display = 'flex';
-    processingProgress.style.width = '0%';
-    processingModalVisible = true;
-}
-
-// Hide the processing modal
-function hideProcessingModal() {
-    processingModal.style.display = 'none';
-    processingModalVisible = false;
-}
-
-// Toggle button state to show generation in progress
-function setGeneratingState(isGenerating) {
-    if (isGenerating) {
-        generateBtn.innerHTML = '<span class="spinner-inline"></span> ' + uiText.generatingText;
-        generateBtn.classList.add('generating');
-        generateBtn.disabled = true;
-    } else {
-        generateBtn.innerHTML = uiText.generateButton;
-        generateBtn.classList.remove('generating');
-        generateBtn.disabled = !inputImage;
-    }
-}
-
-// Start the generation process
+// Generation process
 function startGenerate() {
     if (!inputImage || isGenerating) return;
     
-    isGenerating = true;
     setGeneratingState(true);
     
+    // Show modal for large images
     if (inputImage.width * inputImage.height > 1000000) {
-        showProcessingModal();
-        setTimeout(() => generateSpritesheet(), 100);
+        toggleModal(true);
+        setTimeout(generateSpritesheet, 100);
     } else {
         generateSpritesheet();
     }
 }
 
-// Generate spritesheet
 function generateSpritesheet() {
     if (!inputImage) return;
     
-    const maxFrames = parseInt(frameCountInput.value);
-    const targetOpacity = parseInt(targetOpacityInput.value);
-    const isReversed = reverseCheckbox.checked;
+    const maxFrames = parseInt(elements.frameCountInput.value);
+    const targetOpacity = parseInt(elements.targetOpacityInput.value);
+    const isReversed = elements.reverseCheckbox.checked;
     const startOpacity = isReversed ? targetOpacity : 100;
     const endOpacity = isReversed ? 100 : targetOpacity;
     
-    let opacities = [];
-    for (let i = 0; i < maxFrames; i++) {
-        const opacity = Math.round(startOpacity + (i * (endOpacity - startOpacity) / (maxFrames - 1)));
-        opacities.push(opacity);
-    }
-    
-    opacities = [...new Set(opacities)];
+    // Generate opacity values and remove duplicates
+    const opacities = [...new Set(
+        Array.from({ length: maxFrames }, (_, i) => 
+            Math.round(startOpacity + (i * (endOpacity - startOpacity) / (maxFrames - 1)))
+        )
+    )];
     
     const frameCount = opacities.length;
     
+    // Create canvases
     const frameCanvas = document.createElement('canvas');
     const frameCtx = frameCanvas.getContext('2d');
     frameCanvas.width = inputImage.width;
@@ -189,25 +149,29 @@ function generateSpritesheet() {
     canvas.width = inputImage.width * frameCount;
     canvas.height = inputImage.height;
     
+    // Draw frames recursively
     const drawNextFrame = (index) => {
         if (index >= frameCount) {
             finalizeSpritesheet(canvas, frameCount);
             return;
         }
         
+        // Clear and draw base image
         frameCtx.clearRect(0, 0, frameCanvas.width, frameCanvas.height);
         frameCtx.drawImage(inputImage, 0, 0);
         
+        // Apply opacity mask
         frameCtx.globalCompositeOperation = 'destination-in';
         frameCtx.fillStyle = `rgba(0, 0, 0, ${opacities[index] / 100})`;
         frameCtx.fillRect(0, 0, frameCanvas.width, frameCanvas.height);
-        
         frameCtx.globalCompositeOperation = 'source-over';
         
+        // Draw to main canvas
         ctx.drawImage(frameCanvas, index * inputImage.width, 0);
         
-        if (processingModalVisible) {
-            processingProgress.style.width = `${((index + 1) / frameCount) * 100}%`;
+        // Update progress
+        if (elements.processingModal.style.display === 'flex') {
+            elements.processingProgress.style.width = `${((index + 1) / frameCount) * 100}%`;
         }
         
         setTimeout(() => drawNextFrame(index + 1), 0);
@@ -216,36 +180,24 @@ function generateSpritesheet() {
     drawNextFrame(0);
 }
 
-// Finalize spritesheet generation
 function finalizeSpritesheet(canvas, frameCount) {
-    if (processingModalVisible) {
-        hideProcessingModal();
-    }
-    
-    isGenerating = false;
+    toggleModal(false);
     setGeneratingState(false);
     
-    spritesheetResult.src = canvas.toDataURL('image/png');
-    resultCard.style.display = 'block';
+    elements.spritesheetResult.src = canvas.toDataURL('image/png');
+    elements.resultCard.style.display = 'block';
     
-    const infoText = uiText.spritesheetInfoTemplate
-        .replace('{0}', frameCount)
-        .replace('{1}', inputImage.width)
-        .replace('{2}', inputImage.height)
-        .replace('{3}', canvas.width)
-        .replace('{4}', canvas.height);
+    elements.spritesheetInfo.textContent = 
+        `Spritesheet: ${frameCount} frames, ${inputImage.width}x${inputImage.height} pixeles por frame, Tamaño total: ${canvas.width}x${canvas.height}`;
     
-    spritesheetInfo.textContent = infoText;
-    
-    resultCard.scrollIntoView({ behavior: 'smooth' });
+    elements.resultCard.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Download spritesheet
 function downloadSpritesheet() {
-    if (!spritesheetResult.src) return;
+    if (!elements.spritesheetResult.src) return;
     
     const link = document.createElement('a');
-    link.download = `fade-inated ${inputFileName}.png`; // <--- Aquí usamos el nombre del archivo
-    link.href = spritesheetResult.src;
+    link.download = `fade-inated ${inputFileName}.png`;
+    link.href = elements.spritesheetResult.src;
     link.click();
 }
