@@ -79,37 +79,5 @@
             "link": "https://www.youtube.com/@AbelitoGamer"
         }
     ],
-    "cards": [
-        {
-            "title": "Mario's Madness V2 - FMM Port",
-            "image": "/Resources/images/MMV2Banner.png",
-            "backgroundImage": "/Resources/images/MMV2Banner.png",
-            "link": "/Mario-Madness/Freeplay.html",
-            "description": "Port de casi todas las canciones de Mario's Madness V2 a FMM. IMPORTANTE: Esta pagina posee versiones desactualizadas que se reemplazaran cuando se mejoren todas las songs",
-            "highlights": ["IMPORTANTE:"],
-            "subdued": ["Esta pagina posee versiones desactualizadas que se reemplazaran cuando se mejoren todas las songs"]
-        },
-        {
-            "title": "Sonic.exe",
-            "image": "/Resources/images/SonicBanner.png",
-            "backgroundImage": "/Resources/images/SonicBanner.png",
-            "link": "https://thisisfenix.github.io/Vs-sonic.exe-mods/",
-            "description": "Una pagina compilando todos los niveles hechos por el team del foro de Sonic.exe, que se encuentra dentro del discord de FMM. Te llevara a un sitio web externo manejado por dicho team.",
-            "subdued": ["Te llevara a un sitio web externo manejado por dicho team."]
-        },
-        {
-            "title": "Abelito's workshop",
-            "image": "/Resources/images/AbelitoWorkshopBanner.png",
-            "backgroundImage": "/Resources/images/AbelitoWorkshopBannerDifum.png",
-            "json": "workshop.json",
-            "description": "Experimentos pendejos de Abelito que al igual que esta misma pagina de inicio, pecan de estar hechos mayormente por IA. Algun dia se volvera autonomo, confien. Mientras tanto, puedes echarle un vistazo a las herramientas o cositas random."
-        },
-        {
-            "title": "Próximamente",
-            "image": "/Resources/images/Placeholder.png",
-            "backgroundImage": "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)",
-            "link": "#",
-            "description": "Pronto... Quizas."
-        }
-    ]
+    "cards": []
 }

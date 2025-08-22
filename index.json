@@ -77,6 +77,11 @@
             "title": "YouTube",
             "icon": "fab fa-youtube",
             "link": "https://www.youtube.com/@AbelitoGamer"
+        },
+        {
+            "title": "YouTube",
+            "icon": "fa-solid fa-heart",
+            "link": "https://ko-fi.com/abelitogamer"
         }
     ],
     "cards": [
