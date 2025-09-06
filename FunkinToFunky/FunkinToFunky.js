@@ -1,4 +1,4 @@
-// Enhanced FunkinToFunky.js with Spritesheet Parsing
+// Enhanced FunkinToFunky.js with Spritesheet Parsing and Fixed Extension Handling
 document.addEventListener('DOMContentLoaded', function() {
     // Cache DOM elements
     const elements = {
@@ -400,16 +400,48 @@ document.addEventListener('DOMContentLoaded', function() {
         
         frames.forEach(frame => {
             // Extract animation name and frame number
-            const match = frame.name.match(/^(.*?)(\d+)$/);
+            // Updated regex to handle file extensions and various naming patterns
+            let match = frame.name.match(/^(.*?)(\d+)$/);
             let animName, frameNum;
             
             if (match) {
-                animName = match[1].replace(/[_-]$/, ''); // Remove trailing underscore/dash
+                // Standard case: name ends with numbers
+                animName = match[1].replace(/[_.-]$/, ''); // Remove trailing underscore, dash, or dot
                 frameNum = parseInt(match[2]);
             } else {
-                // If no number, treat as single frame animation
-                animName = frame.name;
-                frameNum = 0;
+                // Check if there are numbers embedded before file extensions or other suffixes
+                // Pattern: capture everything up to the last sequence of digits, then the digits
+                match = frame.name.match(/^(.*[_.-])?(.+?)(\d+)([_.-].*)?$/);
+                
+                if (match) {
+                    const [, prefix = '', baseName, digits, suffix = ''] = match;
+                    animName = (prefix + baseName + suffix).replace(/[_.-]$/, '');
+                    frameNum = parseInt(digits);
+                } else {
+                    // If still no match, try to find any digits in the name
+                    const digitMatch = frame.name.match(/(\d+)/);
+                    if (digitMatch) {
+                        // Use the part before the first digit sequence as animation name
+                        const digitIndex = frame.name.indexOf(digitMatch[0]);
+                        animName = frame.name.substring(0, digitIndex).replace(/[_.-]$/, '');
+                        frameNum = parseInt(digitMatch[0]);
+                        
+                        // If animation name is empty, use the part after digits
+                        if (!animName) {
+                            const afterDigits = frame.name.substring(digitIndex + digitMatch[0].length);
+                            animName = afterDigits.replace(/^[_.-]/, '') || 'animation';
+                        }
+                    } else {
+                        // No digits found, treat as single frame animation
+                        animName = frame.name.replace(/[_.-]$/, '');
+                        frameNum = 0;
+                    }
+                }
+            }
+            
+            // Ensure animation name is not empty
+            if (!animName || animName.trim() === '') {
+                animName = 'animation';
             }
             
             if (!animations[animName]) {
@@ -537,11 +569,44 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!filename.endsWith('.png')) continue;
             
             const nameWithoutExt = filename.slice(0, -4);
-            const match = nameWithoutExt.match(/^(.*?)(\d+)?$/);
-            if (!match) continue;
             
-            const [, baseName, frameNumber] = match;
-            const normalizedBaseName = baseName.replace(/[_-]$/, '');
+            // Improved pattern matching to handle file extensions in animation names
+            let match = nameWithoutExt.match(/^(.*?)(\d+)?$/);
+            let baseName, frameNumber;
+            
+            if (match && match[2]) {
+                // Standard case: name ends with numbers
+                baseName = match[1].replace(/[_.-]$/, '');
+                frameNumber = parseInt(match[2]);
+            } else {
+                // Check for numbers embedded before extensions or suffixes
+                match = nameWithoutExt.match(/^(.*[_.-])?(.+?)(\d+)([_.-].*)?$/);
+                
+                if (match && match[3]) {
+                    const [, prefix = '', name, digits, suffix = ''] = match;
+                    baseName = (prefix + name + suffix).replace(/[_.-]$/, '');
+                    frameNumber = parseInt(digits);
+                } else {
+                    // Try to find any digits in the name
+                    const digitMatch = nameWithoutExt.match(/(\d+)/);
+                    if (digitMatch) {
+                        const digitIndex = nameWithoutExt.indexOf(digitMatch[0]);
+                        baseName = nameWithoutExt.substring(0, digitIndex).replace(/[_.-]$/, '');
+                        frameNumber = parseInt(digitMatch[0]);
+                        
+                        if (!baseName) {
+                            const afterDigits = nameWithoutExt.substring(digitIndex + digitMatch[0].length);
+                            baseName = afterDigits.replace(/^[_.-]/, '') || nameWithoutExt;
+                        }
+                    } else {
+                        // No numbers found
+                        baseName = nameWithoutExt;
+                        frameNumber = 0;
+                    }
+                }
+            }
+            
+            const normalizedBaseName = baseName || nameWithoutExt;
 
             if (!tempGroups[normalizedBaseName]) {
                 tempGroups[normalizedBaseName] = [];
@@ -549,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             tempGroups[normalizedBaseName].push({
                 name: filename,
-                frameNumber: frameNumber ? parseInt(frameNumber) : 0,
+                frameNumber: frameNumber,
                 entry: zipEntry
             });
         }
