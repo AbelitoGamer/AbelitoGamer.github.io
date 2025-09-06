@@ -1,19 +1,34 @@
-// Optimized FunkinToFunky.js
+// Enhanced FunkinToFunky.js with Spritesheet Parsing
 document.addEventListener('DOMContentLoaded', function() {
     // Cache DOM elements
     const elements = {
-        dropZone: document.querySelector('.drop-zone'),
-        fileInput: document.getElementById('file-input'),
+        // Method selection
+        zipMethodBtn: document.getElementById('zip-method-btn'),
+        spritesheetMethodBtn: document.getElementById('spritesheet-method-btn'),
+        zipUploadPanel: document.getElementById('zip-upload-panel'),
+        spritesheetUploadPanel: document.getElementById('spritesheet-upload-panel'),
+        
+        // ZIP upload
+        zipDropZone: document.getElementById('zip-drop-zone'),
+        zipFileInput: document.getElementById('zip-file-input'),
+        zipSelectBtn: document.getElementById('zip-select-btn'), // Added missing element
+        
+        // Spritesheet upload
+        pngDropZone: document.getElementById('png-drop-zone'),
+        xmlDropZone: document.getElementById('xml-drop-zone'),
+        pngFileInput: document.getElementById('png-file-input'),
+        xmlFileInput: document.getElementById('xml-file-input'),
+        pngSelectBtn: document.getElementById('png-select-btn'),
+        xmlSelectBtn: document.getElementById('xml-select-btn'),
+        
+        // Common elements
         progressBar: document.getElementById('progress-bar'),
         progressContainer: document.getElementById('progress-container'),
         statusText: document.getElementById('status-text'),
         removeDuplicatesCheckbox: document.getElementById('remove-duplicates'),
-        outputGifCheckbox: document.getElementById('output-gif'),
-        gifWarning: document.getElementById('gif-warning'),
         resultPanel: document.getElementById('result-panel'),
         downloadButton: document.getElementById('download-again'),
         generateButton: document.getElementById('generate-button'),
-        selectFileButton: document.querySelector('.select-file-button'),
         resultContent: document.querySelector('.result-content')
     };
 
@@ -21,7 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let state = {
         lastDownloadUrl: null,
         lastFileName: null,
-        currentZipFile: null
+        currentZipFile: null,
+        currentPngFile: null,
+        currentXmlFile: null,
+        inputMethod: 'zip' // 'zip' or 'spritesheet'
     };
 
     // Initialize UI
@@ -31,38 +49,88 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 
     function setupEventListeners() {
-        // GIF warning toggle
-        elements.outputGifCheckbox?.addEventListener('change', function() {
-            elements.gifWarning.style.display = this.checked ? 'block' : 'none';
-        });
+        // Method selection
+        elements.zipMethodBtn.addEventListener('click', () => setInputMethod('zip'));
+        elements.spritesheetMethodBtn.addEventListener('click', () => setInputMethod('spritesheet'));
 
-        // Drag and drop
-        setupDragAndDrop();
-
-        // File selection
-        elements.fileInput.addEventListener('change', (e) => {
+        // ZIP upload
+        setupDragAndDrop(elements.zipDropZone, handleZipFiles);
+        elements.zipFileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 selectZipFile(e.target.files[0]);
             }
         });
 
-        // Download button
-        elements.downloadButton?.addEventListener('click', downloadFile);
-
-        // Generate button
-        elements.generateButton.addEventListener('click', () => {
-            if (state.currentZipFile) {
-                processZipFile(state.currentZipFile);
+        // PNG upload
+        setupDragAndDrop(elements.pngDropZone, handlePngFiles);
+        elements.pngFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                selectPngFile(e.target.files[0]);
             }
         });
 
+        // XML upload
+        setupDragAndDrop(elements.xmlDropZone, handleXmlFiles);
+        elements.xmlFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                selectXmlFile(e.target.files[0]);
+            }
+        });
+
+        // Generate and download buttons
+        elements.generateButton.addEventListener('click', processFiles);
+        elements.downloadButton?.addEventListener('click', downloadFile);
+
         // Prevent file input reset
-        elements.fileInput.addEventListener('click', (e) => e.stopPropagation());
+        elements.zipFileInput.addEventListener('click', (e) => e.stopPropagation());
+        elements.pngFileInput.addEventListener('click', (e) => e.stopPropagation());
+        elements.xmlFileInput.addEventListener('click', (e) => e.stopPropagation());
     }
 
-    function setupDragAndDrop() {
-        const { dropZone } = elements;
+    function setInputMethod(method) {
+        state.inputMethod = method;
+        
+        // Update button states
+        elements.zipMethodBtn.classList.toggle('active', method === 'zip');
+        elements.spritesheetMethodBtn.classList.toggle('active', method === 'spritesheet');
+        
+        // Show/hide panels
+        elements.zipUploadPanel.style.display = method === 'zip' ? 'block' : 'none';
+        elements.spritesheetUploadPanel.style.display = method === 'spritesheet' ? 'block' : 'none';
+        
+        // Reset file selections and button states
+        resetFileSelections();
+        
+        // Reset generate button
+        updateGenerateButtonState();
+        resetResults();
+    }
 
+    function resetFileSelections() {
+        // Reset ZIP file selection
+        state.currentZipFile = null;
+        if (elements.zipSelectBtn) {
+            elements.zipSelectBtn.classList.remove('file-selected');
+            elements.zipSelectBtn.innerHTML = '<i class="fas fa-file-upload"></i> Seleccionar Archivo ZIP';
+        }
+
+        // Reset PNG file selection
+        state.currentPngFile = null;
+        elements.pngSelectBtn.classList.remove('file-selected');
+        elements.pngSelectBtn.innerHTML = '<i class="fas fa-file-upload"></i> Seleccionar PNG';
+
+        // Reset XML file selection
+        state.currentXmlFile = null;
+        elements.xmlSelectBtn.classList.remove('file-selected');
+        elements.xmlSelectBtn.innerHTML = '<i class="fas fa-file-upload"></i> Seleccionar XML';
+
+        // Clear file inputs
+        if (elements.zipFileInput) elements.zipFileInput.value = '';
+        if (elements.pngFileInput) elements.pngFileInput.value = '';
+        if (elements.xmlFileInput) elements.xmlFileInput.value = '';
+    }
+
+    function setupDragAndDrop(dropZone, fileHandler) {
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -79,24 +147,83 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             e.stopPropagation();
             dropZone.classList.remove('dragover');
-            
-            const files = e.dataTransfer.files;
-            if (files.length > 0 && files[0].type === 'application/zip') {
-                selectZipFile(files[0]);
-            }
+            fileHandler(e.dataTransfer.files);
         });
+    }
+
+    function handleZipFiles(files) {
+        for (const file of files) {
+            if (file.type === 'application/zip' || file.name.endsWith('.zip')) {
+                selectZipFile(file);
+                break;
+            }
+        }
+    }
+
+    function handlePngFiles(files) {
+        for (const file of files) {
+            if (file.type.startsWith('image/') || file.name.toLowerCase().endsWith('.png')) {
+                selectPngFile(file);
+                break;
+            }
+        }
+    }
+
+    function handleXmlFiles(files) {
+        for (const file of files) {
+            if (file.type === 'text/xml' || file.name.toLowerCase().endsWith('.xml')) {
+                selectXmlFile(file);
+                break;
+            }
+        }
     }
 
     function selectZipFile(file) {
         state.currentZipFile = file;
-        elements.generateButton.disabled = false;
-        elements.statusText.textContent = "Archivo seleccionado. Presione 'Generar Spritesheet' para procesar.";
         
-        // Update select button appearance
-        if (elements.selectFileButton) {
-            elements.selectFileButton.classList.add('file-selected');
-            elements.selectFileButton.innerHTML = `<i class="fas fa-check"></i> Archivo: ${file.name}`;
+        // Update ZIP button appearance (FIXED)
+        if (elements.zipSelectBtn) {
+            elements.zipSelectBtn.classList.add('file-selected');
+            elements.zipSelectBtn.innerHTML = `<i class="fas fa-check"></i> ${file.name}`;
         }
+        
+        updateGenerateButtonState();
+        elements.statusText.textContent = `Archivo ZIP seleccionado: ${file.name}`;
+    }
+
+    function selectPngFile(file) {
+        state.currentPngFile = file;
+        elements.pngSelectBtn.classList.add('file-selected');
+        elements.pngSelectBtn.innerHTML = `<i class="fas fa-check"></i> ${file.name}`;
+        updateGenerateButtonState();
+        elements.statusText.textContent = `PNG seleccionado: ${file.name}`;
+    }
+
+    function selectXmlFile(file) {
+        state.currentXmlFile = file;
+        elements.xmlSelectBtn.classList.add('file-selected');
+        elements.xmlSelectBtn.innerHTML = `<i class="fas fa-check"></i> ${file.name}`;
+        updateGenerateButtonState();
+        elements.statusText.textContent = `XML seleccionado: ${file.name}`;
+    }
+
+    function updateGenerateButtonState() {
+        const canGenerate = state.inputMethod === 'zip' ? 
+            !!state.currentZipFile : 
+            (!!state.currentPngFile && !!state.currentXmlFile);
+        
+        elements.generateButton.disabled = !canGenerate;
+        
+        if (canGenerate) {
+            elements.statusText.textContent = "Listo para procesar. Presione 'Generar Spritesheet'.";
+        }
+    }
+
+    function resetResults() {
+        elements.resultPanel.style.display = 'none';
+        elements.progressContainer.style.display = 'none';
+        elements.progressBar.style.width = '0%';
+        elements.progressBar.classList.remove('bg-success', 'bg-danger');
     }
 
     function downloadFile() {
@@ -110,59 +237,235 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Optimized image comparison using ImageData comparison
-    async function areImagesEqual(img1, img2) {
-        // Quick dimension check
-        if (img1.width !== img2.width || img1.height !== img2.height) {
-            return false;
+    async function processFiles() {
+        resetResults();
+        elements.progressContainer.style.display = 'block';
+
+        try {
+            if (state.inputMethod === 'zip') {
+                await processZipFile(state.currentZipFile);
+            } else {
+                await processSpritesheetAndXml(state.currentPngFile, state.currentXmlFile);
+            }
+        } catch (error) {
+            console.error('Processing error:', error);
+            elements.statusText.textContent = `Error: ${error.message}`;
+            elements.progressBar.classList.add('bg-danger');
+        }
+    }
+
+    // Spritesheet and XML processing
+    async function processSpritesheetAndXml(pngFile, xmlFile) {
+        const shouldRemoveDuplicates = elements.removeDuplicatesCheckbox.checked;
+        
+        elements.statusText.textContent = "Cargando spritesheet y XML...";
+        elements.progressBar.style.width = '20%';
+
+        // Load the image
+        const img = await loadImage(pngFile);
+        elements.statusText.textContent = "Parseando XML...";
+        elements.progressBar.style.width = '40%';
+
+        // Parse the XML
+        const xmlText = await readFileAsText(xmlFile);
+        const frameData = parseSparrowXml(xmlText);
+        
+        elements.statusText.textContent = "Extrayendo frames...";
+        elements.progressBar.style.width = '60%';
+
+        // Extract individual frames
+        const frames = await extractFramesFromSpritesheet(img, frameData);
+        
+        elements.statusText.textContent = "Organizando animaciones...";
+        elements.progressBar.style.width = '80%';
+
+        // Organize frames into animations
+        const animations = organizeFramesIntoAnimations(frames);
+        
+        // Process animations
+        const newZip = new JSZip();
+        const spritesheetPreviews = [];
+        let duplicatesRemoved = 0;
+        let processedCount = 0;
+        const totalAnimations = Object.keys(animations).length;
+
+        for (const [animName, animFrames] of Object.entries(animations)) {
+            elements.statusText.textContent = `Procesando animación: ${animName}`;
+            
+            const result = await processAnimationFrames(
+                animName, animFrames, newZip, shouldRemoveDuplicates
+            );
+            
+            spritesheetPreviews.push(result.preview);
+            duplicatesRemoved += result.duplicatesRemoved;
+            
+            updateProgress(++processedCount, totalAnimations);
         }
 
-        // Create canvases and get image data
-        const [data1, data2] = await Promise.all([
-            getImageData(img1),
-            getImageData(img2)
-        ]);
+        // Generate final download with proper filename (FIXED)
+        const baseFileName = pngFile.name.replace(/\.[^/.]+$/, ""); // Remove extension
+        await generateDownload(newZip, baseFileName, true); // Pass true for spritesheet mode
+        
+        // Display results
+        displayResults(spritesheetPreviews, duplicatesRemoved, shouldRemoveDuplicates, false);
+        
+        elements.statusText.textContent = "¡Procesamiento completado!";
+        elements.progressBar.style.width = '100%';
+        elements.progressBar.classList.add('bg-success');
+    }
 
-        // Compare pixel data efficiently
-        for (let i = 0; i < data1.length; i += 4) {
-            if (data1[i] !== data2[i] || 
-                data1[i+1] !== data2[i+1] || 
-                data1[i+2] !== data2[i+2] || 
-                data1[i+3] !== data2[i+3]) {
-                return false;
+    function loadImage(file) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            img.src = URL.createObjectURL(file);
+        });
+    }
+
+    function readFileAsText(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = reject;
+            reader.readAsText(file);
+        });
+    }
+
+    function parseSparrowXml(xmlText) {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+        const subTextures = xmlDoc.querySelectorAll('SubTexture');
+        const frames = [];
+
+        subTextures.forEach(subTexture => {
+            const name = subTexture.getAttribute('name');
+            const x = parseInt(subTexture.getAttribute('x') || '0');
+            const y = parseInt(subTexture.getAttribute('y') || '0');
+            const width = parseInt(subTexture.getAttribute('width') || '0');
+            const height = parseInt(subTexture.getAttribute('height') || '0');
+            const frameX = parseInt(subTexture.getAttribute('frameX') || '0');
+            const frameY = parseInt(subTexture.getAttribute('frameY') || '0');
+            const frameWidth = parseInt(subTexture.getAttribute('frameWidth') || width);
+            const frameHeight = parseInt(subTexture.getAttribute('frameHeight') || height);
+
+            frames.push({
+                name,
+                x, y, width, height,
+                frameX, frameY, frameWidth, frameHeight
+            });
+        });
+
+        return frames;
+    }
+
+    async function extractFramesFromSpritesheet(spritesheet, frameData) {
+        const extractedFrames = [];
+        
+        for (const frame of frameData) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size to the frame's source size
+            canvas.width = frame.frameWidth;
+            canvas.height = frame.frameHeight;
+            
+            // Clear canvas with transparent background
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw the frame from spritesheet at the correct position
+            // Account for frameX and frameY offsets
+            const drawX = -frame.frameX;
+            const drawY = -frame.frameY;
+            
+            ctx.drawImage(
+                spritesheet,
+                frame.x, frame.y, frame.width, frame.height,  // Source rectangle
+                drawX, drawY, frame.width, frame.height        // Destination rectangle
+            );
+            
+            const img = await createImageBitmap(canvas);
+            extractedFrames.push({
+                name: frame.name,
+                img: img,
+                originalFrame: frame
+            });
+        }
+        
+        return extractedFrames;
+    }
+
+    function organizeFramesIntoAnimations(frames) {
+        const animations = {};
+        
+        frames.forEach(frame => {
+            // Extract animation name and frame number
+            const match = frame.name.match(/^(.*?)(\d+)$/);
+            let animName, frameNum;
+            
+            if (match) {
+                animName = match[1].replace(/[_-]$/, ''); // Remove trailing underscore/dash
+                frameNum = parseInt(match[2]);
+            } else {
+                // If no number, treat as single frame animation
+                animName = frame.name;
+                frameNum = 0;
+            }
+            
+            if (!animations[animName]) {
+                animations[animName] = [];
+            }
+            
+            animations[animName].push({
+                ...frame,
+                frameNumber: frameNum
+            });
+        });
+        
+        // Sort frames within each animation
+        Object.keys(animations).forEach(animName => {
+            animations[animName].sort((a, b) => a.frameNumber - b.frameNumber);
+        });
+        
+        return animations;
+    }
+
+    async function processAnimationFrames(animName, frames, newZip, shouldRemoveDuplicates) {
+        const images = frames.map(f => f.img);
+        
+        // Remove duplicates if requested
+        let uniqueImages = images;
+        let duplicatesRemoved = 0;
+        
+        if (shouldRemoveDuplicates && images.length > 1) {
+            uniqueImages = [images[0]];
+            
+            for (let i = 1; i < images.length; i++) {
+                const current = images[i];
+                const prev = images[i-1];
+                
+                if (!(await areImagesEqual(current, prev))) {
+                    uniqueImages.push(current);
+                } else {
+                    duplicatesRemoved++;
+                }
             }
         }
         
-        return true;
+        const maxWidth = Math.max(...uniqueImages.map(img => img.width));
+        const maxHeight = Math.max(...uniqueImages.map(img => img.height));
+
+        // Create spritesheet
+        const { blob, canvas } = await createSpritesheet(uniqueImages, maxWidth, maxHeight);
+        newZip.file(`${animName}.png`, blob);
+        
+        const preview = createSpritesheetPreview(animName, blob, uniqueImages.length, canvas.width, canvas.height);
+
+        return { preview, duplicatesRemoved };
     }
 
-    function getImageData(img) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-        return ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    }
-
-    // Simplified GIF creation placeholder
-    async function createGif(images) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Use dimensions from first image
-        const { width, height } = images[0];
-        canvas.width = width;
-        canvas.height = height;
-        
-        // Draw first frame as placeholder
-        ctx.drawImage(images[0], 0, 0);
-        
-        return new Promise(resolve => canvas.toBlob(resolve));
-    }
-
+    // Original ZIP processing function (kept for compatibility)
     async function processZipFile(file) {
-        // Initialize progress
         const { progressBar, progressContainer, statusText, resultPanel } = elements;
         progressContainer.style.display = 'block';
         progressBar.style.width = '0%';
@@ -170,7 +473,6 @@ document.addEventListener('DOMContentLoaded', function() {
         resultPanel.style.display = 'none';
         
         const shouldRemoveDuplicates = elements.removeDuplicatesCheckbox.checked;
-        const shouldOutputGif = elements.outputGifCheckbox?.checked;
 
         try {
             statusText.textContent = "Leyendo el archivo ZIP...";
@@ -199,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 statusText.textContent = `Procesando animación: ${animName}`;
                 
                 const result = await processAnimationSequence(
-                    animName, files, newZip, shouldRemoveDuplicates, shouldOutputGif
+                    animName, files, newZip, shouldRemoveDuplicates
                 );
                 
                 spritesheetPreviews.push(result.preview);
@@ -209,12 +511,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Generate final download
-            await generateDownload(newZip, file.name);
+            await generateDownload(newZip, file.name, false); // Pass false for ZIP mode
             
             // Display results
-            displayResults(spritesheetPreviews, duplicatesRemoved, shouldRemoveDuplicates, shouldOutputGif);
+            displayResults(spritesheetPreviews, duplicatesRemoved, shouldRemoveDuplicates, false);
             
-            statusText.textContent = "¡Procesamiento completado! Haga clic en 'Descargar' para guardar su archivo.";
+            statusText.textContent = "¡Procesamiento completado!";
             progressBar.style.width = '100%';
             progressBar.classList.add('bg-success');
 
@@ -225,12 +527,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Original helper functions (kept for ZIP compatibility)
     async function organizeImages(zip) {
         const imageGroups = {};
         const singleImages = [];
         const tempGroups = {};
 
-        // Collect and group PNG files
         for (const [filename, zipEntry] of Object.entries(zip.files)) {
             if (!filename.endsWith('.png')) continue;
             
@@ -252,7 +554,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Separate single images from animation sequences
         for (const [baseName, files] of Object.entries(tempGroups)) {
             if (files.length === 1 && files[0].frameNumber === 0) {
                 singleImages.push({
@@ -284,18 +585,15 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    async function processAnimationSequence(animName, files, newZip, shouldRemoveDuplicates, shouldOutputGif) {
-        // Sort by frame number
+    async function processAnimationSequence(animName, files, newZip, shouldRemoveDuplicates) {
         files.sort((a, b) => a.frameNumber - b.frameNumber);
 
-        // Load images
         const imageEntries = await Promise.all(files.map(async file => {
             const blob = await file.entry.async('blob');
             const img = await createImageBitmap(blob);
             return { img, frameNumber: file.frameNumber };
         }));
 
-        // Remove duplicates if requested
         let uniqueImages = imageEntries;
         let duplicatesRemoved = 0;
         
@@ -318,21 +616,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxWidth = Math.max(...images.map(img => img.width));
         const maxHeight = Math.max(...images.map(img => img.height));
 
-        let preview;
-        
-        if (shouldOutputGif && images.length > 1) {
-            // Create GIF
-            const gifBlob = await createGif(images);
-            newZip.file(`${animName}.gif`, gifBlob);
-            preview = await createGifPreview(animName, images, maxWidth, maxHeight);
-        } else {
-            // Create spritesheet
-            const { blob, canvas } = await createSpritesheet(images, maxWidth, maxHeight);
-            newZip.file(`${animName}.png`, blob);
-            preview = createSpritesheetPreview(animName, blob, images.length, canvas.width, canvas.height);
-        }
+        const { blob, canvas } = await createSpritesheet(images, maxWidth, maxHeight);
+        newZip.file(`${animName}.png`, blob);
+        const preview = createSpritesheetPreview(animName, blob, images.length, canvas.width, canvas.height);
 
         return { preview, duplicatesRemoved };
+    }
+
+    // Common utility functions
+    async function areImagesEqual(img1, img2) {
+        if (img1.width !== img2.width || img1.height !== img2.height) {
+            return false;
+        }
+
+        const [data1, data2] = await Promise.all([
+            getImageData(img1),
+            getImageData(img2)
+        ]);
+
+        for (let i = 0; i < data1.length; i += 4) {
+            if (data1[i] !== data2[i] || 
+                data1[i+1] !== data2[i+1] || 
+                data1[i+2] !== data2[i+2] || 
+                data1[i+3] !== data2[i+3]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    function getImageData(img) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        return ctx.getImageData(0, 0, canvas.width, canvas.height).data;
     }
 
     async function createSpritesheet(images, maxWidth, maxHeight) {
@@ -342,7 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.width = maxWidth * images.length;
         canvas.height = maxHeight;
 
-        // Draw each image centered in its frame
         images.forEach((img, index) => {
             const x = index * maxWidth + (maxWidth - img.width) / 2;
             const y = (maxHeight - img.height) / 2;
@@ -351,36 +670,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const blob = await new Promise(resolve => canvas.toBlob(resolve));
         return { blob, canvas };
-    }
-
-    async function createGifPreview(animName, images, maxWidth, maxHeight) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = maxWidth;
-        canvas.height = maxHeight;
-        
-        // Draw first frame with GIF label
-        ctx.drawImage(images[0], 0, 0);
-        
-        // Add overlay
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        ctx.fillRect(0, canvas.height - 24, canvas.width, 24);
-        ctx.font = 'bold 12px Arial';
-        ctx.fillStyle = '#fff';
-        ctx.textAlign = 'center';
-        ctx.fillText(`GIF Animation: ${images.length} frames`, canvas.width / 2, canvas.height - 8);
-        
-        const blob = await new Promise(resolve => canvas.toBlob(resolve));
-        const url = URL.createObjectURL(blob);
-        
-        return {
-            name: `${animName} (GIF)`,
-            url,
-            frames: images.length,
-            width: maxWidth,
-            height: maxHeight,
-            isGif: true
-        };
     }
 
     function createSpritesheetPreview(animName, blob, frameCount, width, height) {
@@ -397,7 +686,8 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.progressBar.style.width = `${(current / total) * 100}%`;
     }
 
-    async function generateDownload(newZip, originalFileName) {
+    // FIXED: Updated generateDownload function with proper filename handling
+    async function generateDownload(newZip, originalFileName, isSpritesheetMode = false) {
         elements.statusText.textContent = "Creando archivo de descarga...";
         
         const content = await newZip.generateAsync({
@@ -406,35 +696,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         state.lastDownloadUrl = URL.createObjectURL(content);
-        state.lastFileName = `funky'ed_${originalFileName}`;
+        
+        // Fix filename to always have .zip extension
+        if (isSpritesheetMode) {
+            // For spritesheet mode, use base name without extension + .zip
+            state.lastFileName = `funky'ed_${originalFileName}.zip`;
+        } else {
+            // For ZIP mode, maintain original behavior
+            state.lastFileName = `funky'ed_${originalFileName}`;
+        }
     }
 
-    function displayResults(previews, duplicatesRemoved, shouldRemoveDuplicates, shouldOutputGif) {
+    function displayResults(previews, duplicatesRemoved, shouldRemoveDuplicates) {
         elements.resultPanel.style.display = 'block';
         elements.resultContent.innerHTML = '';
 
-        // Sort and display previews
         previews.sort((a, b) => a.name.localeCompare(b.name));
         previews.forEach(preview => {
             const element = createPreviewElement(preview);
             elements.resultContent.appendChild(element);
         });
 
-        // Add info messages
         if (shouldRemoveDuplicates && duplicatesRemoved > 0) {
             const duplicateInfo = createInfoElement(
                 `Se han eliminado ${duplicatesRemoved} frames duplicados.`,
                 'rgba(255, 107, 107, 0.2)'
             );
             elements.resultContent.appendChild(duplicateInfo);
-        }
-
-        if (shouldOutputGif) {
-            const gifInfo = createInfoElement(
-                'Los archivos GIF son de menor calidad y no soportan transparencia parcial.',
-                'rgba(255, 193, 7, 0.2)'
-            );
-            elements.resultContent.appendChild(gifInfo);
         }
     }
 
@@ -443,13 +731,11 @@ document.addEventListener('DOMContentLoaded', function() {
         element.className = 'spritesheet-preview';
         element.style.marginBottom = '20px';
         
-        // Name
         const nameElement = document.createElement('h3');
         nameElement.className = 'animation-name';
         nameElement.textContent = preview.name;
         element.appendChild(nameElement);
         
-        // Image container
         const container = document.createElement('div');
         container.className = 'preview-image-container';
         Object.assign(container.style, {
@@ -472,7 +758,6 @@ document.addEventListener('DOMContentLoaded', function() {
         container.appendChild(img);
         element.appendChild(container);
         
-        // Info text
         const infoText = document.createElement('p');
         infoText.className = 'sprite-info';
         infoText.textContent = formatPreviewInfo(preview);
@@ -489,9 +774,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function formatPreviewInfo(preview) {
         const frameWidth = preview.frames > 1 ? Math.round(preview.width / preview.frames) : preview.width;
         
-        if (preview.isGif) {
-            return `${preview.frames} frames, Tamaño de cada frame: ${frameWidth}×${preview.height}`;
-        } else if (preview.frames > 1) {
+        if (preview.frames > 1) {
             return `${preview.frames} frames, Tamaño de cada frame: ${frameWidth}×${preview.height}, Tamaño del spritesheet: ${preview.width}×${preview.height}`;
         } else {
             return `Tamaño: ${preview.width}×${preview.height}`;

@@ -47,18 +47,69 @@
         <div class="funky-tool-container">
             <h1 class="tool-title">Funkin To Funky!</h1>
             
-            <!-- Upload Panel -->
+            <!-- Input Method Selection -->
             <div class="funky-panel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-upload"></i> <span class="header-text">Método de Entrada</span></h3>
+                </div>
+                
+                <div class="input-method-selection">
+                    <div class="method-buttons">
+                        <button id="zip-method-btn" class="method-button active">
+                            <i class="fas fa-file-zipper"></i>
+                            <span>Archivo ZIP</span>
+                        </button>
+                        <button id="spritesheet-method-btn" class="method-button">
+                            <i class="fas fa-image"></i>
+                            <span>Spritesheet + XML</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ZIP Upload Panel -->
+            <div class="funky-panel" id="zip-upload-panel">
                 <div class="panel-header">
                     <h3><i class="fas fa-file-zipper"></i> <span class="header-text">Subir ZIP</span></h3>
                 </div>
                 
-                <div class="drop-zone">
+                <div class="drop-zone" id="zip-drop-zone">
                     <p>Arrastre y suelte su archivo ZIP aquí o</p>
-                    <input type="file" id="file-input" accept=".zip" style="display: none;">
-                    <button class="funky-button select-file-button" onclick="document.getElementById('file-input').click()">
-                        <i class="fas fa-file-upload"></i> Seleccionar Archivo
+                    <input type="file" id="zip-file-input" accept=".zip" style="display: none;">
+                    <button class="funky-button select-file-button" id="zip-select-btn" onclick="document.getElementById('zip-file-input').click()">
+                        <i class="fas fa-file-upload"></i> Seleccionar Archivo ZIP
                     </button>
+                </div>
+            </div>
+            
+            <!-- Spritesheet Upload Panel -->
+            <div class="funky-panel" id="spritesheet-upload-panel" style="display: none;">
+                <div class="panel-header">
+                    <h3><i class="fas fa-image"></i> <span class="header-text">Subir Spritesheet y XML</span></h3>
+                </div>
+                
+                <div class="dual-upload-container">
+                    <div class="upload-section">
+                        <div class="drop-zone" id="png-drop-zone">
+                            <p><i class="fas fa-image"></i></p>
+                            <p>Spritesheet (PNG)</p>
+                            <input type="file" id="png-file-input" accept=".png" style="display: none;">
+                            <button class="funky-button select-file-button" id="png-select-btn" onclick="document.getElementById('png-file-input').click()">
+                                <i class="fas fa-file-upload"></i> Seleccionar PNG
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-section">
+                        <div class="drop-zone" id="xml-drop-zone">
+                            <p><i class="fas fa-code"></i></p>
+                            <p>Metadata (XML)</p>
+                            <input type="file" id="xml-file-input" accept=".xml" style="display: none;">
+                            <button class="funky-button select-file-button" id="xml-select-btn" onclick="document.getElementById('xml-file-input').click()">
+                                <i class="fas fa-file-upload"></i> Seleccionar XML
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             

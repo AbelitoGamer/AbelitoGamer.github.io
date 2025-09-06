@@ -5,8 +5,6 @@
     padding: 0 1rem;
 }
 
-
-
 .tool-title {
     color: #ff6b6b;
     text-align: center;
@@ -166,8 +164,83 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Add to FunkinToFunky.css - Green file selection button styles */
+/* Input Method Selection Styles */
+.input-method-selection {
+    padding: 1rem;
+}
 
+.method-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.method-button {
+    background: rgba(30, 30, 60, 0.6);
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    min-width: 150px;
+}
+
+.method-button:hover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+}
+
+.method-button.active {
+    background: rgba(255, 107, 107, 0.3);
+    border-color: #ff6b6b;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+}
+
+.method-button i {
+    font-size: 1.5rem;
+}
+
+/* Dual Upload Container Styles */
+.dual-upload-container {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.upload-section {
+    flex: 1;
+}
+
+.dual-upload-container .drop-zone {
+    margin: 0;
+    padding: 1.5rem;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dual-upload-container .drop-zone i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+.dual-upload-container .drop-zone p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* File selection button styles */
 .select-file-button.file-selected {
     background: linear-gradient(135deg, #52c41a, #b7eb8f);
     color: white;
@@ -197,6 +270,7 @@
     color: #fff;
     border-left: 4px solid #ffc107;
 }
+
 .download-button {
     background: #ff6b6b;
     color: white;
@@ -207,6 +281,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .generate-button-container {
     display: flex;
     justify-content: center;
@@ -234,18 +309,21 @@
     box-shadow: none;
     opacity: 0.6;
 }
+
 .download-button:hover {
     background: #ff5252;
     transform: translateY(-1px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .content-wrapper {
     display: none;
- }
+}
 
- .page-title {
+.page-title {
     display: none;
- }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .funky-tool-container {
@@ -263,6 +341,16 @@
     .drop-zone {
         padding: 1.5rem 1rem;
     }
-
     
+    .method-buttons {
+        flex-direction: column;
+    }
+    
+    .dual-upload-container {
+        flex-direction: column;
+    }
+    
+    .dual-upload-container .drop-zone {
+        min-height: 120px;
+    }
 }
