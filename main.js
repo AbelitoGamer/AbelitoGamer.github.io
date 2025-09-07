@@ -139,18 +139,35 @@ function populateNav(items) {
         
         link.appendChild(document.createTextNode(` ${item.title}`));
         
-        if (item.json) {
-            link.addEventListener('click', e => handleNav(item, e));
-        }
-        
         if (item.dropdown?.length) {
+            // This is a dropdown item
             const caret = document.createElement('i');
             caret.className = 'fas fa-caret-down';
             caret.style.marginLeft = '5px';
             link.appendChild(caret);
             
+            link.href = '#';
+            if (item.json) {
+                // Add navigation for desktop only
+                link.addEventListener('click', e => {
+                    if (window.innerWidth > 768) {
+                        handleNav(item, e);
+                    }
+                });
+            }
+            
             const dropdown = document.createElement('div');
             dropdown.className = 'dropdown-content';
+            
+            // For items with both dropdown and json navigation
+            if (item.json) {
+                link.addEventListener('click', e => {
+                    // Only navigate on desktop
+                    if (window.innerWidth > 768) {
+                        handleNav(item, e);
+                    }
+                });
+            }
             
             item.dropdown.forEach(dropItem => {
                 const dropLink = document.createElement('a');
@@ -165,6 +182,13 @@ function populateNav(items) {
             navItem.appendChild(link);
             navItem.appendChild(dropdown);
         } else {
+            // Non-dropdown item (like Home)
+            if (item.json) {
+                link.href = '#';
+                link.addEventListener('click', e => handleNav(item, e));
+            } else {
+                link.href = item.link || '#';
+            }
             navItem.appendChild(link);
         }
         
@@ -428,13 +452,31 @@ function setupEvents() {
         }, { passive: false });
     }
     
-    // Mobile dropdowns
+    // Handle dropdowns differently for mobile and desktop
     document.addEventListener('click', e => {
-        if (window.innerWidth <= 768) {
-            const navItem = e.target.closest('.dropdown');
-            if (navItem) {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            // Check if click is on a dropdown toggle
+            const dropdownLink = e.target.closest('.dropdown > a');
+            if (dropdownLink) {
                 e.preventDefault();
-                navItem.classList.toggle('active');
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                    if (dropdown !== dropdownLink.parentElement) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                const dropdown = dropdownLink.parentElement;
+                dropdown.classList.toggle('active');
+            } else if (!e.target.closest('.dropdown-content')) {
+                // Close all dropdowns when clicking outside
+                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         }
     });
