@@ -22,7 +22,7 @@
                 },
                 {
                     "title": "Sonic.exe",
-                    "link": "https://thisisfenix.github.io/Vs-sonic.exe-mods/"
+                    "link": "https://thisisfenix.github.io/Sonic.exe-FMM"
                 }
             ]
         },
@@ -98,7 +98,7 @@
             "title": "Sonic.exe",
             "image": "/Resources/images/SonicBanner.png",
             "backgroundImage": "/Resources/images/SonicBanner.png",
-            "link": "https://thisisfenix.github.io/Vs-sonic.exe-mods/",
+            "link": "https://thisisfenix.github.io/Sonic.exe-FMM",
             "description": "Una pagina compilando todos los niveles hechos por el team del foro de Sonic.exe, que se encuentra dentro del discord de FMM. Te llevara a un sitio web externo manejado por dicho team.",
             "subdued": ["Te llevara a un sitio web externo manejado por dicho team."]
         },
