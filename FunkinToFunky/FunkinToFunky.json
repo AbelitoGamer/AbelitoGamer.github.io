@@ -9,7 +9,7 @@
         {
             "title": "Home",
             "icon": "fas fa-home",
-            "link": "/index.html"
+            "json": "index.json"
         },
         {
             "title": "Ports",
@@ -29,7 +29,7 @@
         {
             "title": "Workshop",
             "icon": "fas fa-tools",
-            "link": "/index.html?json=workshop.json",
+            "json": "workshop.json",
             "dropdown": [
                 {
                     "title": "Funkin to Funky!",
@@ -38,17 +38,13 @@
                 {
                     "title": "Fade-inator 3000",
                     "link": "/Fadeinator/Fadeinator3000.html"
-                },
-                {
-                    "title": "Funky Fixer (Obsoleto)",
-                    "link": "/FNMMFixer/FNMMFixer.html"
                 }
             ]
         },
         {
             "title": "About",
             "icon": "fas fa-info-circle",
-            "link": "/index.html?json=about.json"
+            "json": "about.json"
         }
     ],
     "footerNavigation": [
