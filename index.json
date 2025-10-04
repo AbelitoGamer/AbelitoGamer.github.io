@@ -49,8 +49,16 @@
     ],
     "footerNavigation": [
         {
-            "title": "",
-            "link": ""
+            "title": "Home",
+            "link": "https://abelitogamer.github.io"
+        },
+        {
+            "title": "About",
+            "link": "https://abelitogamer.github.io/?json=about.json"
+        },
+        {
+            "title": "Workshop",
+            "link": "https://abelitogamer.github.io/?json=workshop.json"
         }
     ],
     "socialLinks": [
@@ -81,6 +89,13 @@
         }
     ],
     "cards": [
+        {
+            "title": "Funky Maker: Bodrio Collection",
+            "image": "/Resources/images/Banner_BodrioCollection.png",
+            "backgroundImage": "/Resources/images/Banner_BodrioCollection.PNG",
+            "link": "/BodrioCountdown/countdown.html",
+            "description": "Un mod de FNF en Codename Engine, consistiendo en una colección de covers con OCs de miembros relevantes de la comunidad de Funky Maker: Mobile! Unete a ver el conteo regresivo para su lanzamiento o pruebalo ya mismo si llegaste tarde."
+        },
         {
             "title": "Mario's Madness V2 - FMM Port",
             "image": "/Resources/images/MMV2Banner.png",

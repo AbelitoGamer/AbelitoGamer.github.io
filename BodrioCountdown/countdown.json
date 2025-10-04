@@ -1,0 +1,91 @@
+{
+    "siteInfo": {
+        "name": "Funky Atlas",
+        "title": "Lanzamiento de Funky Maker: Bodrio Collection",
+        "subtitle": "Finalmente estamos aqui. Acompañanos en la recta final.",
+        "copyright": "© 2025 Funky Atlas. Contenidos de terceros pertenecen a sus autores."
+    },
+    "countdown": {
+        "eventName": "Bodrio Collection - Collection #1",
+        "targetYear": 2025,
+        "targetMonth": 10,
+        "targetDay": 4,
+        "targetHour": 12,
+        "targetMinute": 0,
+        "targetSecond": 0,
+        "eventTimezone": "America/Mazatlan"
+    },
+    "topNavigation": [
+        {
+            "title": "Home",
+            "icon": "fas fa-home",
+            "link": "https://abelitogamer.github.io"
+        },
+        {
+            "title": "Ports",
+            "icon": "fas fa-gamepad",
+            "link": " ",
+            "dropdown": [
+                {
+                    "title": "Mario's Madness",
+                    "link": "/Mario-Madness/Freeplay.html"
+                },
+                {
+                    "title": "Sonic.exe",
+                    "link": "https://thisisfenix.github.io/Sonic.exe-FMM"
+                }
+            ]
+        },
+        {
+            "title": "Workshop",
+            "icon": "fas fa-tools",
+            "link": " ",
+            "dropdown": [
+                {
+                    "title": "Funkin to Funky!",
+                    "link": "/FunkinToFunky/FunkinToFunky.html"
+                },
+                {
+                    "title": "Fade-inator 3000",
+                    "link": "/Fadeinator/Fadeinator3000.html"
+                }
+            ]
+        },
+        {
+            "title": "About",
+            "icon": "fas fa-info-circle",
+            "link": "https://abelitogamer.github.io/?json=about.json#"
+        }
+    ],
+    "footerNavigation": [
+        {}
+    ],
+    "socialLinks": [
+        {
+            "title": "Discord",
+            "icon": "fab fa-discord",
+            "link": "https://discord.gg/nw4QMGhCTr"
+        },
+        {
+            "title": "GitHub",
+            "icon": "fab fa-github",
+            "link": "https://github.com/AbelitoGamer"
+        },
+        {
+            "title": "Twitter",
+            "icon": "fab fa-twitter",
+            "link": "https://twitter.com/AbelitoGamerYT"
+        },
+        {
+            "title": "YouTube",
+            "icon": "fab fa-youtube",
+            "link": "https://www.youtube.com/@AbelitoGamer"
+        },
+        {
+            "title": "YouTube",
+            "icon": "fa-solid fa-heart",
+            "link": "https://ko-fi.com/abelitogamer"
+        }
+    ],
+    "cards": []
+}

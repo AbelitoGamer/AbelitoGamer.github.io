@@ -75,13 +75,16 @@ async function init() {
     // Show loading
     const loading = '<div class="loading"><div class="loading-spinner"></div>Loading...</div>';
     document.getElementById('topNavLinks').innerHTML = loading;
-    document.getElementById('cardContainer').innerHTML = loading;
-    document.getElementById('textPageContainer').innerHTML = loading;
+    if (document.getElementById('cardContainer')) document.getElementById('cardContainer').innerHTML = loading;
+    if (document.getElementById('textPageContainer')) document.getElementById('textPageContainer').innerHTML = loading;
     document.getElementById('footerLinks').innerHTML = loading;
     
     await ensureDefault();
     const data = await fetchData();
     if (!data) return;
+    
+    // Store the loaded data globally for other scripts to access
+    window.lastLoadedData = data;
     
     // Set site info
     document.title = data.siteInfo.title || 'Funky Atlas';

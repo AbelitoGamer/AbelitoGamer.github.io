@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funky Atlas</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="countdown.css">
+    <link rel="icon" href="/Resources/images/abel.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Scrolling Background -->
+    <div class="bg-container">
+        <div class="scrolling-bg"></div>
+    </div>
+
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-globe"></i></div>
+            <div class="logo-text" id="siteName">Loading...</div>
+        </div>
+        <div class="nav-links" id="topNavLinks">
+            <!-- Navigation links will be loaded from index.json -->
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                Loading navigation...
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-title">
+            <h1 id="pageTitle">Loading...</h1>
+            <h2 id="pageSubtitle">Please wait while content loads</h2>
+        </div>
+
+        <!-- Countdown content -->
+        <div class="countdown-container">
+            <div class="countdown-card">
+                <div class="card-header">
+                    <i class="fas fa-clock"></i> <span id="eventName">New Year 2026</span>
+                </div>
+                <div class="card-body">
+                    <div class="time-display">
+                        <div class="current-time">
+                            Current time in <span id="eventTzName">Mazatlán</span>: <span class="time-value-display" id="currentEventTime">--:--:--</span>
+                        </div>
+                        <div class="target-time">
+                            Event starts in your timezone: <span class="time-value-display" id="targetLocalTime">--:--:--</span>
+                        </div>
+                    </div>
+                    <div class="countdown" id="countdown">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Loading...
+                        </div>
+                    </div>
+                    <button id="muteButton" style="display:none; margin-top:10px;" title="Mute/Unmute Music"><i class="fas fa-volume-mute"></i> Mute</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Container - holds either cards or textpage (for main.js compatibility) -->
+        <div class="content-wrapper">
+            <!-- Cards View -->
+            <div class="cards-wrapper" id="cardsWrapper" style="display:none !important;">
+                <div class="card-container" id="cardContainer">
+                    <!-- Cards will be loaded from JSON -->
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading cards...
+                    </div>
+                </div>
+            </div>
+            <!-- Text Page View -->
+            <div class="textpage-wrapper" id="textpageWrapper" style="display:none;">
+                <div class="text-page-container" id="textPageContainer">
+                    <!-- Text page content will be loaded from JSON -->
+                    <div class="loading">
+                       <div class="loading-spinner"></div>
+                        Loading content...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-links" id="footerLinks">
+                <!-- Footer links will be loaded from index.json -->
+                <div class="loading">Loading...</div>
+            </div>
+            <div class="copyright" id="copyright">
+                © 2025 Funky Atlas
+            </div>
+            <div class="social-links" id="socialLinks">
+                <!-- Social links will be loaded from index.json -->
+            </div>
+        </div>
+    </div>
+
+        <!-- Configuration -->
+    <script>
+        // Must be defined before main.js loads
+        const DATA_SOURCE = 'countdown.json';
+    </script>
+
+    <!-- Include the main JavaScript file -->
+    <script src="/main.js"></script>
+    
+    <!-- Include countdown JavaScript -->
+    <script src="countdown.js"></script>
+</body>
+</html>

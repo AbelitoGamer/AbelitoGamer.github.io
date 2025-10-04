@@ -1,0 +1,261 @@
+/* GameBanana button styling (always vibrant) */
+.gamebanana-btn {
+    background: linear-gradient(135deg, #ffe156, #ff6b6b);
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 32px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    margin: 24px auto 0 auto;
+    display: block;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+.gamebanana-btn:hover, .gamebanana-btn:focus {
+    background: linear-gradient(135deg, #ff6b6b, #ffe156);
+    color: #fffbe7;
+    transform: translateY(-2px) scale(1.04);
+}
+/* Progressive dark mode transition */
+.countdown-darkmode-transition {
+    transition: background 10s linear, color 10s linear;
+    background: #181a1b !important;
+    color: #fff !important;
+}
+.countdown-darkmode-transition .topbar {
+    background: #232425 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #333 !important;
+    transition: background 10s linear, color 10s linear, border-color 10s linear;
+}
+.countdown-darkmode-transition .footer {
+    background: #232425 !important;
+    color: #bbb !important;
+    border-top: 1px solid #333 !important;
+    transition: background 10s linear, color 10s linear, border-color 10s linear;
+}
+.countdown-darkmode-transition .main-content {
+    background: #181a1b !important;
+    color: #fff !important;
+    transition: background 10s linear, color 10s linear;
+}
+.countdown-darkmode-transition .countdown-card {
+    background: #232425 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+    box-shadow: none !important;
+        transition: background 0.5s, color 0.5s, border-color 0.5s;
+}
+.countdown-darkmode-transition .card-body,
+.countdown-darkmode-transition .time-display {
+    background: #202123 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+    transition: background 10s linear, color 10s linear, border-color 10s linear;
+}
+
+.countdown-darkmode-transition .time-unit {
+    background: #292a2b !important;
+    color: #fff !important;
+    box-shadow: none !important;
+        transition: background 0.5s, color 0.5s;
+}
+
+/* Only one definition for .countdown-darkmode-transition .countdown-card */
+.countdown-darkmode-transition .countdown-card {
+    background: #232425 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+    box-shadow: none !important;
+    transition: background 10s linear, color 10s linear, border-color 10s linear;
+}
+.countdown-darkmode-transition .gamebanana-btn:hover {
+    background: #ffe156 !important;
+    color: #222 !important;
+}
+/* Countdown dark mode for last 60-50 seconds */
+.countdown-darkmode {
+    background: #181a1b !important;
+    color: #fff !important;
+    transition: background 0.5s, color 0.5s;
+}
+.countdown-darkmode .topbar {
+    background: #232425 !important;
+    color: #fff !important;
+    border-bottom: 1px solid #333 !important;
+    transition: background 0.5s, color 0.5s, border-color 0.5s;
+}
+.countdown-darkmode .main-content {
+    background: #181a1b !important;
+    color: #fff !important;
+    transition: background 0.5s, color 0.5s;
+}
+.countdown-darkmode .countdown-card {
+    background: #232425 !important;
+    color: #fff !important;
+    border-color: #444 !important;
+    box-shadow: none !important;
+    transition: background 0.5s, color 0.5s, border-color 0.5s;
+}
+.countdown-darkmode .card-header {
+    background: #2c2d2e !important;
+    color: #ffe156 !important;
+    border-bottom: 1px solid #444 !important;
+    transition: background 0.5s, color 0.5s, border-color 0.5s;
+}
+.countdown-darkmode .card-body,
+.countdown-darkmode .time-display {
+    background: #202123 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+    transition: background 0.5s, color 0.5s, border-color 0.5s;
+}
+.countdown-darkmode .time-unit {
+    background: #292a2b !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    transition: background 0.5s, color 0.5s;
+}
+.countdown-darkmode .gamebanana-btn {
+    background: #232425 !important;
+    color: #ffe156 !important;
+    border: 1px solid #ffe156 !important;
+}
+/* Only one definition for .countdown-darkmode .gamebanana-btn:hover */
+.countdown-darkmode .gamebanana-btn:hover {
+    background: #ffe156 !important;
+    color: #222 !important;
+}
+.gamebanana-btn:hover, .gamebanana-btn:focus {
+    background: linear-gradient(135deg, #ff6b6b, #ffe156);
+    color: #fffbe7;
+    transform: translateY(-2px) scale(1.04);
+}
+/* Mute button styling */
+#muteButton {
+    background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+    outline: none;
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#muteButton:hover, #muteButton:focus {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    color: #fffbe7;
+    transform: translateY(-2px) scale(1.04);
+}
+#muteButton i {
+    font-size: 1.1em;
+}
+/* Hide 'No cards found' error for countdown page */
+#cardContainer .error-message {
+    display: none !important;
+}
+.countdown-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.countdown-card {
+    background-color: rgba(30, 30, 60, 0.8);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: rgba(255, 107, 107, 0.8);
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body {
+    padding: 1.5rem;
+    color: white;
+}
+
+.time-display {
+    background: rgba(30, 30, 60, 0.4);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.current-time, .target-time {
+    font-size: 0.95em;
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.time-value-display {
+    font-weight: 600;
+    color: #ff6b6b;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 100px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.time-value {
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    display: block;
+}
+
+.time-label {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.expired {
+    font-size: 1.5em;
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .time-unit {
+        min-width: 70px;
+        padding: 15px;
+    }
+
+    .time-value {
+        font-size: 2em;
+    }
+}
