@@ -83,7 +83,7 @@
     <!-- Configuration - Data source filename -->
     <script>
         // Default JSON source - set to index.json
-        let DATA_SOURCE = 'index.json';
+        let DATA_SOURCE = 'index.json?v=2';
         // Get any JSON parameter from URL if present
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('json')) {
@@ -94,4 +94,5 @@
     <!-- Include the main JavaScript file -->
     <script src="main.js"></script>
 </body>
+
 </html>
