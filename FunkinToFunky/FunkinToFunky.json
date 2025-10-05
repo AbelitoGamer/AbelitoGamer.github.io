@@ -9,7 +9,7 @@
         {
             "title": "Home",
             "icon": "fas fa-home",
-            "json": "index.json"
+            "link": "https://funkyatlas.abelitogamer.com"
         },
         {
             "title": "Ports",
@@ -29,7 +29,7 @@
         {
             "title": "Workshop",
             "icon": "fas fa-tools",
-            "json": "workshop.json",
+            "link": "funkyatlas.abelitogamer.com/?json=workshop.json",
             "dropdown": [
                 {
                     "title": "Funkin to Funky!",
@@ -44,7 +44,7 @@
         {
             "title": "About",
             "icon": "fas fa-info-circle",
-            "json": "about.json"
+            "link": "funkyatlas.abelitogamer.com/?json=about.json"
         }
     ],
     "footerNavigation": [
