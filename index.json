@@ -110,15 +110,31 @@
             "image": "/Resources/images/SonicBanner.png",
             "backgroundImage": "/Resources/images/SonicBanner.png",
             "link": "https://thisisfenix.github.io/Sonic.exe-FMM",
-            "description": "Una pagina compilando todos los niveles hechos por el team del foro de Sonic.exe, que se encuentra dentro del discord de FMM. Te llevara a un sitio web externo manejado por dicho team.",
-            "subdued": ["Te llevara a un sitio web externo manejado por dicho team."]
+            "description": "Una pagina compilando todos los niveles hechos por el team del foro de Sonic.exe, que se encuentra dentro del discord de FMM. AVISO: Te llevara a un sitio web externo manejado por dicho team, no afiliado con Funky Atlas.",
+            "highlights": ["AVISO:"],
+            "subdued": ["Te llevara a un sitio web externo manejado por dicho team, no afiliado con Funky Atlas."]
+        },
+        {
+            "title": "Funky BaseGame",
+            "image": "/Resources/images/FunkyBase.png",
+            "backgroundImage": "/Resources/images/FunkyBase.png",
+            "link": "/FunkyBase/FunkyBase.html",
+            "description": "El Friday Night Funkin' vanilla, porteado a Funky Maker: Mobile. Constantemente actualizandose con mas canciones. Creditos de todos los ports a @elcalacaschidas105_20740",
+            "subdued": ["Creditos de todos los ports a @elcalacaschidas105_20740"],
+            "tag": {
+                "text": "W.I.P Temprano",
+                "backgroundColor": "#4444ff",
+                "textColor": "#FFFFFF"
+            }
         },
         {
             "title": "Abelito's workshop",
             "image": "/Resources/images/AbelitoWorkshopBanner.png",
             "backgroundImage": "/Resources/images/AbelitoWorkshopBannerDifum.png",
             "json": "workshop.json",
-            "description": "Experimentos pendejos de Abelito que al igual que esta misma pagina de inicio, pecan de estar hechos mayormente por IA. Algun dia se volvera autonomo, confien. Mientras tanto, puedes echarle un vistazo a las herramientas o cositas random."
+            "description": "Experimentos varios de Abelito, que en su mayoria, se trata de herramientas para Funky Maker: Mobile. Saludos a el Fenix Laboratory y a JarretCorner que se chingaron o bien el diseño o la funcionalidad de cosas que estan aqui dentro.",
+            "subdued": ["Saludos a el Fenix Laboratory y a JarretCorner que se chingaron o bien el diseño o la funcionalidad de cosas que estan aqui dentro."]
+
         }
     ]
 }

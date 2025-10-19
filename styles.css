@@ -280,6 +280,33 @@ body {
     transform: scale(1.1);
 }
 
+/* Card Tag */
+.card-tag {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    /* Add glow effect */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.card:hover .card-tag {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    /* Enhanced glow on hover */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+}
+
 /* Give more space to content */
 .card-content {
     position: relative;

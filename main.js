@@ -2,6 +2,19 @@
 let defaultData = null;
 let bgInitialized = false;
 
+// Helper function to convert hex color to rgba
+function hexToRgba(hex, alpha = 1) {
+    // Remove # if present
+    hex = hex.replace('#', '');
+    
+    // Parse r, g, b values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 // Fetch data with fallback
 async function fetchData(source = DATA_SOURCE, isDefault = false) {
     try {
@@ -232,6 +245,39 @@ function populateCards(cards) {
         img.alt = cardData.title;
         imgDiv.appendChild(img);
         
+        // Add tag if present
+        if (cardData.tag) {
+            const tag = document.createElement('div');
+            tag.className = 'card-tag';
+            tag.textContent = cardData.tag.text || 'NEW';
+            
+            const backgroundColor = cardData.tag.backgroundColor || '#ff4444';
+            const textColor = cardData.tag.textColor || '#ffffff';
+            
+            // Set background color
+            tag.style.backgroundColor = backgroundColor;
+            
+            // Set text color
+            tag.style.color = textColor;
+            
+            // Add dynamic glow effect based on background color
+            const glowColor = hexToRgba(backgroundColor, 0.6);
+            const strongGlowColor = hexToRgba(backgroundColor, 0.8);
+            
+            tag.style.boxShadow = `0 2px 6px rgba(0, 0, 0, 0.3), 0 0 15px ${glowColor}`;
+            
+            // Add hover effect with stronger glow
+            tag.addEventListener('mouseenter', () => {
+                tag.style.boxShadow = `0 4px 12px rgba(0, 0, 0, 0.4), 0 0 20px ${strongGlowColor}`;
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                tag.style.boxShadow = `0 2px 6px rgba(0, 0, 0, 0.3), 0 0 15px ${glowColor}`;
+            });
+            
+            imgDiv.appendChild(tag);
+        }
+        
         const content = document.createElement('div');
         content.className = 'card-content';
         
@@ -244,16 +290,45 @@ function populateCards(cards) {
         
         if (cardData.description) {
             let desc = cardData.description;
+            
+            // Create array of replacements to apply
+            const replacements = [];
+            
+            // Add highlights
             if (cardData.highlights) {
                 cardData.highlights.forEach(h => {
-                    desc = desc.replace(new RegExp(h, 'gi'), `<span class="highlight">${h}</span>`);
+                    const regex = new RegExp(h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                    replacements.push({
+                        regex: regex,
+                        replacement: `<span class="highlight">${h}</span>`,
+                        priority: 1
+                    });
                 });
             }
+            
+            // Add subdued
             if (cardData.subdued) {
                 cardData.subdued.forEach(s => {
-                    desc = desc.replace(new RegExp(s, 'gi'), `<span class="subdued">${s}</span>`);
+                    const regex = new RegExp(s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                    replacements.push({
+                        regex: regex,
+                        replacement: `<span class="subdued">${s}</span>`,
+                        priority: 2
+                    });
                 });
             }
+            
+            // Sort by priority (highlights first) then by length (longer strings first)
+            replacements.sort((a, b) => {
+                if (a.priority !== b.priority) return a.priority - b.priority;
+                return b.regex.source.length - a.regex.source.length;
+            });
+            
+            // Apply replacements
+            replacements.forEach(r => {
+                desc = desc.replace(r.regex, r.replacement);
+            });
+            
             text.innerHTML = desc;
         }
         
