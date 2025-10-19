@@ -9,16 +9,15 @@
         {
             "title": "Home",
             "icon": "fas fa-home",
-            "link": "https://funkyatlas.abelitogamer.com"
+            "json": "index.json"
         },
         {
             "title": "Ports",
             "icon": "fas fa-gamepad",
-            "link": " ",
             "dropdown": [
                 {
                     "title": "Mario's Madness",
-                    "link": "/Mario-Madness/Freeplay.html"
+                    "link": "Mario-Madness/Freeplay.html"
                 },
                 {
                     "title": "Sonic.exe",
@@ -29,22 +28,22 @@
         {
             "title": "Workshop",
             "icon": "fas fa-tools",
-            "link": "funkyatlas.abelitogamer.com/?json=workshop.json",
+            "json": "workshop.json",
             "dropdown": [
                 {
                     "title": "Funkin to Funky!",
-                    "link": "/FunkinToFunky/FunkinToFunky.html"
+                    "link": "FunkinToFunky/FunkinToFunky.html"
                 },
                 {
                     "title": "Fade-inator 3000",
-                    "link": "/Fadeinator/Fadeinator3000.html"
+                    "link": "Fadeinator/Fadeinator3000.html"
                 }
             ]
         },
         {
             "title": "About",
             "icon": "fas fa-info-circle",
-            "link": "funkyatlas.abelitogamer.com/?json=about.json"
+            "json": "about.json"
         }
     ],
     "footerNavigation": [
@@ -73,6 +72,11 @@
             "title": "YouTube",
             "icon": "fab fa-youtube",
             "link": "https://www.youtube.com/@AbelitoGamer"
+        },
+        {
+            "title": "Ko-fi",
+            "icon": "fa-solid fa-heart",
+            "link": "https://ko-fi.com/abelitogamer"
         }
     ],
     "cards": []

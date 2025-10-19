@@ -14,11 +14,10 @@
         {
             "title": "Ports",
             "icon": "fas fa-gamepad",
-            "link": "#",
             "dropdown": [
                 {
                     "title": "Mario's Madness",
-                    "link": "/Mario-Madness/Freeplay.html"
+                    "link": "Mario-Madness/Freeplay.html"
                 },
                 {
                     "title": "Sonic.exe",
@@ -33,11 +32,11 @@
             "dropdown": [
                 {
                     "title": "Funkin to Funky!",
-                    "link": "/FunkinToFunky/FunkinToFunky.html"
+                    "link": "FunkinToFunky/FunkinToFunky.html"
                 },
                 {
                     "title": "Fade-inator 3000",
-                    "link": "/Fadeinator/Fadeinator3000.html"
+                    "link": "Fadeinator/Fadeinator3000.html"
                 }
             ]
         },
@@ -50,15 +49,15 @@
     "footerNavigation": [
         {
             "title": "Home",
-            "link": "https://abelitogamer.github.io"
+            "json": "index.json"
         },
         {
             "title": "About",
-            "link": "https://abelitogamer.github.io/?json=about.json"
+            "json": "about.json"
         },
         {
             "title": "Workshop",
-            "link": "https://abelitogamer.github.io/?json=workshop.json"
+            "json": "workshop.json"
         }
     ],
     "socialLinks": [
@@ -83,7 +82,7 @@
             "link": "https://www.youtube.com/@AbelitoGamer"
         },
         {
-            "title": "YouTube",
+            "title": "Ko-fi",
             "icon": "fa-solid fa-heart",
             "link": "https://ko-fi.com/abelitogamer"
         }
@@ -91,24 +90,24 @@
     "cards": [
         {
             "title": "Funky Maker: Bodrio Collection",
-            "image": "/Resources/images/Banner_BodrioCollection.png",
-            "backgroundImage": "/Resources/images/Banner_BodrioCollection.PNG",
-            "link": "/BodrioCountdown/countdown.html",
-            "description": "Un mod de FNF en Codename Engine, consistiendo en una colección de covers con OCs de miembros relevantes de la comunidad de Funky Maker: Mobile! Unete a ver el conteo regresivo para su lanzamiento o pruebalo ya mismo si llegaste tarde."
+            "image": "Resources/images/Banner_BodrioCollection.png",
+            "backgroundImage": "Resources/images/Banner_BodrioCollection.PNG",
+            "link": "BodrioCountdown/countdown.html",
+            "description": "Un mod de FNF en Codename Engine, consistiendo en una colección de covers con OCs de miembros relevantes de la comunidad de Funky Maker: Mobile! Pruebalo ya mismo."
         },
         {
             "title": "Mario's Madness V2 - FMM Port",
-            "image": "/Resources/images/MMV2Banner.png",
-            "backgroundImage": "/Resources/images/MMV2Banner.png",
-            "link": "/Mario-Madness/Freeplay.html",
+            "image": "Resources/images/MMV2Banner.png",
+            "backgroundImage": "Resources/images/MMV2Banner.png",
+            "link": "Mario-Madness/Freeplay.html",
             "description": "Port de casi todas las canciones de Mario's Madness V2 a FMM. IMPORTANTE: Esta pagina posee versiones desactualizadas que se reemplazaran cuando se mejoren todas las songs",
             "highlights": ["IMPORTANTE:"],
             "subdued": ["Esta pagina posee versiones desactualizadas que se reemplazaran cuando se mejoren todas las songs"]
         },
         {
             "title": "Sonic.exe",
-            "image": "/Resources/images/SonicBanner.png",
-            "backgroundImage": "/Resources/images/SonicBanner.png",
+            "image": "Resources/images/SonicBanner.png",
+            "backgroundImage": "Resources/images/SonicBanner.png",
             "link": "https://thisisfenix.github.io/Sonic.exe-FMM",
             "description": "Una pagina compilando todos los niveles hechos por el team del foro de Sonic.exe, que se encuentra dentro del discord de FMM. AVISO: Te llevara a un sitio web externo manejado por dicho team, no afiliado con Funky Atlas.",
             "highlights": ["AVISO:"],
@@ -116,9 +115,9 @@
         },
         {
             "title": "Funky BaseGame",
-            "image": "/Resources/images/FunkyBase.png",
-            "backgroundImage": "/Resources/images/FunkyBase.png",
-            "link": "/FunkyBase/FunkyBase.html",
+            "image": "Resources/images/FunkyBase.png",
+            "backgroundImage": "Resources/images/FunkyBase.png",
+            "link": "FunkyBase/FunkyBase.html",
             "description": "El Friday Night Funkin' vanilla, porteado a Funky Maker: Mobile. Constantemente actualizandose con mas canciones. Creditos de todos los ports a @elcalacaschidas105_20740",
             "subdued": ["Creditos de todos los ports a @elcalacaschidas105_20740"],
             "tag": {
@@ -129,8 +128,8 @@
         },
         {
             "title": "Abelito's workshop",
-            "image": "/Resources/images/AbelitoWorkshopBanner.png",
-            "backgroundImage": "/Resources/images/AbelitoWorkshopBannerDifum.png",
+            "image": "Resources/images/AbelitoWorkshopBanner.png",
+            "backgroundImage": "Resources/images/AbelitoWorkshopBannerDifum.png",
             "json": "workshop.json",
             "description": "Experimentos varios de Abelito, que en su mayoria, se trata de herramientas para Funky Maker: Mobile. Saludos a el Fenix Laboratory y a JarretCorner que se chingaron o bien el diseño o la funcionalidad de cosas que estan aqui dentro.",
             "subdued": ["Saludos a el Fenix Laboratory y a JarretCorner que se chingaron o bien el diseño o la funcionalidad de cosas que estan aqui dentro."]

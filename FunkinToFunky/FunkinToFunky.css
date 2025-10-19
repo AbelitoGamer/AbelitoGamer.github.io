@@ -1,7 +1,7 @@
 /* Frame Combiner Styles - Matching Fade Generator */
 .funky-tool-container {
     max-width: 900px;
-    margin: 2rem auto;
+    margin: 2rem auto 4rem auto;
     padding: 0 1rem;
 }
 
@@ -322,6 +322,11 @@
 
 .page-title {
     display: none;
+}
+
+/* Ensure proper spacing for footer */
+.customContentContainer {
+    padding-bottom: 2rem;
 }
 
 /* Mobile responsiveness */

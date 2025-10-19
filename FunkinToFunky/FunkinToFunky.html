@@ -37,125 +37,118 @@
             <h2 id="pageSubtitle">Please wait while content loads</h2>
         </div>
 
-        <!-- Main Content -->
-<div class="main-content">
-    <div class="page-title">
-        <h1 id="pageTitle">Loading...</h1>
-        <h2 id="pageSubtitle">Please wait while content loads</h2>
-    </div>
-
-    <div class="customContentContainer">
-        <div class="funky-tool-container">
-            <h1 class="tool-title">Funkin To Funky!</h1>
-            
-            <!-- Input Method Selection -->
-            <div class="funky-panel">
-                <div class="panel-header">
-                    <h3><i class="fas fa-upload"></i> <span class="header-text">Método de Entrada</span></h3>
-                </div>
+        <div class="customContentContainer">
+            <div class="funky-tool-container">
+                <h1 class="tool-title">Funkin To Funky!</h1>
                 
-                <div class="input-method-selection">
-                    <div class="method-buttons">
-                        <button id="zip-method-btn" class="method-button active">
-                            <i class="fas fa-file-zipper"></i>
-                            <span>Archivo ZIP</span>
-                        </button>
-                        <button id="spritesheet-method-btn" class="method-button">
-                            <i class="fas fa-image"></i>
-                            <span>Spritesheet + XML</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ZIP Upload Panel -->
-            <div class="funky-panel" id="zip-upload-panel">
-                <div class="panel-header">
-                    <h3><i class="fas fa-file-zipper"></i> <span class="header-text">Subir ZIP</span></h3>
-                </div>
-                
-                <div class="drop-zone" id="zip-drop-zone">
-                    <p>Arrastre y suelte su archivo ZIP aquí o</p>
-                    <input type="file" id="zip-file-input" accept=".zip" style="display: none;">
-                    <button class="funky-button select-file-button" id="zip-select-btn" onclick="document.getElementById('zip-file-input').click()">
-                        <i class="fas fa-file-upload"></i> Seleccionar Archivo ZIP
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Spritesheet Upload Panel -->
-            <div class="funky-panel" id="spritesheet-upload-panel" style="display: none;">
-                <div class="panel-header">
-                    <h3><i class="fas fa-image"></i> <span class="header-text">Subir Spritesheet y XML</span></h3>
-                </div>
-                
-                <div class="dual-upload-container">
-                    <div class="upload-section">
-                        <div class="drop-zone" id="png-drop-zone">
-                            <p><i class="fas fa-image"></i></p>
-                            <p>Spritesheet (PNG)</p>
-                            <input type="file" id="png-file-input" accept=".png" style="display: none;">
-                            <button class="funky-button select-file-button" id="png-select-btn" onclick="document.getElementById('png-file-input').click()">
-                                <i class="fas fa-file-upload"></i> Seleccionar PNG
-                            </button>
-                        </div>
+                <!-- Input Method Selection -->
+                <div class="funky-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-upload"></i> <span class="header-text">Método de Entrada</span></h3>
                     </div>
                     
-                    <div class="upload-section">
-                        <div class="drop-zone" id="xml-drop-zone">
-                            <p><i class="fas fa-code"></i></p>
-                            <p>Metadata (XML)</p>
-                            <input type="file" id="xml-file-input" accept=".xml" style="display: none;">
-                            <button class="funky-button select-file-button" id="xml-select-btn" onclick="document.getElementById('xml-file-input').click()">
-                                <i class="fas fa-file-upload"></i> Seleccionar XML
+                    <div class="input-method-selection">
+                        <div class="method-buttons">
+                            <button id="zip-method-btn" class="method-button active">
+                                <i class="fas fa-file-zipper"></i>
+                                <span>Archivo ZIP</span>
+                            </button>
+                            <button id="spritesheet-method-btn" class="method-button">
+                                <i class="fas fa-image"></i>
+                                <span>Spritesheet + XML</span>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Settings Panel -->
-            <div class="funky-panel settings-panel">
-                <div class="panel-header">
-                    <h3><i class="fas fa-sliders-h"></i> <span class="header-text">Configuración</span></h3>
-                </div>
                 
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="remove-duplicates">
-                        <label class="form-check-label" for="remove-duplicates">
-                            Eliminar frames duplicados
-                        </label>
+                <!-- ZIP Upload Panel -->
+                <div class="funky-panel" id="zip-upload-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-file-zipper"></i> <span class="header-text">Subir ZIP</span></h3>
                     </div>
                     
-                    <div id="progress-container" class="progress-container">
-                        <div class="progress">
-                            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
-                        </div>
-                        <p id="status-text"></p>
-                    </div>
-                    
-                    <div class="generate-button-container">
-                        <button id="generate-button" class="funky-button generate-button" disabled>
-                            Generar Spritesheet
+                    <div class="drop-zone" id="zip-drop-zone">
+                        <p>Arrastre y suelte su archivo ZIP aquí o</p>
+                        <input type="file" id="zip-file-input" accept=".zip" style="display: none;">
+                        <button class="funky-button select-file-button" id="zip-select-btn" onclick="document.getElementById('zip-file-input').click()">
+                            <i class="fas fa-file-upload"></i> Seleccionar Archivo ZIP
                         </button>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Result Panel (initially hidden) -->
-            <div class="funky-panel result-panel" id="result-panel">
-                <div class="panel-header">
-                    <h3><i class="fas fa-image"></i> <span class="header-text">Spritesheet Generado</span></h3>
-                    <button class="download-button" id="download-again">Descargar</button>
+                
+                <!-- Spritesheet Upload Panel -->
+                <div class="funky-panel" id="spritesheet-upload-panel" style="display: none;">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-image"></i> <span class="header-text">Subir Spritesheet y XML</span></h3>
+                    </div>
+                    
+                    <div class="dual-upload-container">
+                        <div class="upload-section">
+                            <div class="drop-zone" id="png-drop-zone">
+                                <p><i class="fas fa-image"></i></p>
+                                <p>Spritesheet (PNG)</p>
+                                <input type="file" id="png-file-input" accept=".png" style="display: none;">
+                                <button class="funky-button select-file-button" id="png-select-btn" onclick="document.getElementById('png-file-input').click()">
+                                    <i class="fas fa-file-upload"></i> Seleccionar PNG
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-section">
+                            <div class="drop-zone" id="xml-drop-zone">
+                                <p><i class="fas fa-code"></i></p>
+                                <p>Metadata (XML)</p>
+                                <input type="file" id="xml-file-input" accept=".xml" style="display: none;">
+                                <button class="funky-button select-file-button" id="xml-select-btn" onclick="document.getElementById('xml-file-input').click()">
+                                    <i class="fas fa-file-upload"></i> Seleccionar XML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="result-content">
-                    <p id="result-info"></p>
+                <!-- Settings Panel -->
+                <div class="funky-panel settings-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-sliders-h"></i> <span class="header-text">Configuración</span></h3>
+                    </div>
+                    
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remove-duplicates">
+                            <label class="form-check-label" for="remove-duplicates">
+                                Eliminar frames duplicados
+                            </label>
+                        </div>
+                        
+                        <div id="progress-container" class="progress-container">
+                            <div class="progress">
+                                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <p id="status-text"></p>
+                        </div>
+                        
+                        <div class="generate-button-container">
+                            <button id="generate-button" class="funky-button generate-button" disabled>
+                                Generar Spritesheet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Result Panel (initially hidden) -->
+                <div class="funky-panel result-panel" id="result-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-image"></i> <span class="header-text">Spritesheet Generado</span></h3>
+                        <button class="download-button" id="download-again">Descargar</button>
+                    </div>
+                    
+                    <div class="result-content">
+                        <p id="result-info"></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
         <!-- Content Container - holds either cards or textpage -->

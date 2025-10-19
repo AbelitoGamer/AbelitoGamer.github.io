@@ -1,6 +1,70 @@
 // Global state
 let defaultData = null;
 let bgInitialized = false;
+// DATA_SOURCE is declared in index.html
+
+// Get the base URL for the site (handles subdirectory hosting)
+function getSiteBaseUrl() {
+    // Get the current path
+    const path = window.location.pathname;
+    
+    // If we're in the root or main index, use the current directory
+    if (path === '/' || path === '/index.html' || path.endsWith('/')) {
+        return window.location.origin + path;
+    }
+    
+    // If we're in a subdirectory (like /FunkinToFunky/FunkinToFunky.html)
+    // we need to find the base directory of the site
+    const pathParts = path.split('/').filter(part => part.length > 0);
+    
+    // If the last part is an HTML file, remove it
+    if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
+        pathParts.pop();
+    }
+    
+    // If we're in a subdirectory, go back to parent
+    if (pathParts.length > 0) {
+        // Go back to the parent directory (the root of the site)
+        return window.location.origin + '/';
+    }
+    
+    return window.location.origin + '/';
+}
+
+// Utility function to resolve links relative to site base
+function resolveLink(link) {
+    if (!link) return '#';
+    
+    // If it's already an absolute URL (http/https), return as-is
+    if (link.startsWith('http://') || link.startsWith('https://')) {
+        return link;
+    }
+    
+    // If it's a hash link, return as-is
+    if (link.startsWith('#')) {
+        return link;
+    }
+    
+    // Get the site base URL
+    const baseUrl = getSiteBaseUrl();
+    
+    // If it starts with /, treat it as relative to the site root
+    if (link.startsWith('/')) {
+        return baseUrl + link.substring(1);
+    }
+    
+    // If it starts with ../, handle relative navigation properly
+    if (link.startsWith('../')) {
+        // For ../ links, we need to go up from current directory
+        const currentPath = window.location.pathname;
+        const currentDir = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+        return window.location.origin + currentDir + link;
+    }
+    
+    // For all other relative links, treat them as relative to site root
+    // This ensures that "Fadeinator/Fadeinator3000.html" always goes to the root's Fadeinator folder
+    return baseUrl + link;
+}
 
 // Helper function to convert hex color to rgba
 function hexToRgba(hex, alpha = 1) {
@@ -16,7 +80,10 @@ function hexToRgba(hex, alpha = 1) {
 }
 
 // Fetch data with fallback
-async function fetchData(source = DATA_SOURCE, isDefault = false) {
+async function fetchData(source, isDefault = false) {
+    // Use DATA_SOURCE if no source provided
+    if (!source) source = DATA_SOURCE;
+    
     try {
         const res = await fetch(source);
         if (!res.ok) {
@@ -56,12 +123,28 @@ function showError(msg) {
 function handleNav(item, e) {
     if (item.json) {
         e.preventDefault();
-        const url = new URL(window.location);
-        url.searchParams.set('json', item.json);
-        window.history.pushState({}, '', url);
-        DATA_SOURCE = item.json;
-        init();
-        window.scrollTo(0, 0);
+        
+        // Check if we're on the main page (index.html or root)
+        const currentPath = window.location.pathname;
+        const isMainPage = currentPath === '/' || 
+                          currentPath === '/index.html' || 
+                          currentPath.endsWith('/index.html') ||
+                          currentPath.endsWith('/');
+        
+        if (isMainPage) {
+            // We're on the main page, do JSON swapping in place
+            const url = new URL(window.location);
+            url.searchParams.set('json', item.json);
+            window.history.pushState({}, '', url);
+            DATA_SOURCE = item.json;
+            init();
+            window.scrollTo(0, 0);
+        } else {
+            // We're on a different page, redirect to index.html with JSON parameter
+            const baseUrl = getSiteBaseUrl();
+            const targetUrl = `${baseUrl}?json=${encodeURIComponent(item.json)}`;
+            window.location.href = targetUrl;
+        }
         return true;
     }
     return false;
@@ -129,6 +212,15 @@ async function init() {
     
     populateFooter(final.footerNavigation);
     populateSocial(final.socialLinks);
+    
+    // Add click-outside-to-close handler for dropdowns
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
+                dropdown.classList.remove('show');
+            });
+        }
+    });
 }
 
 // Populate navigation
@@ -145,7 +237,7 @@ function populateNav(items) {
         navItem.className = item.dropdown ? 'nav-item dropdown' : 'nav-item';
         
         const link = document.createElement('a');
-        link.href = item.json ? '#' : (item.link || '#');
+        link.href = item.json ? '#' : resolveLink(item.link);
         
         if (item.icon) {
             const icon = document.createElement('i');
@@ -163,31 +255,37 @@ function populateNav(items) {
             link.appendChild(caret);
             
             link.href = '#';
-            if (item.json) {
-                // Add navigation for desktop only
-                link.addEventListener('click', e => {
-                    if (window.innerWidth > 768) {
-                        handleNav(item, e);
+            
+            // Add click handler to toggle dropdown
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Get this dropdown element
+                const dropdown = navItem.querySelector('.dropdown-content');
+                const isCurrentlyOpen = dropdown.classList.contains('show');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown-content.show').forEach(openDropdown => {
+                    if (openDropdown !== dropdown) {
+                        openDropdown.classList.remove('show');
                     }
                 });
-            }
+                
+                // Toggle this dropdown (close if open, open if closed)
+                if (isCurrentlyOpen) {
+                    dropdown.classList.remove('show');
+                } else {
+                    dropdown.classList.add('show');
+                }
+            });
             
             const dropdown = document.createElement('div');
             dropdown.className = 'dropdown-content';
             
-            // For items with both dropdown and json navigation
-            if (item.json) {
-                link.addEventListener('click', e => {
-                    // Only navigate on desktop
-                    if (window.innerWidth > 768) {
-                        handleNav(item, e);
-                    }
-                });
-            }
-            
             item.dropdown.forEach(dropItem => {
                 const dropLink = document.createElement('a');
-                dropLink.href = dropItem.json ? '#' : (dropItem.link || '#');
+                dropLink.href = dropItem.json ? '#' : resolveLink(dropItem.link);
                 dropLink.textContent = dropItem.title;
                 if (dropItem.json) {
                     dropLink.addEventListener('click', e => handleNav(dropItem, e));
@@ -203,7 +301,7 @@ function populateNav(items) {
                 link.href = '#';
                 link.addEventListener('click', e => handleNav(item, e));
             } else {
-                link.href = item.link || '#';
+                link.href = resolveLink(item.link);
             }
             navItem.appendChild(link);
         }
@@ -227,7 +325,7 @@ function populateCards(cards) {
     
     cards.forEach(cardData => {
         const card = document.createElement('a');
-        card.href = cardData.json ? '#' : (cardData.link || '#');
+        card.href = cardData.json ? '#' : resolveLink(cardData.link);
         card.className = 'card';
         
         if (cardData.json) {
@@ -485,7 +583,7 @@ function populateFooter(items) {
     
     items.forEach(item => {
         const link = document.createElement('a');
-        link.href = item.json ? '#' : (item.link || '#');
+        link.href = item.json ? '#' : resolveLink(item.link);
         link.textContent = item.title;
         if (item.json) {
             link.addEventListener('click', e => handleNav(item, e));
@@ -502,7 +600,7 @@ function populateSocial(items) {
     
     items.forEach(item => {
         const link = document.createElement('a');
-        link.href = item.json ? '#' : (item.link || '#');
+        link.href = item.json ? '#' : resolveLink(item.link);
         link.className = 'social-icon';
         
         const icon = document.createElement('i');

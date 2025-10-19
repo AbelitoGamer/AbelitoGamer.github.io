@@ -133,7 +133,7 @@ body {
     overflow: hidden;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -452,11 +452,24 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.social-icon i {
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .social-icon:hover {
     background-color: #ff4444;
     transform: translateY(-4px);
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.social-icon:hover i {
+    color: white !important;
 }
 
 /* Loading states */

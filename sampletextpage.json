@@ -50,7 +50,7 @@
         },
         {
           "title": "Imágenes",
-          "image": "/Resources/images/Placeholder.png",
+          "image": "Resources/images/Placeholder.png",
           "imageAlt": "Imagen placeholder para ilustrar",
           "imageCaption": "Se pueden incluir subtextos para la imagen.",
           "imageAlign": "center",
@@ -63,7 +63,7 @@
         },
         {
           "title": "Imagen alineada a la izquierda",
-          "image": "/Resources/images/Placeholder.png",
+          "image": "Resources/images/Placeholder.png",
           "imageAlt": "Sample side image",
           "imageCaption": "Las imágenes se pueden alinear a la izquierda",
           "imageAlign": "left",
@@ -74,7 +74,7 @@
         },
         {
           "title": "Imagen alineada a la derecha",
-          "image": "/Resources/images/Placeholder.png",
+          "image": "Resources/images/Placeholder.png",
           "imageAlt": "Sample side image",
           "imageCaption": "Las imágenes se pueden alinear a la derecha",
           "imageAlign": "right",
@@ -113,7 +113,7 @@
         {
           "title": "Combinando",
           "subtitle": "[color:#ff4444]Muchas formas[/color] de usar las opciones juntas",
-          "image": "/Resources/images/Placeholder.png",
+          "image": "Resources/images/Placeholder.png",
           "imageAlign": "right",
           "imageStyle": {
             "maxWidth": "250px",
