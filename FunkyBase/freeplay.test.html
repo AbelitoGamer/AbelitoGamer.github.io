@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freeplay Unit Tests</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+        }
+        .test-suite {
+            margin-bottom: 30px;
+        }
+        .test-case {
+            margin: 5px 0;
+            padding: 5px 10px;
+            border-left: 3px solid #555;
+        }
+        .test-case.pass {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .test-case.fail {
+            border-color: #f44336;
+            background: rgba(244, 67, 54, 0.1);
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        .summary.all-pass {
+            border: 2px solid #4caf50;
+        }
+        .summary.has-fail {
+            border: 2px solid #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h1>Freeplay Variant Logic Tests</h1>
+    <div id="test-results"></div>
+    <div id="summary" class="summary"></div>
+
+    <script>
+        // Pure function implementations (extracted for testing)
+        function isDownloadAvailable(variant) {
+            return variant && 
+                   variant.download && 
+                   (variant.download.landscape !== '#' || variant.download.portrait !== '#');
+        }
+
+        function getVariant(details, variantName) {
+            return details?.variants?.[0]?.[variantName];
+        }
+
+        function getFirstAvailableVariant(details) {
+            if (!details?.variants?.[0]) return null;
+            
+            const variants = details.variants[0];
+            for (const [name, variant] of Object.entries(variants)) {
+                if (isDownloadAvailable(variant)) {
+                    return { name, variant };
+                }
+            }
+            return null;
+        }
+
+        // Test framework
+        let passCount = 0;
+        let failCount = 0;
+        const results = [];
+
+        function test(description, fn) {
+            try {
+                fn();
+                passCount++;
+                results.push({ description, status: 'pass' });
+            } catch (error) {
+                failCount++;
+                results.push({ description, status: 'fail', error: error.message });
+            }
+        }
+
+        function assertEquals(actual, expected, message = '') {
+            if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+                throw new Error(`${message}\nExpected: ${JSON.stringify(expected)}\nActual: ${JSON.stringify(actual)}`);
+            }
+        }
+
+        function assertTrue(condition, message = 'Assertion failed') {
+            if (!condition) {
+                throw new Error(message);
+            }
+        }
+
+        function assertFalse(condition, message = 'Assertion failed') {
+            if (condition) {
+                throw new Error(message);
+            }
+        }
+
+        // Test data
+        const mockSongDetails = {
+            icon: 'bf',
+            variants: [{
+                'easy': {
+                    bpm: 120,
+                    week: 1,
+                    difficulty: 'Easy',
+                    download: {
+                        landscape: 'http://example.com/easy-landscape.zip',
+                        portrait: 'http://example.com/easy-portrait.zip'
+                    }
+                },
+                'normal': {
+                    bpm: 120,
+                    week: 1,
+                    difficulty: 'Normal',
+                    download: {
+                        landscape: '#',
+                        portrait: 'http://example.com/normal-portrait.zip'
+                    }
+                },
+                'hard': {
+                    bpm: 120,
+                    week: 1,
+                    difficulty: 'Hard',
+                    download: {
+                        landscape: '#',
+                        portrait: '#'
+                    }
+                },
+                'easy-pico': {
+                    bpm: 125,
+                    week: 1,
+                    difficulty: 'Easy',
+                    download: {
+                        landscape: 'http://example.com/easy-pico-landscape.zip',
+                        portrait: '#'
+                    }
+                }
+            }]
+        };
+
+        // Run tests
+        console.log('Running Freeplay Variant Logic Tests...\n');
+
+        // Test Suite 1: isDownloadAvailable
+        test('isDownloadAvailable: returns true when landscape is available', () => {
+            const variant = {
+                download: {
+                    landscape: 'http://example.com/song.zip',
+                    portrait: '#'
+                }
+            };
+            assertTrue(isDownloadAvailable(variant));
+        });
+
+        test('isDownloadAvailable: returns true when portrait is available', () => {
+            const variant = {
+                download: {
+                    landscape: '#',
+                    portrait: 'http://example.com/song.zip'
+                }
+            };
+            assertTrue(isDownloadAvailable(variant));
+        });
+
+        test('isDownloadAvailable: returns true when both are available', () => {
+            const variant = {
+                download: {
+                    landscape: 'http://example.com/landscape.zip',
+                    portrait: 'http://example.com/portrait.zip'
+                }
+            };
+            assertTrue(isDownloadAvailable(variant));
+        });
+
+        test('isDownloadAvailable: returns false when both are unavailable', () => {
+            const variant = {
+                download: {
+                    landscape: '#',
+                    portrait: '#'
+                }
+            };
+            assertFalse(isDownloadAvailable(variant));
+        });
+
+        test('isDownloadAvailable: returns false for null variant', () => {
+            assertFalse(isDownloadAvailable(null));
+        });
+
+        test('isDownloadAvailable: returns false for undefined variant', () => {
+            assertFalse(isDownloadAvailable(undefined));
+        });
+
+        test('isDownloadAvailable: returns false when download property is missing', () => {
+            const variant = { bpm: 120 };
+            assertFalse(isDownloadAvailable(variant));
+        });
+
+        // Test Suite 2: getVariant
+        test('getVariant: returns correct variant for valid name', () => {
+            const variant = getVariant(mockSongDetails, 'easy');
+            assertEquals(variant.bpm, 120);
+            assertEquals(variant.difficulty, 'Easy');
+        });
+
+        test('getVariant: returns correct variant for character-specific name', () => {
+            const variant = getVariant(mockSongDetails, 'easy-pico');
+            assertEquals(variant.bpm, 125);
+        });
+
+        test('getVariant: returns undefined for non-existent variant', () => {
+            const variant = getVariant(mockSongDetails, 'nightmare');
+            assertEquals(variant, undefined);
+        });
+
+        test('getVariant: handles null details gracefully', () => {
+            const variant = getVariant(null, 'easy');
+            assertEquals(variant, undefined);
+        });
+
+        test('getVariant: handles missing variants array', () => {
+            const variant = getVariant({ icon: 'bf' }, 'easy');
+            assertEquals(variant, undefined);
+        });
+
+        // Test Suite 3: getFirstAvailableVariant
+        test('getFirstAvailableVariant: returns first available variant', () => {
+            const result = getFirstAvailableVariant(mockSongDetails);
+            assertTrue(result !== null, 'Should find an available variant');
+            assertTrue(isDownloadAvailable(result.variant), 'Returned variant should be available');
+        });
+
+        test('getFirstAvailableVariant: returns null for song with no available variants', () => {
+            const noAvailableSong = {
+                icon: 'dad',
+                variants: [{
+                    'easy': {
+                        bpm: 100,
+                        week: 2,
+                        difficulty: 'Easy',
+                        download: {
+                            landscape: '#',
+                            portrait: '#'
+                        }
+                    }
+                }]
+            };
+            const result = getFirstAvailableVariant(noAvailableSong);
+            assertEquals(result, null);
+        });
+
+        test('getFirstAvailableVariant: handles null details', () => {
+            const result = getFirstAvailableVariant(null);
+            assertEquals(result, null);
+        });
+
+        test('getFirstAvailableVariant: handles missing variants', () => {
+            const result = getFirstAvailableVariant({ icon: 'bf' });
+            assertEquals(result, null);
+        });
+
+        test('getFirstAvailableVariant: skips unavailable variants', () => {
+            const partialAvailableSong = {
+                icon: 'mom',
+                variants: [{
+                    'unavailable1': {
+                        bpm: 100,
+                        week: 4,
+                        difficulty: 'Easy',
+                        download: { landscape: '#', portrait: '#' }
+                    },
+                    'unavailable2': {
+                        bpm: 100,
+                        week: 4,
+                        difficulty: 'Normal',
+                        download: { landscape: '#', portrait: '#' }
+                    },
+                    'available': {
+                        bpm: 100,
+                        week: 4,
+                        difficulty: 'Hard',
+                        download: { landscape: 'http://example.com/file.zip', portrait: '#' }
+                    }
+                }]
+            };
+            const result = getFirstAvailableVariant(partialAvailableSong);
+            assertEquals(result.name, 'available');
+            assertTrue(isDownloadAvailable(result.variant));
+        });
+
+        // Render results
+        const resultsContainer = document.getElementById('test-results');
+        const summaryContainer = document.getElementById('summary');
+
+        results.forEach(result => {
+            const div = document.createElement('div');
+            div.className = `test-case ${result.status}`;
+            div.innerHTML = `
+                <strong>${result.status === 'pass' ? '✓' : '✗'}</strong> ${result.description}
+                ${result.error ? `<br><span style="color: #ff6b6b;">${result.error}</span>` : ''}
+            `;
+            resultsContainer.appendChild(div);
+        });
+
+        summaryContainer.innerHTML = `
+            <h2>Test Summary</h2>
+            <p><strong>Passed:</strong> ${passCount} / ${passCount + failCount}</p>
+            <p><strong>Failed:</strong> ${failCount} / ${passCount + failCount}</p>
+            <p><strong>Success Rate:</strong> ${Math.round((passCount / (passCount + failCount)) * 100)}%</p>
+        `;
+        summaryContainer.className = `summary ${failCount === 0 ? 'all-pass' : 'has-fail'}`;
+
+        console.log(`\n✓ ${passCount} passed`);
+        console.log(`✗ ${failCount} failed`);
+        console.log(`Success rate: ${Math.round((passCount / (passCount + failCount)) * 100)}%`);
+    </script>
+</body>
+</html>

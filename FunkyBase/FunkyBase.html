@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNF Freeplay Menu</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <link rel="stylesheet" href="FunkyBase.css">
+</head>
+<body>
+    <!-- Filters Section - Fixed at top left -->
+    <div class="filters-fixed">
+        <div class="filter-group">
+            <label class="text-white">Difficulty:</label>
+            <select class="form-select bg-dark text-white border-secondary" id="difficultySelect">
+                <!-- Difficulties will be populated dynamically -->
+            </select>
+        </div>
+        <div class="filter-group">
+            <label class="text-white">Character:</label>
+            <select class="form-select bg-dark text-white border-secondary" id="characterSelect">
+                <!-- Characters will be populated dynamically -->
+            </select>
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Freeplay Menu</h1>
+        
+        <div class="song-list" id="songList"><!-- Songs populated dynamically --></div>
+    </div>
+
+    <!-- Unavailable Notification Popup -->
+    <div id="unavailablePopup" class="unavailable-popup">
+        This song variant is not available
+    </div>
+
+    <!-- Download Modal -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Download Options</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4 id="modalSongName" class="mb-3"></h4>
+                    <h6 id="modalVariantName" class="mb-4 text-muted"></h6>
+                    <div class="d-flex justify-content-center">
+                        <button id="landscapeBtn" class="btn btn-primary">Landscape Version</button>
+                        <button id="portraitBtn" class="btn btn-success">Portrait Version</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="FunkyBase.js"></script>
+</body>
+</html>

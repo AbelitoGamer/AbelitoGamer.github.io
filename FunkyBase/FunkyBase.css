@@ -1,0 +1,157 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Fixed Filters at Top Left */
+.filters-fixed {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(33, 37, 41, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group label {
+    margin-right: 10px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.filter-group select {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* FNF Freeplay Song List Compact Scale */
+.song-list {
+    width: 420px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.2);
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    padding: 18px 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.song-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #222 60%, #444 100%);
+    color: #bffcff;
+    font-family: 'VCR OSD Mono', monospace;
+    font-size: 1.05rem;
+    margin: 6px 14px;
+    padding: 6px 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+.song-item:hover, .song-item.selected, .song-item.keyboard-selected {
+    background: linear-gradient(90deg, #333 60%, #666 100%);
+    color: #fff;
+    transform: scale(1.04);
+}
+
+.song-item.keyboard-selected {
+    outline: 3px solid #00ff00;
+    outline-offset: 2px;
+}
+.song-item.unavailable {
+    background: linear-gradient(90deg, #111 60%, #222 100%);
+    color: #555;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.song-item.unavailable:hover {
+    background: linear-gradient(90deg, #111 60%, #222 100%);
+    transform: none;
+}
+.song-item.unavailable .song-icon {
+    filter: grayscale(100%) brightness(0.5);
+}
+.song-item.unavailable .text-muted {
+    color: #333 !important;
+}
+.song-icon {
+    width: 51px;
+    height: 51px;
+    position: relative;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+.song-icon canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    image-rendering: pixelated;
+    z-index: 1;
+}
+.song-item > div {
+    position: relative;
+    z-index: 2;
+}
+.song-item h3,
+.song-item .text-muted {
+    position: relative;
+    z-index: 3;
+}
+
+/* Unavailable Popup Notification */
+.unavailable-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 50, 50, 0.95);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-family: 'VCR OSD Mono', monospace;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 24px rgba(255, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.unavailable-popup.show {
+    opacity: 1;
+}
+
+/* Modal buttons are standard Bootstrap; no extra rules needed */
+
+/* Keyboard focus states */
+.filters-fixed.keyboard-focus {
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+}
+
+.modal .btn.keyboard-selected {
+    outline: 3px solid #00ff00;
+    outline-offset: 2px;
+}

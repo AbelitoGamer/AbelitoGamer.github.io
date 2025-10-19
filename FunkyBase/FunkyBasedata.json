@@ -1,0 +1,906 @@
+{
+    "characters": {
+        "bf": "",
+        "pico": ""
+    },
+    "difficulties": [
+        "hard",
+        "nightmare"
+    ],
+    "songs": [
+        {
+            "Tutorial": {
+                "icon": "gf",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "100",
+                            "week": 0,
+                            "difficulty": 1,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k6q2pryjegsxv6nte611zw60/releases/01k6q2pryjegsxv6nte611zw60",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jqffrwfvpb21z2ttnm55p5q3/releases/01jqffrwfvpb21z2ttnm55p5q3"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Bopeebo": {
+                "icon": "dad",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "100",
+                            "week": 1,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "123",
+                            "week": 1,
+                            "difficulty": 8,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "100",
+                            "week": 1,
+                            "difficulty": 3,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jx9k1yn5rntxzwje8zk1p1sk/releases/01jx9k1yn7dgad1m82h6mef0jx",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k1fd86z2zrcgeybnx4qs6cf6/releases/01k1fd86z5n16bxwxaw9afxszm"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Fresh": {
+                "icon": "dad",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "120",
+                            "week": 1,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "125",
+                            "week": 1,
+                            "difficulty": 7,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "120",
+                            "week": 1,
+                            "difficulty": 4,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jxt31c2283jds1453d7yy432/releases/01jxt31c25zyz87bfvp42dywyb",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k1ny0hb318yhf6dc4ps7qxat/releases/01k1ny0hb5atp6ffwred4pc75t"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Dadbattle": {
+                "icon": "dad",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "180",
+                            "week": 1,
+                            "difficulty": 3,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "190",
+                            "week": 1,
+                            "difficulty": 10,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "180",
+                            "week": 1,
+                            "difficulty": 5,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jypqac0tttfcmd980k07zkxq/releases/01jypqac0x4x3r9717y9v6mk8e",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k1wkk4pwf7dzdrrjb9m7hpjt/releases/01k1wkk4pz459jz8q8g48fbb9a"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Spookeez": {
+                "icon": "spooky",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "150",
+                            "week": 2,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k5zxwe7ya1b78gd5n4y2gj58/releases/01k5zxwe80rj6mnqqwt30fj0xe",
+                                "portrait": "#"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "166",
+                            "week": 2,
+                            "difficulty": 12,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "150",
+                            "week": 2,
+                            "difficulty": 3,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jsqb2k4wzt17cv6awcm4wbxy/releases/01jsqb2k52cqstw1a4z75egnby",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jxpcppbx3z7bx21wkny6vcrs/releases/01jxpcppc0j8g2nn3ptxp3eh1b"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "South": {
+                "icon": "spooky",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "165",
+                            "week": 2,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k64zbr8q1pmnq5c67402tpdb/releases/01k64zbr8tsdm7x8139a2zveah",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jpj5k2v52fk2154d6jcvefnh/releases/01jpj5k2v7av7qhp0n7dbvk3cs"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "177",
+                            "week": 2,
+                            "difficulty": 9,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k2p9svdvmg12davn6mrphccf/releases/01k2p9sve102n9759vzgyz0yk6",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k41yg28rq21026qbv62dazys/releases/01k41yg28t3qjmkszptyvrh0xa"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "165",
+                            "week": 2,
+                            "difficulty": 4,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jttt7hc8ra2s60s96e3n2jnf/releases/01jttt7hcdf461ag9q9trs36y6",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jydwq0xfq6ag934s1vrmy23v/releases/01jydwq0xh53jamt7sfsz86eyb"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Monster": {
+                "icon": "monster",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "95",
+                            "week": 2,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k6a6z9ecrcn2qkxeebwqstvc/releases/01k6a6z9efw71eftg4c58ne363",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jpmx95g4c2vyb72fhyw6gfhg/releases/01jpmx95g8xx6yxpgv67nbs6a2"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Pico": {
+                "icon": "pico",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "150",
+                            "week": 3,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3zjemz1sm2cvzc09r7rq7p2/releases/01k3zjemz1sm2cvzc09r7rq7p2",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jpfq31fj3msemxxzekzr6r9g/releases/01jpfq31fj3msemxxzekzr6r9g"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "162",
+                            "week": 3,
+                            "difficulty": 10,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k24bwk99crgef42y8yqvacg7/releases/01k24bwk9gc3h0mxj45998dvyr",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k3jentrtcsdmf75z8t5knqyk/releases/01k3jentrtcsdmf75z8t5knqyk"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "150",
+                            "week": 3,
+                            "difficulty": 4,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jv3fdbnp83pvnv0xe5c3hv7h/releases/01jv3fdbnp83pvnv0xe5c3hv7h",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jyx2m649c2d4sad80n92c9pq/releases/01jyx2m649c2d4sad80n92c9pq"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Philly Nice": {
+                "icon": "pico",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "175",
+                            "week": 3,
+                            "difficulty": 3,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k0fjrp5fcpwqs3h930v74efh/releases/01k0fjrp5smagtwn4x570dw3nv",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k2kt79vq2yftdkj5wv27bs2d/releases/01k2kt79vxcdggxq9w441tfe9d"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "175",
+                            "week": 3,
+                            "difficulty": 9,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k2ahky52d2e5pc2vzzc7y9nv/releases/01k2ahky56ymv6g84bh5w4pd5c",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k3qt6bfx9fx07k27ctrqqdsk/releases/01k3qt6bg051yks5eq9wafydhj"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "175",
+                            "week": 3,
+                            "difficulty": 4,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jvahghabf6ywtrtzm78ntvas/releases/01jvahghae64cmn2b0jtyt395h",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k08zc44p0ynddhy27kz2347z/releases/01k08zc44vfyte4ty8s3af3zz8"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Blammed": {
+                "icon": "pico",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "165",
+                            "week": 3,
+                            "difficulty": 3,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k30pb0936g3fb61am4ct9c9w/releases/01k30pb09aarfcm6mpd8ggmq9n",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k53kn6jv9v1ymmw9b6mhqrmb/releases/01k53kn6jx46q69gwj5e0prrac"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "170",
+                            "week": 3,
+                            "difficulty": 12,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k2h689hq8gpk96m8yw1z8v6d/releases/01k2h689hxt7s48pxmwbrp8aqf",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k3wy9ct9vc3fdpatbtcxxer6/releases/01k3wy9ctckntysvaahm83zt1m"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "165",
+                            "week": 3,
+                            "difficulty": 5,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jvn7ps0y7sn04b77dhnyyzn3/releases/01jvn7ps116vx45e1ch3wa8gt5",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k0k99zwza2m0q39bz1wa938d/releases/01k0k99zxcfh8qhervzkrn4z8e"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Satin Panties": {
+                "icon": "mommy",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "110",
+                            "week": 4,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k5r5tjaw23njppw56bq4bgwm/releases/01k5r5tjaw23njppw56bq4bgwm",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k6rmsat3der85c5tyazsdmdm/releases/01k6rmsat3der85c5tyazsdmdm"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "135",
+                            "week": 4,
+                            "difficulty": 12,
+                            "album": "expansion1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k1j3rj9hs7d1gtjww1n8hms2/releases/01k1j3rj9hs7d1gtjww1n8hms2",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k38azt3gef8jdgbgwyrkd1c5/releases/01k38azt3gef8jdgbgwyrkd1c5"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "High": {
+                "icon": "mommy",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "125",
+                            "week": 4,
+                            "difficulty": 3,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jpzqkxphm3ph74t103y0qyem/releases/01jpzqkxphm3ph74t103y0qyem"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "125",
+                            "week": 4,
+                            "difficulty": 9,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k1t0773kqrszjx88v64dkfqg/releases/01k1t0773kqrszjx88v64dkfqg",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k3dapqbdqp52m31mtwt9b5d2/releases/01k3dapqbdqp52m31mtwt9b5d2"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Milf": {
+                "icon": "mommy",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "180",
+                            "week": 4,
+                            "difficulty": 4,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "#",
+                                "portrait": "#"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Cocoa": {
+                "icon": "parents-christmas",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "100",
+                            "week": 5,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k35wj0asx600xjvr38kd8sp0/releases/01k35wj0asx600xjvr38kd8sp0",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k589qz4j46ybygbw8hbcgq17/releases/01k589qz4j46ybygbw8hbcgq17"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "174",
+                            "week": 5,
+                            "difficulty": 8,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k5hqcn8zd5fe3e3h36antm3j/releases/01k5hqcn8zd5fe3e3h36antm3j",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k6hzn4365wehxd18tppbjm6v/releases/01k6hzn4365wehxd18tppbjm6v"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "100",
+                            "week": 5,
+                            "difficulty": 4,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jw089banzph65zvtfckrxf06/releases/01jw089banzph65zvtfckrxf06",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k106575sfd266118cx6b4h29/releases/01k106575sfd266118cx6b4h29"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Eggnog": {
+                "icon": "parents-christmas",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "150",
+                            "week": 5,
+                            "difficulty": 3,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3ax5qxe0beacpcq0nnzwvda/releases/01k3ax5qxe0beacpcq0nnzwvda",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k5dy9fcrfdjzyp4b3ya0xdxd/releases/01k5dy9fcrfdjzyp4b3ya0xdxd"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "140",
+                            "week": 5,
+                            "difficulty": 7,
+                            "album": "expansion1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01js8h7kf3bfkgp5rxy7kg19fj/releases/01js8h7kf3bfkgp5rxy7kg19fj",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jvqjs5cznyezaj9qxfvh5scp/releases/01jvqjs5cznyezaj9qxfvh5scp"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "150",
+                            "week": 5,
+                            "difficulty": 5,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jwmbdwg4kt1yvb548jamkya3/releases/01jwmbdwg4kt1yvb548jamkya3",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k16cq0p00d171bzc4cj1ctjv/releases/01k16cq0p00d171bzc4cj1ctjv"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Winter Horrorland": {
+                "icon": "monster",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "159",
+                            "week": 5,
+                            "difficulty": 2,
+                            "album": "volume1",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k5bcmhxz97nqc9fxr52qmym8/releases/01k5bcmhxz97nqc9fxr52qmym8",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01js06hqhm42fz23d3ty30j944/releases/01js06hqhm42fz23d3ty30j944"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Senpai": {
+                "icon": "senpai",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "144",
+                            "week": 6,
+                            "difficulty": 3,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3g03tsve5smysva82htqefj/releases/01k3g03tsve5smysva82htqefj",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k5kry5djv6m8dcy5ss7q7m15/releases/01k5kry5djv6m8dcy5ss7q7m15"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "158",
+                            "week": 6,
+                            "difficulty": 7,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k0v6ht20vk37c210y724k2ke/releases/01k0v6ht20vk37c210y724k2ke",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k2rw71zn7mmkq1hyg45yh302/releases/01k2rw71zn7mmkq1hyg45yh302"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "144",
+                            "week": 6,
+                            "difficulty": 3,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3g03tsve5smysva82htqefj/releases/01k3g03tsve5smysva82htqefj",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k5kry5djv6m8dcy5ss7q7m15/releases/01k5kry5djv6m8dcy5ss7q7m15"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Roses": {
+                "icon": "senpai",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "120",
+                            "week": 6,
+                            "difficulty": 4,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3n78pq2g11x8xxwck5r5f7p/releases/01k3n78pq2g11x8xxwck5r5f7p",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k5tn2p6kkcp9jyavpkhy1qza/releases/01k5tn2p6kkcp9jyavpkhy1qza"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "128",
+                            "week": 6,
+                            "difficulty": 9,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k12t53d27sdwfxxp058faf9s/releases/01k12t53d27sdwfxxp058faf9s",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k2y0qjr9rpvzqpfwds88trnj/releases/01k2y0qjr9rpvzqpfwds88trnj"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "120",
+                            "week": 6,
+                            "difficulty": 4,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3n78pq2g11x8xxwck5r5f7p/releases/01k3n78pq2g11x8xxwck5r5f7p",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k5tn2p6kkcp9jyavpkhy1qza/releases/01k5tn2p6kkcp9jyavpkhy1qza"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Thorns": {
+                "icon": "spirit",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "190",
+                            "week": 6,
+                            "difficulty": 4,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3t94cxmb872tf3e5qcw0dk8/releases/01k3t94cxmb872tf3e5qcw0dk8",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k62jjze2qyp1mzqmjdkxcyh0/releases/01k62jjze2qyp1mzqmjdkxcyh0"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "190",
+                            "week": 6,
+                            "difficulty": 10,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k1aex0bv4tbm3hzfz5ht9ps5/releases/01k1aex0bv4tbm3hzfz5ht9ps5",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k339rfwq4dngygz8jnmaz11d/releases/01k339rfwq4dngygz8jnmaz11d"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Ugh": {
+                "icon": "tankman",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "160",
+                            "week": 7,
+                            "difficulty": 4,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k3zjemz1sm2cvzc09r7rq7p2/releases/01k3zjemz1sm2cvzc09r7rq7p2",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k67c15s5b2eksty3t4pffnrd/releases/01k67c15s5b2eksty3t4pffnrd"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "bf",
+                            "bpm": "170",
+                            "week": 7,
+                            "difficulty": 9,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jsnat86gyrz4qf8mjbwv01kc/releases/01jsnat86gyrz4qf8mjbwv01kc",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jw847bah2y4nhfxh6z8n066g/releases/01jw847bah2y4nhfxh6z8n066g"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "160",
+                            "week": 7,
+                            "difficulty": 4,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jz45zw2njx7n97wc8zq1bs4w/releases/01jz45zw2njx7n97wc8zq1bs4w",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k26v0jdd3yn02g6974nhr0wd/releases/01k26v0jdd3yn02g6974nhr0wd"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Guns": {
+                "icon": "tankman",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "185",
+                            "week": 7,
+                            "difficulty": 5,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k44m2bm4jn1892xc953324pv/releases/01k44m2bm4jn1892xc953324pv",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "185",
+                            "week": 7,
+                            "difficulty": 5,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k06ba2nebxad1rwrm1e3kazq/releases/01k06ba2nebxad1rwrm1e3kazq",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k2c0k2g10x19njw7bg67vfjc/releases/01k2c0k2g10x19njw7bg67vfjc"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Stress": {
+                "icon": "tankman",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "bf",
+                            "bpm": "178",
+                            "week": 7,
+                            "difficulty": 5,
+                            "album": "volume2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jsa8132cepdjvpyk3f8qhkwa/releases/01jsa8132cepdjvpyk3f8qhkwa",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jqssrx5g529zas1q5x6hgp6y/releases/01jqssrx5g529zas1q5x6hgp6y"
+                            }
+                        },
+                        "hard-pico": {
+                            "character": "pico",
+                            "bpm": "178",
+                            "week": 7,
+                            "difficulty": 6,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jtxmb4jqpwj3nwfanbwmtkfe/releases/01jtxmb4jqpwj3nwfanbwmtkfe",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jr9bdwbk27y6mre2g6ed5pcg/releases/01jr9bdwbk27y6mre2g6ed5pcg"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Darnell": {
+                "icon": "darnell",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "pico",
+                            "bpm": "155",
+                            "week": 8,
+                            "difficulty": 4,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k6tnkbw39p7nvxvhwnvm54c3/releases/01k6tnkbw39p7nvxvhwnvm54c3",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k49qa1sjymkkc4ca1v6ae9em/releases/01k49qa1sjymkkc4ca1v6ae9em"
+                            }
+                        },
+                        "nightmare": {
+                            "character": "pico",
+                            "bpm": "155",
+                            "week": 8,
+                            "difficulty": 9,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01jrrvgkpgb5x40zzyma41rwfm/releases/01jrrvgkpgb5x40zzyma41rwfm",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jt4njcyk5dzw9xbaynfm3dbp/releases/01jt4njcyk5dzw9xbaynfm3dbp"
+                            }
+                        },
+                        "hard-bf": {
+                            "character": "bf",
+                            "bpm": "155",
+                            "week": 8,
+                            "difficulty": 5,
+                            "album": "volume4",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k2vahfz4k65j7n3964t5dygx/releases/01k2vahfz4k65j7n3964t5dygx",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01k49qa1sjymkkc4ca1v6ae9em/releases/01k49qa1sjymkkc4ca1v6ae9em"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Lit Up": {
+                "icon": "darnell",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "pico",
+                            "bpm": "176",
+                            "week": 8,
+                            "difficulty": 4,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k6w2d3zphj0ar833b38vsccf/releases/01k6w2d3zphj0ar833b38vsccf",
+                                "portrait": "#"
+                            }
+                        },
+                        "hard-bf": {
+                            "character": "bf",
+                            "bpm": "176",
+                            "week": 8,
+                            "difficulty": 6,
+                            "album": "expansion2",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k55x7fn0041jrrx00s2t0251/releases/01k55x7fn0041jrrx00s2t0251",
+                                "portrait": "https://funkymaker.kingamescreator.com/_app/levels/01jrp0z5tfpnb4dyqtgbfv3m1e/releases/01jrp0z5tfpnb4dyqtgbfv3m1e"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "2hot": {
+                "icon": "darnell",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "pico",
+                            "bpm": "182",
+                            "week": 8,
+                            "difficulty": 5,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k6yxgxxha7c9tggjg4yhkzsh/releases/01k6yxgxxha7c9tggjg4yhkzsh",
+                                "portrait": "#"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Blazin": {
+                "icon": "darnell",
+                "variants": [
+                    {
+                        "hard": {
+                            "character": "pico",
+                            "bpm": "180",
+                            "week": 8,
+                            "difficulty": 5,
+                            "album": "volume3",
+                            "download": {
+                                "landscape": "https://funkymaker.kingamescreator.com/_app/levels/01k719wmy67jvcwxhch9g34sae/releases/01k719wmy67jvcwxhch9g34sae",
+                                "portrait": "#"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
