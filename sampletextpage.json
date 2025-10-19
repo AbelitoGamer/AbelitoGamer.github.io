@@ -133,7 +133,7 @@
         },
         {
           "title": "Ejemplo Interactivo",
-          "content": "Haz clic en estos enlaces para ver cómo funciona la navegación interna: [json:index.json]Inicio[/json] | [json:about.json]Acerca de[/json] | [json:workshop.json]Workshop[/json]"
+          "content": "Haz clic en estos enlaces para ver cómo funciona la navegación interna: [json:index.json]Inicio[/json] | [json:updatelog.json]Update Log[/json] | [json:workshop.json]Workshop[/json]"
         },
         {
           "title": "Usando Contenido HTML",

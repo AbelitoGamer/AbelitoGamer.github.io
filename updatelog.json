@@ -1,0 +1,133 @@
+{
+  "siteInfo": {
+      "name": "Update Log",
+      "title": "Update Log",
+      "subtitle": "Actualizaciones del Funky Atlas",
+      "copyright": "© 2025 Funky Atlas. Los contenidos de terceros pertenecen a sus autores."
+  },
+  "updatelog": {
+    "updates": [
+      {
+        "version": "3.4.0",
+        "date": "19/10/2025",
+        "title": "Mesero!!! Más fixes para la MainPage!!! (Ah, y Updates en las páginas de la Workshop)",
+        "tag": {
+          "text": "Update",
+          "backgroundColor": "#4444ff",
+          "textColor": "#FFFFFF"
+        },
+        "changes": [
+          "Retrabajado el como funciona la topbar y bottombar para arreglar varios bugs en la MainPage que te llevaban AÚN a páginas que no existen o se bugeaban intentando cambiar los jsons. Mierdas insufribles que agradezco a dios ya no van a pasar",
+          "Soporte de TextPages eliminado, y junto a él, la página de About. Retrabajados para convertirse en este Update Log",
+          "Botón de Ko-Fi añadido a el resto de páginas (Se añadió en la update anterior, pero solo estaba en la HomePage)",
+          "Ahora el Fadeinator 3000 puede generar sprites de 1 solo frame. Es decir, que solo le baja la opacidad a la imagen. (Saludos a Gasterit, que hizo esta sugerencia en #Bugs-and-suggestions del server de Funky Maker como si esta pagina fuera oficial. Mi idolo)",
+          "Ahora el FunkinToFunky muestra las previews animadas, en lugar de mostrar solo el spritesheet. Se puede modificar el BPM y los Beats para previsualizarlo antes de llevarlo a Funky Maker. Si jarret me va a copiar la puta página de arriba a abajo, haré que la mía sea aún mejor",
+          "Ahora el FunkinToFunky ya no tiene la bottombar despegada del fondo (Joder, que dolor no haber arreglado esto antes)",
+          "Funky BaseGame añadido en la HomePage como un Work In Progress muy temprano",
+          "Nótese que, hasta ahora, no tenía un control de versiones, por lo que todas las versiones inferiores a esta pueden tener fechas o cambios que no les pertenecen realmente a esa versión. Esto no pasará de ahora en adelante, pero vamos, no recuerdo el orden exacto en el que fui actualizando o cambiando cosas aquí. Por eso el añadido de este Update Log"
+        ]
+      },
+      {
+        "version": "3.3.0",
+        "date": "04/10/2025",
+        "title": "Hmmm... Bodrios...",
+        "changes": [
+          "Añadido el Countdown de la Bodrio Collection en la HomePage",
+          "FNMM Fixer hallado muerto con 7 tiros en la espalda (Eliminado porque no servía para nada)"
+        ]
+      },
+      {
+        "version": "3.2.0",
+        "date": "05/09/2025",
+        "title": "Esteroides al FunkinToFunky",
+        "changes": [
+          "Añadida la capacidad del FunkinToFunky de tener múltiples tipos de método de entrada",
+          "Devuelto el soporte de Spritesheet + XML al FunkinToFunky como nuevo método de entrada, turbomejorado respecto a su iteración anterior",
+          "Arreglados los dropdowns en básicamente todas las subpáginas llevándote a lugares que no existen"
+        ]
+      },
+      {
+        "version": "3.1.0",
+        "date": "27/04/2025",
+        "title": "Fadeinator + TextPages",
+        "tag": {
+          "text": "Update",
+          "backgroundColor": "#4444ff",
+          "textColor": "#FFFFFF"
+        },
+        "changes": [
+          "Fadeinator 3000 añadido en Workshop",
+          "Sección de About añadida en la topbar",
+          "Nueva página de About con información de la página web. (TextPage)",
+          "Reemplazadas las miniaturas placeholder de la workshop",
+          "Arreglos al FunkinToFunky para que soporte más tipos de nombrado de frames"
+        ]
+      },
+      {
+        "version": "3.0.0",
+        "date": "25/04/2025",
+        "title": "Rework total de la interfaz",
+        "tag": {
+          "text": "Update mayor",
+          "backgroundColor": "#2121d9",
+          "textColor": "#FFFFFF"
+        },
+        "changes": [
+          "Cambio completo al diseño de la web, incluidas subpáginas",
+          "Nuevas miniaturas para las Cards de la HomePage",
+          "Opciones de la HomePage y Workshop, así como Topbar y Bottombar ahora obtienen su información desde JSONs",
+          "Removida la capacidad del FunkIntoFunky de usar XML + Spritesheet, ahora solo acepta archivos ZIP",
+          "Rediseño del FunkIntoFunky junto al resto de la web",
+          "Ah, y de hecho, cambio de nombre del FunkIntoFunky a FunkinToFunky porque nadie entendió mi increíblemente ingenioso y bien pensado juego de palabras. Putos"
+        ]
+      },
+      {
+        "version": "2.1.0",
+        "date": "10/10/2024",
+        "title": "FunkIntoFunky",
+        "changes": [
+          "FunkIntoFunky añadido en Workshop",
+          "Link a la página del team de Sonic.exe añadido a la HomePage",
+          "Arreglos menores a FNMM Fixer"
+        ]
+      },
+      {
+        "version": "2.0.0",
+        "date": "21/09/2024",
+        "title": "El nacimiento del Funky Atlas",
+        "tag": {
+          "text": "Update mayor",
+          "backgroundColor": "#2121d9",
+          "textColor": "#FFFFFF"
+        },
+        "changes": [
+          "HomePage rediseñada, con link a el Port de Mario's Madness y a una nueva seccion de 'Workshop'",
+          "FNMM Fixer añadido en Workshop"
+        ]
+      },
+      {
+        "version": "1.1.0",
+        "date": "01/08/2024",
+        "title": "Recolocación",
+        "changes": [
+          "Relocalizadas todas las páginas de Mario's Madness V2 al subdirectorio /Mario-Madness",
+          "Un par de cambios para mejorar el soporte de móviles en Mario's Madness",
+          "Home Page añadida. Aunque en este punto, era solo un botón que te llevaba a la página de Mario's Madness"
+        ]
+      },
+      {
+        "version": "1.0.0",
+        "date": "31/07/2024",
+        "title": "Mario's Madness V2 Port Webpage",
+        "tag": {
+          "text": "Lanzamiento",
+          "backgroundColor": "#bd2eff",
+          "textColor": "#FFFFFF"
+        },
+        "changes": [
+          "Contenía, como una página, el port de Mario's Madness V2. Eso era todo el Funky Atlas en ese momento"
+        ]
+      }
+    ]
+  }
+}

@@ -210,13 +210,17 @@ async function init() {
         footerNavigation: data.footerNavigation || defaultData?.footerNavigation || [],
         socialLinks: data.socialLinks || defaultData?.socialLinks || [],
         cards: data.cards || [],
-        textpage: data.textpage || null
+        textpage: data.textpage || null,
+        updatelog: data.updatelog || null
     };
     
     populateNav(final.topNavigation);
     
     const wrapper = document.querySelector('.content-wrapper');
-    if (final.textpage) {
+    if (final.updatelog) {
+        wrapper.classList.add('textpage-active');
+        populateUpdateLog(final.updatelog);
+    } else if (final.textpage) {
         wrapper.classList.add('textpage-active');
         populateText(final.textpage);
     } else {
@@ -547,6 +551,175 @@ function createSection(section) {
     }
     
     return div;
+}
+
+// Populate update log
+function populateUpdateLog(updatelog) {
+    const container = document.getElementById('textPageContainer');
+    container.innerHTML = '';
+    
+    document.getElementById('cardsWrapper').style.display = 'none';
+    document.getElementById('textpageWrapper').style.display = 'block';
+    
+    if (!updatelog || !updatelog.updates || !Array.isArray(updatelog.updates)) {
+        container.innerHTML = '<div class="error-message">No update log content found</div>';
+        return;
+    }
+    
+    // Create the main update log layout
+    const updateLogWrapper = document.createElement('div');
+    updateLogWrapper.className = 'update-log-wrapper';
+    
+    // Create sidebar for versions
+    const sidebar = document.createElement('div');
+    sidebar.className = 'update-log-sidebar';
+    
+    const sidebarTitle = document.createElement('h3');
+    sidebarTitle.className = 'sidebar-title';
+    sidebarTitle.textContent = 'Versions';
+    sidebar.appendChild(sidebarTitle);
+    
+    const versionList = document.createElement('div');
+    versionList.className = 'version-list';
+    
+    // Create main content area
+    const mainContent = document.createElement('div');
+    mainContent.className = 'update-log-content';
+    
+    // Populate version list and set up click handlers
+    updatelog.updates.forEach((update, index) => {
+        const versionItem = createVersionItem(update, index === 0);
+        versionList.appendChild(versionItem);
+        
+        // Add click handler
+        versionItem.addEventListener('click', () => {
+            // Remove active class from all items
+            document.querySelectorAll('.version-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // Add active class to clicked item
+            versionItem.classList.add('active');
+            // Display this version's content
+            displayUpdateContent(update, mainContent);
+        });
+    });
+    
+    sidebar.appendChild(versionList);
+    updateLogWrapper.appendChild(sidebar);
+    updateLogWrapper.appendChild(mainContent);
+    
+    // Display the first update by default
+    if (updatelog.updates.length > 0) {
+        displayUpdateContent(updatelog.updates[0], mainContent);
+    }
+    
+    container.appendChild(updateLogWrapper);
+    setupTextInteractions();
+}
+
+// Create version item for sidebar
+function createVersionItem(update, isActive = false) {
+    const item = document.createElement('div');
+    item.className = `version-item ${isActive ? 'active' : ''}`;
+    
+    const versionHeader = document.createElement('div');
+    versionHeader.className = 'version-header';
+    
+    const version = document.createElement('div');
+    version.className = 'version-number';
+    version.textContent = update.version || 'Unknown';
+    versionHeader.appendChild(version);
+    
+    if (update.tag) {
+        const tag = document.createElement('div');
+        tag.className = 'version-tag';
+        tag.textContent = update.tag.text;
+        tag.style.backgroundColor = update.tag.backgroundColor || '#ff4444';
+        tag.style.color = update.tag.textColor || '#FFFFFF';
+        versionHeader.appendChild(tag);
+    }
+    
+    item.appendChild(versionHeader);
+    
+    const date = document.createElement('div');
+    date.className = 'version-date';
+    date.textContent = update.date || '';
+    item.appendChild(date);
+    
+    return item;
+}
+
+// Display update content in main area
+function displayUpdateContent(update, container) {
+    container.innerHTML = '';
+    
+    const content = document.createElement('div');
+    content.className = 'update-content';
+    
+    // Header with version and tag
+    const header = document.createElement('div');
+    header.className = 'update-content-header';
+    
+    const versionInfo = document.createElement('div');
+    versionInfo.className = 'update-version-info';
+    
+    const version = document.createElement('h2');
+    version.className = 'update-content-version';
+    version.textContent = update.version || 'Unknown Version';
+    versionInfo.appendChild(version);
+    
+    const date = document.createElement('div');
+    date.className = 'update-content-date';
+    date.textContent = update.date || '';
+    versionInfo.appendChild(date);
+    
+    header.appendChild(versionInfo);
+    
+    if (update.tag) {
+        const tag = document.createElement('div');
+        tag.className = 'update-content-tag';
+        tag.textContent = update.tag.text;
+        tag.style.backgroundColor = update.tag.backgroundColor || '#ff4444';
+        tag.style.color = update.tag.textColor || '#FFFFFF';
+        header.appendChild(tag);
+    }
+    
+    content.appendChild(header);
+    
+    // Title
+    if (update.title) {
+        const title = document.createElement('h3');
+        title.className = 'update-content-title';
+        title.textContent = update.title;
+        content.appendChild(title);
+    }
+    
+    // Changes list
+    if (update.changes && Array.isArray(update.changes) && update.changes.length > 0) {
+        const changesList = document.createElement('ul');
+        changesList.className = 'update-content-changes';
+        
+        update.changes.forEach(change => {
+            const listItem = document.createElement('li');
+            listItem.className = 'update-content-change';
+            listItem.innerHTML = processText(change);
+            changesList.appendChild(listItem);
+        });
+        
+        content.appendChild(changesList);
+    }
+    
+    container.appendChild(content);
+}
+
+// Create update entry (legacy function - now unused but kept for compatibility)
+function createUpdateEntry(update) {
+    // This function is no longer used with the new sidebar layout
+    // Kept for potential future compatibility
+    const entry = document.createElement('div');
+    entry.className = 'update-entry-legacy';
+    entry.textContent = 'Legacy function - use new sidebar layout';
+    return entry;
 }
 
 // Process text formatting

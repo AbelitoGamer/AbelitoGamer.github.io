@@ -41,9 +41,9 @@
             ]
         },
         {
-            "title": "About",
+            "title": "Update Log",
             "icon": "fas fa-info-circle",
-            "json": "about.json"
+            "json": "updatelog.json"
         }
     ],
     "footerNavigation": [
@@ -52,8 +52,8 @@
             "json": "index.json"
         },
         {
-            "title": "About",
-            "json": "about.json"
+            "title": "Update Log",
+            "json": "updatelog.json"
         },
         {
             "title": "Workshop",
