@@ -126,6 +126,13 @@ function generateSpritesheet() {
     const maxFrames = parseInt(elements.frameCountInput.value);
     const targetOpacity = parseInt(elements.targetOpacityInput.value);
     const isReversed = elements.reverseCheckbox.checked;
+    
+    // Special case for single frame - just apply the target opacity
+    if (maxFrames === 1) {
+        generateSingleFrame(targetOpacity);
+        return;
+    }
+    
     const startOpacity = isReversed ? targetOpacity : 100;
     const endOpacity = isReversed ? 100 : targetOpacity;
     
@@ -178,6 +185,27 @@ function generateSpritesheet() {
     };
     
     drawNextFrame(0);
+}
+
+function generateSingleFrame(opacity) {
+    // Create a single canvas for the frame
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = inputImage.width;
+    canvas.height = inputImage.height;
+    
+    // Draw the image with the specified opacity
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(inputImage, 0, 0);
+    
+    // Apply opacity mask
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.fillStyle = `rgba(0, 0, 0, ${opacity / 100})`;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over';
+    
+    // Finalize with frame count of 1
+    finalizeSpritesheet(canvas, 1);
 }
 
 function finalizeSpritesheet(canvas, frameCount) {
