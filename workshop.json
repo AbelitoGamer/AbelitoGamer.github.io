@@ -11,7 +11,12 @@
             "image": "Resources/images/Banner_FtoF.png",
             "backgroundImage": "Resources/images/Banner_FtoF.png",
             "link": "FunkinToFunky/FunkinToFunky.html",
-            "description": "Usa un XML y un Spritesheet en el atlas texture extractor, y luego usa el .zip de resultado aqui dentro. Esta pagina automaticamente acomodara cada imagen en un conveniente spritesheet listo para usar dentro de FMM"
+            "description": "Convierte .ZIP's con frames dentro o XML's + Spritesheets a el formato que Funky Maker: Mobile! acepta en el editor.",
+                "tag": {
+                "text": "Update",
+                "backgroundColor": "#6bff7f",
+                "textColor": "#FFFFFF"
+            }
         },
         {
             "title": "Fade-inator 3000",
