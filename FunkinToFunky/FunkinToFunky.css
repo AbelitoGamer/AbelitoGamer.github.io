@@ -33,6 +33,52 @@
     align-items: center;
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bpm-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+}
+
+.bpm-control label {
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+.bpm-control input {
+    width: 60px;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.bpm-control input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.bpm-control input::-webkit-outer-spin-button,
+.bpm-control input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bpm-control input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
 .panel-header h3 {
     margin: 0;
     font-size: 1.1rem;
@@ -324,6 +370,157 @@
     display: none;
 }
 
+/* Animation container scrollbar styling */
+.preview-animation-container {
+    /* Hide vertical scrollbar */
+    overflow-y: hidden;
+    transition: height 0.3s ease, max-height 0.3s ease;
+}
+
+/* Flexbox layout for animation previews to save space */
+.result-content {
+    padding: 1.5rem;
+    color: white;
+    text-align: center;
+    background: rgba(30, 30, 60, 0.4);
+    border-radius: 4px;
+    margin: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Flexbox layout for better space utilization */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    text-align: left;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.spritesheet-preview {
+    background: rgba(20, 20, 40, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Flexible sizing for side-by-side display */
+    flex: 0 1 calc(50% - 0.75rem); /* Two columns by default */
+    min-width: 350px; /* Minimum width to prevent too narrow cards */
+    max-width: 100%;
+    transition: all 0.3s ease;
+}
+
+.spritesheet-preview:hover {
+    background: rgba(20, 20, 40, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* When showing spritesheet, force full width */
+.spritesheet-preview.spritesheet-mode {
+    flex: 1 1 100%; /* Take full width when showing spritesheet */
+    min-width: 100%;
+}
+
+.animation-name {
+    margin: 0 0 1rem 0;
+    color: #ff6b6b;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.preview-animation-container::-webkit-scrollbar {
+    height: 8px; /* Height of horizontal scrollbar */
+}
+
+.preview-animation-container::-webkit-scrollbar-track {
+    background: rgba(20, 20, 40, 0.6);
+    border-radius: 4px;
+}
+
+.preview-animation-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.preview-animation-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+}
+
+/* For Firefox */
+.preview-animation-container {
+    scrollbar-width: thin;
+    scrollbar-color: #ff6b6b rgba(20, 20, 40, 0.6);
+}
+
+/* View toggle button styles */
+.view-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.view-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Beat control styles */
+.animation-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: rgba(20, 20, 40, 0.3);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.beat-control-btn {
+    background: #ff6b6b;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.beat-control-btn:hover:not(:disabled) {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+.beat-control-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.beats-display {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
 /* Ensure proper spacing for footer */
 .customContentContainer {
     padding-bottom: 2rem;
@@ -341,6 +538,13 @@
     
     .panel-header {
         padding: 0.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .header-controls {
+        justify-content: center;
     }
     
     .drop-zone {
@@ -357,5 +561,75 @@
     
     .dual-upload-container .drop-zone {
         min-height: 120px;
+    }
+    
+    /* Single column layout for mobile */
+    .result-content {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .spritesheet-preview {
+        flex: 1 1 100%; /* Single column on mobile */
+        min-width: 100%;
+        padding: 0.8rem;
+    }
+    
+    /* Force proper container sizing on mobile */
+    .preview-animation-container {
+        height: 120px !important;
+        min-height: 120px !important;
+        max-height: 200px !important;
+    }
+    
+    /* Override inline styles for mobile - animation mode */
+    .spritesheet-preview:not(.spritesheet-mode) .preview-animation-container {
+        height: 120px !important;
+        min-height: 120px !important;
+        max-height: 120px !important;
+    }
+    
+    /* Override inline styles for mobile - spritesheet mode */
+    .spritesheet-preview.spritesheet-mode .preview-animation-container {
+        height: auto !important;
+        min-height: 120px !important;
+        max-height: 250px !important;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .bpm-control {
+        justify-content: center;
+    }
+}
+
+/* Very small screens only - stack animation controls */
+@media (max-width: 480px) {
+    .animation-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .beats-controls {
+        order: 2;
+    }
+}
+
+/* Medium screens - still two columns */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .spritesheet-preview {
+        flex: 0 1 calc(50% - 0.75rem);
+        min-width: 300px;
+    }
+}
+
+/* Large screens - three columns */
+@media (min-width: 1400px) {
+    .spritesheet-preview {
+        flex: 0 1 calc(33.333% - 1rem);
+        min-width: 280px;
     }
 }

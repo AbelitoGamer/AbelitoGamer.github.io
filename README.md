@@ -1,4 +1,4 @@
-# AbelitoGamer.github.io
+# Funky Atlas
 > [!IMPORTANT]
 > Esta pagina no esta asociada con el creador de Funky Maker: Mobile, King GC
 > Ni con los creadores de los mods originales de los cuales se han creado ports.

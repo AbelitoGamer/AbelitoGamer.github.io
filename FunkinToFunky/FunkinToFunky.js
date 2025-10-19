@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         resultPanel: document.getElementById('result-panel'),
         downloadButton: document.getElementById('download-again'),
         generateButton: document.getElementById('generate-button'),
-        resultContent: document.querySelector('.result-content')
+        resultContent: document.querySelector('.result-content'),
+        globalBpmInput: document.getElementById('global-bpm')
     };
 
     // State variables
@@ -39,7 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
         currentZipFile: null,
         currentPngFile: null,
         currentXmlFile: null,
-        inputMethod: 'zip' // 'zip' or 'spritesheet'
+        inputMethod: 'zip', // 'zip' or 'spritesheet'
+        globalBpm: 100,
+        allAnimationCanvases: [] // Track all animation canvases for global BPM control
     };
 
     // Initialize UI
@@ -80,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Generate and download buttons
         elements.generateButton.addEventListener('click', processFiles);
         elements.downloadButton?.addEventListener('click', downloadFile);
+
+        // Global BPM control
+        elements.globalBpmInput?.addEventListener('input', handleGlobalBpmChange);
 
         // Prevent file input reset
         elements.zipFileInput.addEventListener('click', (e) => e.stopPropagation());
@@ -224,6 +230,21 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.progressContainer.style.display = 'none';
         elements.progressBar.style.width = '0%';
         elements.progressBar.classList.remove('bg-success', 'bg-danger');
+        
+        // Clear all animation canvases
+        state.allAnimationCanvases = [];
+    }
+
+    function handleGlobalBpmChange() {
+        const newBpm = parseInt(elements.globalBpmInput.value) || 100;
+        state.globalBpm = newBpm;
+        
+        // Update all active animations with new BPM
+        state.allAnimationCanvases.forEach(canvas => {
+            if (canvas.updateAnimationSpeed && canvas.currentBeatValue) {
+                canvas.updateAnimationSpeed(canvas.currentBeatValue);
+            }
+        });
     }
 
     function downloadFile() {
@@ -646,7 +667,9 @@ document.addEventListener('DOMContentLoaded', function() {
             url: previewUrl,
             frames: 1,
             width: img.width,
-            height: img.height
+            height: img.height,
+            frameWidth: img.width,
+            frameHeight: img.height
         };
     }
 
@@ -743,7 +766,9 @@ document.addEventListener('DOMContentLoaded', function() {
             url: URL.createObjectURL(blob),
             frames: frameCount,
             width,
-            height
+            height,
+            frameWidth: Math.round(width / frameCount),
+            frameHeight: height
         };
     }
 
@@ -794,33 +819,270 @@ document.addEventListener('DOMContentLoaded', function() {
     function createPreviewElement(preview) {
         const element = document.createElement('div');
         element.className = 'spritesheet-preview';
-        element.style.marginBottom = '20px';
         
         const nameElement = document.createElement('h3');
         nameElement.className = 'animation-name';
         nameElement.textContent = preview.name;
         element.appendChild(nameElement);
         
+        // Controls container
+        const controlsContainer = document.createElement('div');
+        controlsContainer.className = 'animation-controls';
+        Object.assign(controlsContainer.style, {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '10px',
+            marginBottom: '10px',
+            padding: '8px',
+            backgroundColor: 'rgba(20, 20, 40, 0.3)',
+            borderRadius: '4px',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
+        });
+        
+        // Left side - View toggle
+        const viewToggleContainer = document.createElement('div');
+        viewToggleContainer.style.display = 'flex';
+        viewToggleContainer.style.alignItems = 'center';
+        viewToggleContainer.style.gap = '8px';
+        
+        const viewToggleBtn = document.createElement('button');
+        viewToggleBtn.innerHTML = '<i class="fas fa-image"></i>';
+        viewToggleBtn.className = 'view-toggle-btn';
+        viewToggleBtn.title = 'Mostrar spritesheet completo';
+        Object.assign(viewToggleBtn.style, {
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white',
+            width: '30px',
+            height: '30px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.8rem',
+            transition: 'all 0.2s ease'
+        });
+        
+        viewToggleContainer.appendChild(viewToggleBtn);
+        controlsContainer.appendChild(viewToggleContainer);
+        
+        // Center - Beats controls
+        const beatsContainer = document.createElement('div');
+        beatsContainer.className = 'beats-controls';
+        beatsContainer.style.display = 'flex';
+        beatsContainer.style.alignItems = 'center';
+        beatsContainer.style.gap = '8px';
+        
+        const beatsLabel = document.createElement('span');
+        beatsLabel.textContent = 'Beats:';
+        beatsLabel.style.color = 'white';
+        beatsLabel.style.fontSize = '0.9rem';
+        beatsContainer.appendChild(beatsLabel);
+        
+        // Decrease button
+        const decreaseBtn = document.createElement('button');
+        decreaseBtn.innerHTML = '<i class="fas fa-minus"></i>';
+        decreaseBtn.className = 'beat-control-btn';
+        Object.assign(decreaseBtn.style, {
+            background: '#ff6b6b',
+            border: 'none',
+            color: 'white',
+            width: '30px',
+            height: '30px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.8rem'
+        });
+        
+        // Beats display
+        const beatsDisplay = document.createElement('span');
+        beatsDisplay.className = 'beats-display';
+        beatsDisplay.textContent = '1';
+        Object.assign(beatsDisplay.style, {
+            color: 'white',
+            fontSize: '1rem',
+            fontWeight: 'bold',
+            minWidth: '30px',
+            textAlign: 'center'
+        });
+        
+        // Increase button
+        const increaseBtn = document.createElement('button');
+        increaseBtn.innerHTML = '<i class="fas fa-plus"></i>';
+        increaseBtn.className = 'beat-control-btn';
+        Object.assign(increaseBtn.style, {
+            background: '#ff6b6b',
+            border: 'none',
+            color: 'white',
+            width: '30px',
+            height: '30px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '0.8rem'
+        });
+        
+        beatsContainer.appendChild(decreaseBtn);
+        beatsContainer.appendChild(beatsDisplay);
+        beatsContainer.appendChild(increaseBtn);
+        controlsContainer.appendChild(beatsContainer);
+        
+        // Right side spacer for balance
+        const spacer = document.createElement('div');
+        spacer.style.width = '30px'; // Same width as toggle button for balance
+        controlsContainer.appendChild(spacer);
+        element.appendChild(controlsContainer);
+        
+        // Animation container
         const container = document.createElement('div');
-        container.className = 'preview-image-container';
+        container.className = 'preview-animation-container';
         Object.assign(container.style, {
             width: '100%',
             height: '140px',
             backgroundColor: 'rgba(20, 20, 40, 0.3)',
-            overflow: 'auto',
             borderRadius: '4px',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             display: 'flex',
             alignItems: 'center',
-            padding: '10px'
+            justifyContent: 'center',
+            padding: '10px',
+            overflow: 'hidden' // Will be changed to 'auto' for spritesheet view
         });
         
-        const img = document.createElement('img');
-        img.src = preview.url;
-        img.alt = `${preview.name} preview`;
-        img.style.maxHeight = '120px';
+        // Create animated canvas instead of static image
+        if (preview.frames > 1) {
+            let isAnimatedView = true;
+            let animationCanvas = null;
+            let staticImg = null;
+            
+            // Create both views
+            const createViews = () => {
+                // Create animated canvas
+                animationCanvas = createAnimatedPreview(preview);
+                
+                // Create static image
+                staticImg = document.createElement('img');
+                staticImg.src = preview.url;
+                staticImg.alt = `${preview.name} spritesheet`;
+                staticImg.style.maxHeight = '120px';
+                staticImg.style.height = 'auto';
+                staticImg.style.width = 'auto';
+                staticImg.style.display = 'none'; // Hidden by default
+                staticImg.style.objectFit = 'contain';
+                staticImg.style.objectPosition = 'left center';
+            };
+            
+            // Toggle between views
+            const toggleView = () => {
+                if (isAnimatedView) {
+                    // Switch to static spritesheet view
+                    animationCanvas.style.display = 'none';
+                    staticImg.style.display = 'block';
+                    beatsContainer.style.display = 'none';
+                    viewToggleBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    viewToggleBtn.title = 'Mostrar animación';
+                    viewToggleBtn.style.background = '#4ecdc4';
+                    
+                    // Add spritesheet mode class to the preview element
+                    element.classList.add('spritesheet-mode');
+                    
+                    // Enable horizontal scrolling for spritesheet view
+                    container.style.overflowX = 'auto';
+                    container.style.overflowY = 'hidden';
+                    container.style.justifyContent = 'flex-start';
+                    container.style.alignItems = 'center';
+                    
+                    // Expand container for spritesheet mode
+                    container.style.height = 'auto';
+                    container.style.minHeight = '140px';
+                    container.style.maxHeight = '300px';
+                    
+                    isAnimatedView = false;
+                } else {
+                    // Switch to animated view
+                    animationCanvas.style.display = 'block';
+                    staticImg.style.display = 'none';
+                    beatsContainer.style.display = 'flex';
+                    viewToggleBtn.innerHTML = '<i class="fas fa-image"></i>';
+                    viewToggleBtn.title = 'Mostrar spritesheet completo';
+                    viewToggleBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+                    
+                    // Remove spritesheet mode class from the preview element
+                    element.classList.remove('spritesheet-mode');
+                    
+                    // Reset to centered view for animation
+                    container.style.overflow = 'hidden';
+                    container.style.justifyContent = 'center';
+                    container.style.alignItems = 'center';
+                    
+                    // Compact container for animation mode
+                    container.style.height = '140px';
+                    container.style.minHeight = 'auto';
+                    container.style.maxHeight = 'none';
+                    
+                    isAnimatedView = true;
+                }
+            };
+            
+            // Set up view toggle
+            viewToggleBtn.addEventListener('click', toggleView);
+            
+            // Create both views
+            createViews();
+            container.appendChild(animationCanvas);
+            container.appendChild(staticImg);
+            
+            // Set up beat controls
+            const beatValues = [0.5, 1, 2, 3, 4];
+            let currentBeatIndex = 1; // Start at 1 (value = 1)
+            
+            const updateAnimation = () => {
+                const beatValue = beatValues[currentBeatIndex];
+                beatsDisplay.textContent = beatValue.toString();
+                updateAnimationSpeed(animationCanvas, beatValue);
+            };
+            
+            decreaseBtn.addEventListener('click', () => {
+                if (currentBeatIndex > 0) {
+                    currentBeatIndex--;
+                    updateAnimation();
+                }
+                decreaseBtn.disabled = currentBeatIndex === 0;
+                increaseBtn.disabled = false;
+            });
+            
+            increaseBtn.addEventListener('click', () => {
+                if (currentBeatIndex < beatValues.length - 1) {
+                    currentBeatIndex++;
+                    updateAnimation();
+                }
+                increaseBtn.disabled = currentBeatIndex === beatValues.length - 1;
+                decreaseBtn.disabled = false;
+            });
+            
+            // Initial state
+            decreaseBtn.disabled = currentBeatIndex === 0;
+            increaseBtn.disabled = currentBeatIndex === beatValues.length - 1;
+            
+        } else {
+            // Single frame - show static image
+            const img = document.createElement('img');
+            img.src = preview.url;
+            img.alt = `${preview.name} preview`;
+            img.style.maxHeight = '120px';
+            container.appendChild(img);
+            
+            // Hide controls for single frames
+            controlsContainer.style.display = 'none';
+        }
         
-        container.appendChild(img);
         element.appendChild(container);
         
         const infoText = document.createElement('p');
@@ -834,6 +1096,84 @@ document.addEventListener('DOMContentLoaded', function() {
         
         element.appendChild(infoText);
         return element;
+    }
+
+    function createAnimatedPreview(preview) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Calculate individual frame dimensions
+        const frameWidth = Math.round(preview.width / preview.frames);
+        const frameHeight = preview.height;
+        
+        // Set canvas size to show individual frame
+        canvas.width = frameWidth;
+        canvas.height = frameHeight;
+        canvas.style.maxHeight = '120px';
+        canvas.style.imageRendering = 'pixelated'; // Preserve pixel art quality
+        
+        // Initialize canvas properties
+        canvas.currentBeatValue = 1; // Default beat value
+        
+        // Load the spritesheet image
+        const spritesheetImg = new Image();
+        spritesheetImg.onload = () => {
+            // Start animation
+            let currentFrame = 0;
+            let animationInterval;
+            
+            const animate = (beatValue) => {
+                const bpm = state.globalBpm; // Use global BPM
+                const beatsPerSecond = bpm / 60; // Beats per second
+                const animationDuration = beatValue / beatsPerSecond; // Duration in seconds for full animation
+                const frameDelay = (animationDuration * 1000) / preview.frames; // Milliseconds per frame
+                
+                // Store current beat value for global BPM updates
+                canvas.currentBeatValue = beatValue;
+                
+                if (animationInterval) {
+                    clearInterval(animationInterval);
+                }
+                
+                animationInterval = setInterval(() => {
+                    // Clear canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Calculate source position for current frame
+                    const sourceX = currentFrame * frameWidth;
+                    const sourceY = 0;
+                    
+                    // Draw current frame
+                    ctx.drawImage(
+                        spritesheetImg,
+                        sourceX, sourceY, frameWidth, frameHeight,
+                        0, 0, frameWidth, frameHeight
+                    );
+                    
+                    // Move to next frame
+                    currentFrame = (currentFrame + 1) % preview.frames;
+                }, frameDelay);
+            };
+            
+            // Start with default speed (1 beat)
+            animate(1);
+            
+            // Store animation function for external control
+            canvas.updateAnimationSpeed = animate;
+            
+            // Register canvas for global BPM control
+            state.allAnimationCanvases.push(canvas);
+        };
+        
+        spritesheetImg.src = preview.url;
+        
+        return canvas;
+    }
+    
+    function updateAnimationSpeed(canvas, beatValue) {
+        if (canvas.updateAnimationSpeed) {
+            canvas.updateAnimationSpeed(beatValue);
+        }
     }
 
     function formatPreviewInfo(preview) {

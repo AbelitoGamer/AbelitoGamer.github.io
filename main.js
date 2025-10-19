@@ -3,32 +3,46 @@ let defaultData = null;
 let bgInitialized = false;
 // DATA_SOURCE is declared in index.html
 
+// Cache busting utility
+function addCacheBuster(url) {
+    // Don't add cache buster to external URLs
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url;
+    }
+    
+    // If URL already has a version parameter, don't add timestamp
+    if (url.includes('?v=')) {
+        return url;
+    }
+    
+    // Add timestamp to prevent caching
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}_t=${Date.now()}`;
+}
+
+// Enhanced fetch with cache busting
+async function fetchWithCacheBusting(url, options = {}) {
+    const busteredUrl = addCacheBuster(url);
+    
+    // Add cache control headers
+    const fetchOptions = {
+        ...options,
+        headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+            ...options.headers
+        }
+    };
+    
+    return fetch(busteredUrl, fetchOptions);
+}
+
 // Get the base URL for the site (handles subdirectory hosting)
 function getSiteBaseUrl() {
-    // Get the current path
-    const path = window.location.pathname;
-    
-    // If we're in the root or main index, use the current directory
-    if (path === '/' || path === '/index.html' || path.endsWith('/')) {
-        return window.location.origin + path;
-    }
-    
-    // If we're in a subdirectory (like /FunkinToFunky/FunkinToFunky.html)
-    // we need to find the base directory of the site
-    const pathParts = path.split('/').filter(part => part.length > 0);
-    
-    // If the last part is an HTML file, remove it
-    if (pathParts.length > 0 && pathParts[pathParts.length - 1].endsWith('.html')) {
-        pathParts.pop();
-    }
-    
-    // If we're in a subdirectory, go back to parent
-    if (pathParts.length > 0) {
-        // Go back to the parent directory (the root of the site)
-        return window.location.origin + '/';
-    }
-    
-    return window.location.origin + '/';
+    // For custom domains (like funkyatlas.abelitogamer.com) or username.github.io repos,
+    // the site is served from the root domain
+    return `${window.location.origin}/`;
 }
 
 // Utility function to resolve links relative to site base
@@ -85,7 +99,7 @@ async function fetchData(source, isDefault = false) {
     if (!source) source = DATA_SOURCE;
     
     try {
-        const res = await fetch(source);
+        const res = await fetchWithCacheBusting(source);
         if (!res.ok) {
             if (source !== 'index.json') {
                 console.warn(`Loading ${source} failed, using index.json`);
