@@ -35,3 +35,5 @@ O desde el directorio Update:
 3. Actualiza todos los archivos HTML del proyecto para usar la nueva versión en archivos CSS/JS/JSON
 
 Esto se asegura que siempre se obtenga el contenido mas reciente sin que el cache me quiera trolear mostrando cosas que yo ya modifique.
+
+Esto NO esta relacionado con la version de la pagina que sale en el Update Log, estos se mueven mucho mas frecuentemente y mientras aun estoy haciendo pruebas para refrescar cosas.

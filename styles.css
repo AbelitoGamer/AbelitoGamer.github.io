@@ -155,14 +155,14 @@ body {
 /* Main Content */
 .main-content {
     flex: 1;
-    padding: 2rem 0;
+    padding: 1rem 0;
     overflow: hidden;
     position: relative;
 }
 
 .page-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding: 0 1rem;
 }
 
@@ -194,10 +194,9 @@ body {
 /* Card Container */
 .cards-wrapper {
     overflow-x: auto;
-    padding: 2rem 1rem;
+    padding: 0.5rem 1rem 1.5rem 1rem;
     scrollbar-width: thin;
     scrollbar-color: #ff4444 #2b1055;
-    scroll-behavior: smooth;
 }
 
 .cards-wrapper::-webkit-scrollbar {

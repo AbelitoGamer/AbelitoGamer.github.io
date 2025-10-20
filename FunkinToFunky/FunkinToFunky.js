@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         progressContainer: document.getElementById('progress-container'),
         statusText: document.getElementById('status-text'),
         removeDuplicatesCheckbox: document.getElementById('remove-duplicates'),
+        addDuplicatesOption: document.getElementById('add-duplicates-option'),
+        addDuplicateFramesCheckbox: document.getElementById('add-duplicate-frames'),
+        duplicateFramesCountInput: document.getElementById('duplicate-frames-count'),
         resultPanel: document.getElementById('result-panel'),
         downloadButton: document.getElementById('download-again'),
         generateButton: document.getElementById('generate-button'),
@@ -86,6 +89,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Global BPM control
         elements.globalBpmInput?.addEventListener('input', handleGlobalBpmChange);
+
+        // Toggle add duplicates option visibility
+        elements.removeDuplicatesCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                elements.addDuplicatesOption.style.display = 'flex';
+            } else {
+                elements.addDuplicatesOption.style.display = 'none';
+                elements.addDuplicateFramesCheckbox.checked = false;
+            }
+        });
 
         // Prevent file input reset
         elements.zipFileInput.addEventListener('click', (e) => e.stopPropagation());
@@ -505,14 +518,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        // Add duplicate frames at the end if requested
+        if (shouldRemoveDuplicates && elements.addDuplicateFramesCheckbox.checked && uniqueImages.length > 0) {
+            const lastFrame = uniqueImages[uniqueImages.length - 1];
+            const duplicateCount = parseInt(elements.duplicateFramesCountInput.value) || 6;
+            
+            for (let i = 0; i < duplicateCount; i++) {
+                uniqueImages.push(lastFrame);
+            }
+        }
+        
         const maxWidth = Math.max(...uniqueImages.map(img => img.width));
         const maxHeight = Math.max(...uniqueImages.map(img => img.height));
 
         // Create spritesheet
-        const { blob, canvas } = await createSpritesheet(uniqueImages, maxWidth, maxHeight);
+        const result = await createSpritesheet(uniqueImages, maxWidth, maxHeight);
+        const blob = result.blob;
+        const canvas = result.canvas;
         newZip.file(`${animName}.png`, blob);
+        const previewUrl = URL.createObjectURL(blob);
+        const fileExtension = 'png';
         
-        const preview = createSpritesheetPreview(animName, blob, uniqueImages.length, canvas.width, canvas.height);
+        const preview = createPreviewObject(animName, previewUrl, uniqueImages.length, canvas.width, canvas.height, fileExtension);
 
         return { preview, duplicatesRemoved };
     }
@@ -657,6 +684,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function processSingleImage(singleImage, newZip) {
         const blob = await singleImage.entry.async('blob');
         const baseName = singleImage.name.slice(0, -4);
+        
         newZip.file(`${baseName}.png`, blob);
         
         const img = await createImageBitmap(blob);
@@ -669,7 +697,8 @@ document.addEventListener('DOMContentLoaded', function() {
             width: img.width,
             height: img.height,
             frameWidth: img.width,
-            frameHeight: img.height
+            frameHeight: img.height,
+            format: 'png'
         };
     }
 
@@ -704,9 +733,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxWidth = Math.max(...images.map(img => img.width));
         const maxHeight = Math.max(...images.map(img => img.height));
 
-        const { blob, canvas } = await createSpritesheet(images, maxWidth, maxHeight);
+        // Create spritesheet
+        const result = await createSpritesheet(images, maxWidth, maxHeight);
+        const blob = result.blob;
+        const canvas = result.canvas;
         newZip.file(`${animName}.png`, blob);
-        const preview = createSpritesheetPreview(animName, blob, images.length, canvas.width, canvas.height);
+        const previewUrl = URL.createObjectURL(blob);
+        const fileExtension = 'png';
+
+        const preview = createPreviewObject(animName, previewUrl, images.length, canvas.width, canvas.height, fileExtension);
 
         return { preview, duplicatesRemoved };
     }
@@ -768,7 +803,21 @@ document.addEventListener('DOMContentLoaded', function() {
             width,
             height,
             frameWidth: Math.round(width / frameCount),
-            frameHeight: height
+            frameHeight: height,
+            format: 'png'
+        };
+    }
+
+    function createPreviewObject(animName, url, frameCount, width, height, format) {
+        return {
+            name: animName,
+            url: url,
+            frames: frameCount,
+            width,
+            height,
+            frameWidth: Math.round(width / frameCount),
+            frameHeight: height,
+            format: format
         };
     }
 
@@ -978,9 +1027,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 staticImg.style.objectFit = 'contain';
                 staticImg.style.objectPosition = 'left center';
             };
-            
-            // Toggle between views
-            const toggleView = () => {
+                // Toggle between views
+                const toggleView = () => {
                 if (isAnimatedView) {
                     // Switch to static spritesheet view
                     animationCanvas.style.display = 'none';
@@ -1177,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function formatPreviewInfo(preview) {
-        const frameWidth = preview.frames > 1 ? Math.round(preview.width / preview.frames) : preview.width;
+        const frameWidth = preview.frameWidth;
         
         if (preview.frames > 1) {
             return `${preview.frames} frames, Tamaño de cada frame: ${frameWidth}×${preview.height}, Tamaño del spritesheet: ${preview.width}×${preview.height}`;

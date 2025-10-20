@@ -142,6 +142,10 @@
     color: white;
 }
 
+.form-check:first-of-type {
+    margin-bottom: 0.5rem;
+}
+
 .form-check-input {
     margin-right: 0.5rem;
     width: 18px;
@@ -153,6 +157,37 @@
 .form-check-label {
     color: white;
     cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.form-check-input:checked + label {
+    color: #4ecdc4;
+    font-weight: bold;
+}
+
+.nested-option {
+    margin-left: 2.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.duplicate-count-input {
+    width: 60px;
+    padding: 0.2rem 0.4rem;
+    border: 2px solid #ff6b6b;
+    border-radius: 4px;
+    background: rgba(30, 30, 60, 0.6);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0.3rem;
+}
+
+.duplicate-count-input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    background: rgba(30, 30, 60, 0.8);
 }
 
 .progress-container {
@@ -303,18 +338,6 @@
     background: linear-gradient(135deg, #b7eb8f, #52c41a);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* GIF format warning message */
-.gif-warning {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: rgba(255, 193, 7, 0.2);
-    border-radius: 4px;
-    font-size: 0.95rem;
-    text-align: center;
-    color: #fff;
-    border-left: 4px solid #ffc107;
 }
 
 .download-button {
