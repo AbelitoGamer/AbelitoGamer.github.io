@@ -8,7 +8,7 @@ order: 3
 
 :::character-card
 name: Molly Smith Anderson
-image: content/Resources/Molly/Molly.png
+image: content\Resources\Molly\Molly.png
 list-aliases:
   - The holy
   - Mo
@@ -40,9 +40,9 @@ collapse-apariciones:
 list-voz:
   - Karla Falcon (Posiblemente)
 grid-iconos:
-  - content/Resources/Molly/MollyInactiveIcon.png
-  - content/Resources/Molly/MollyFocusIcon.png
-  - content/Resources/Molly/MollyLosingIcon.png
+  - content\Resources\Molly\MollyInactiveIcon.png
+  - content\Resources\Molly\MollyFocusIcon.png
+  - content\Resources\Molly\MollyLosingIcon.png
 :::
 
 ## Descripción general

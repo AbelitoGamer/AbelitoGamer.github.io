@@ -8,7 +8,7 @@ order: 2
 
 :::character-card
 name: Abel
-image: content/Resources/Abelito/Abelito.png
+image: content\Resources\Abelito\Abelito.png
 list-aliases:
   - Abelito
   - El resto de sobrenombres solo añaden una palabra extra al final del alias anterior
@@ -42,7 +42,7 @@ collapse-apariciones:
 list-Voz:
   - La de su creador lol
 grid-iconos:
-  - content/Resources/Abelito/AbelitoInactiveIcon.png
+  - content\Resources\Abelito\AbelitoInactiveIcon.png
 :::
 
 ## Descripción general
