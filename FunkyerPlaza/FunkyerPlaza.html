@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funky Atlas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Funkyer Plaza</title>
     <link rel="stylesheet" href="/styles.css?v=1.0.12">
-    <link rel="stylesheet" href="countdown.css?v=1.0.12">
     <link rel="icon" href="/Resources/images/abel.ico">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css?v=1.0.12" rel="stylesheet">
+    <link rel="stylesheet" href="funkyerplaza.css?v=1.0.12">
 </head>
 <body>
     <!-- Scrolling Background -->
@@ -31,41 +34,51 @@
     </div>
 
     <div class="main-content">
-        <div class="page-title">
+        <div class="page-title" style="display: none;">
             <h1 id="pageTitle">Loading...</h1>
             <h2 id="pageSubtitle">Please wait while content loads</h2>
         </div>
 
-        <!-- Countdown content -->
-        <div class="countdown-container">
-            <div class="countdown-card">
-                <div class="card-header">
-                    <i class="fas fa-clock"></i> <span id="eventName">New Year 2026</span>
-                </div>
-                <div class="card-body">
-                    <div class="time-display">
-                        <div class="current-time">
-                            Current time in <span id="eventTzName">Mazatlán</span>: <span class="time-value-display" id="currentEventTime">--:--:--</span>
-                        </div>
-                        <div class="target-time">
-                            Event starts in your timezone: <span class="time-value-display" id="targetLocalTime">--:--:--</span>
-                        </div>
+        <!-- Custom content here -->
+        <div class="customContentContainer">
+            <!-- Wiki Layout -->
+            <div class="wiki-container">
+                <!-- Sidebar Navigation -->
+                <aside class="wiki-sidebar" id="wikiSidebar">
+                    <div class="sidebar-header">
+                        <h3>Navegacion</h3>
+                        <button class="sidebar-toggle" id="sidebarToggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </div>
-                    <div class="countdown" id="countdown">
+                    <div class="sidebar-search">
+                        <input type="text" id="wikiSearch" placeholder="Buscar..." class="wiki-search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <nav class="sidebar-nav" id="sidebarNav">
                         <div class="loading">
                             <div class="loading-spinner"></div>
-                            Loading...
+                            Cargando entradas...
+                        </div>
+                    </nav>
+                </aside>
+
+                <!-- Main Content Area -->
+                <main class="wiki-content" id="wikiContent">
+                    <div class="wiki-content-inner">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            Cargando contenido...
                         </div>
                     </div>
-                    <button id="muteButton" style="display:none; margin-top:10px;" title="Mute/Unmute Music"><i class="fas fa-volume-mute"></i> Mute</button>
-                </div>
+                </main>
             </div>
         </div>
 
-        <!-- Content Container - holds either cards or textpage (for main.js compatibility) -->
+        <!-- Content Container - holds either cards or textpage -->
         <div class="content-wrapper">
             <!-- Cards View -->
-            <div class="cards-wrapper" id="cardsWrapper" style="display:none !important;">
+            <div class="cards-wrapper" id="cardsWrapper">
                 <div class="card-container" id="cardContainer">
                     <!-- Cards will be loaded from JSON -->
                     <div class="loading">
@@ -74,12 +87,13 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Text Page View -->
-            <div class="textpage-wrapper" id="textpageWrapper" style="display:none;">
+            <div class="textpage-wrapper" id="textpageWrapper">
                 <div class="text-page-container" id="textPageContainer">
                     <!-- Text page content will be loaded from JSON -->
                     <div class="loading">
-                       <div class="loading-spinner"></div>
+                        <div class="loading-spinner"></div>
                         Loading content...
                     </div>
                 </div>
@@ -103,16 +117,21 @@
         </div>
     </div>
 
-        <!-- Configuration -->
+    <!-- Configuration - Data source filename -->
     <script>
-        // Must be defined before main.js loads
-        const DATA_SOURCE = 'countdown.json?v=1.0.12';
+        // Default JSON source - set to funkyerplaza.json
+        var DATA_SOURCE = 'funkyerplaza.json?v=1.0.12';
+        // Get any JSON parameter from URL if present
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('json')) {
+            DATA_SOURCE = urlParams.get('json');
+        }
     </script>
-
+    
     <!-- Include the main JavaScript file -->
     <script src="/main.js?v=1.0.12"></script>
-    
-    <!-- Include countdown JavaScript -->
-    <script src="countdown.js?v=1.0.12"></script>
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js?v=1.0.12"></script>
+    <script src="funkyerplaza.js?v=1.0.12"></script>
 </body>
 </html>
