@@ -18,10 +18,10 @@ list-pronombres:
   - They/Them
 text-orientacion: Pansexual
 list-relaciones:
-  - Marcos (Amigo)
+  - ????? (Amigo)
   - Noel (Amigo / Ex-pareja)
   - Merry (Amiga)
-  - Valentina (Ex-pareja)
+  - ????? (Ex-pareja)
   - ????? (Hermano)
 text-afiliacion: TrueStudio
 text-ocupación: Programador
@@ -76,10 +76,9 @@ Después de un poco de introspección, se definió a sí mismo como "Extrovertid
   - Abelito nunca cambiará o desteñirá el color de su pelo por factores externos. Si por ejemplo, el cabello teñido de colores vibrantes está en contra del código de vestimenta de un lugar, no irá bajo ninguna circunstancia.
   - Su memoria no es nada fuera de lo normal, pero al hacer blackmail, es capaz de recordar cosas que todos habían dejado en el olvido.
   - Hacer un cosplay con su atuendo insignia te colocará automáticamente entre sus personas favoritas.
-  - Lo han descubierto múltiples veces haciendo crossdressing, pero después de la sorpresa inicial, le da igual que lo vean.
+  - Lo han cachado haciendo crossdressing.
   - Odia a todo insecto que tenga un remoto parecido a cucarachas. Por ejemplo, grillos.
   - Por más deprimido, agobiado, o enojado que esté, no llevará a cabo ninguna actividad que lo dañe. Es bastante resiliente.
-  - Severamente "Touch Starved"
   - En momentos concretos del año, Abelito cambia su atuendo insignia sin explicación alguna. Algunos de estos son:
     - Durante April Fools, cambia el color tanto de su camiseta como de su cabello a Rojo Vibrante
     - Durante Halloween, viste una camiseta a rayas verticales.
