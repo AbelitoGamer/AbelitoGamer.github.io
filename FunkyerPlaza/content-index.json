@@ -1,6 +1,6 @@
 {
-  "generated": "2025-10-23T05:52:45.813Z",
-  "defaultPage": "Wiki info/Bienvenido.md",
+  "generated": "2025-10-23T08:03:13.083Z",
+  "defaultPage": "WikiInfo/Bienvenido.md",
   "categories": [
     {
       "type": "category",
@@ -25,13 +25,13 @@
     },
     {
       "type": "category",
-      "name": "Wiki info",
-      "folder": "Wiki info",
+      "name": "WikiInfo",
+      "folder": "WikiInfo",
       "items": [
         {
           "type": "page",
           "name": "Bienvenido",
-          "file": "Wiki info/Bienvenido.md",
+          "file": "WikiInfo/Bienvenido.md",
           "icon": null,
           "order": 1
         }
