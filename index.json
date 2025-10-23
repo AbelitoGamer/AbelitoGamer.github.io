@@ -127,6 +127,19 @@
             }
         },
         {
+            "title": "Funkyer Plaza",
+            "image": "Resources/images/Banner_FP.png",
+            "backgroundImage": "Resources/images/Banner_FP.png",
+            "link": "FunkyerPlaza/FunkyerPlaza.html",
+            "description": "Imagina wikipedia, pero en lugar de tener sucesos historicos y gente importante, tiene funkiers y sus personajes. Lo se, una maravilla. ¡Obten tu propia copia de Funkyer Plaza ahora!",
+            "subdued": ["Creditos de todos los ports a @elcalacaschidas105_20740"],
+            "tag": {
+                "text": "New!",
+                "backgroundColor": "#ff4444",
+                "textColor": "#FFFFFF"
+            }
+        },
+        {
             "title": "Abelito's workshop",
             "image": "Resources/images/AbelitoWorkshopBanner.png",
             "backgroundImage": "Resources/images/AbelitoWorkshopBannerDifum.png",

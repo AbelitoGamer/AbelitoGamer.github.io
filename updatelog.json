@@ -8,6 +8,15 @@
   "updatelog": {
     "updates": [
       {
+        "version": "3.5.0",
+        "date": "19/10/2025",
+        "title": "Ahora con mas gente irrelevante",
+        "changes": [
+          "Funkyer Plaza añadido a la pantalla principal",
+          "Si, eso es todo"
+        ]
+      },
+      {
         "version": "3.4.0",
         "date": "19/10/2025",
         "title": "Mesero!!! Más fixes para la MainPage!!! (Ah, y Updates en las páginas de la Workshop)",

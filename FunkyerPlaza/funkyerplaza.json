@@ -1,0 +1,83 @@
+{
+    "siteInfo": {
+        "name": "Funky Atlas",
+        "title": "Funkyer Plaza",
+        "subtitle": "El hogar de las criaturas que orbitan alrededor de la comunidad de FMM gracias a sus creadores",
+        "copyright": "© 2025 Funky Atlas. Contenidos de terceros pertenecen a sus autores."
+    },
+    "topNavigation": [
+        {
+            "title": "Home",
+            "icon": "fas fa-home",
+            "json": "index.json"
+        },
+        {
+            "title": "Ports",
+            "icon": "fas fa-gamepad",
+            "dropdown": [
+                {
+                    "title": "Mario's Madness",
+                    "link": "Mario-Madness/Freeplay.html"
+                },
+                {
+                    "title": "Sonic.exe",
+                    "link": "https://thisisfenix.github.io/Sonic.exe-FMM"
+                }
+            ]
+        },
+        {
+            "title": "Workshop",
+            "icon": "fas fa-tools",
+            "json": "workshop.json",
+            "dropdown": [
+                {
+                    "title": "Funkin to Funky!",
+                    "link": "FunkinToFunky/FunkinToFunky.html"
+                },
+                {
+                    "title": "Fade-inator 3000",
+                    "link": "Fadeinator/Fadeinator3000.html"
+                }
+            ]
+        },
+        {
+            "title": "Update Log",
+            "icon": "fas fa-info-circle",
+            "json": "updatelog.json"
+        }
+    ],
+    "footerNavigation": [
+        {
+            "title": "",
+            "link": ""
+        }
+    ],
+    "socialLinks": [
+        {
+            "title": "Discord",
+            "icon": "fab fa-discord",
+            "link": "https://discord.gg/nw4QMGhCTr"
+        },
+        {
+            "title": "GitHub",
+            "icon": "fab fa-github",
+            "link": "https://github.com/AbelitoGamer"
+        },
+        {
+            "title": "Twitter",
+            "icon": "fab fa-twitter",
+            "link": "https://twitter.com/AbelitoGamerYT"
+        },
+        {
+            "title": "YouTube",
+            "icon": "fab fa-youtube",
+            "link": "https://www.youtube.com/@AbelitoGamer"
+        },
+        {
+            "title": "Ko-fi",
+            "icon": "fa-solid fa-heart",
+            "link": "https://ko-fi.com/abelitogamer"
+        }
+    ],
+    "cards": []
+}
