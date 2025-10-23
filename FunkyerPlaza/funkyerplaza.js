@@ -3,6 +3,13 @@
 let wikiData = null;
 let currentPage = null;
 
+// Utility function to normalize paths for web deployment
+// Converts backslashes to forward slashes (Windows -> Web compatible)
+function normalizePath(path) {
+    if (!path) return path;
+    return path.replace(/\\/g, '/');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('FunkyerPlaza Wiki loaded');
     initializeWiki();
@@ -139,8 +146,11 @@ async function loadWikiPage(pageFile) {
     `;
     
     try {
-        // Fetch markdown file
-        const response = await fetch(`content/${pageFile}?v=` + Date.now());
+        // URL-encode the page file path to handle spaces and special characters
+        const encodedPageFile = pageFile.split('/').map(encodeURIComponent).join('/');
+        
+        // Fetch markdown file with proper encoding
+        const response = await fetch(`content/${encodedPageFile}?v=` + Date.now());
         
         if (!response.ok) {
             throw new Error('Page not found');
@@ -486,7 +496,8 @@ function generateCharacterCard(data) {
         html += '<div class="char-image-tabs">';
         imageForms.forEach((form, index) => {
             const activeClass = index === 0 ? 'active' : '';
-            html += `<button class="char-tab ${activeClass}" onclick="switchCharacterImage(this, '${form.image}')">${form.label}</button>`;
+            const normalizedImage = normalizePath(form.image);
+            html += `<button class="char-tab ${activeClass}" onclick="switchCharacterImage(this, '${normalizedImage}')">${form.label}</button>`;
         });
         html += '</div>';
     }
@@ -494,7 +505,8 @@ function generateCharacterCard(data) {
     // Main image (full width, no padding)
     const defaultImage = imageForms[0]?.image || data.image;
     if (defaultImage) {
-        html += `<img src="${defaultImage}" alt="${data.name || 'Character'}" class="char-card-main-image" id="char-main-image">`;
+        const normalizedImage = normalizePath(defaultImage);
+        html += `<img src="${normalizedImage}" alt="${data.name || 'Character'}" class="char-card-main-image" id="char-main-image">`;
     }
     
     html += '</div>'; // End image container
@@ -664,7 +676,8 @@ function renderCustomField(field) {
                 html += '<div class="char-section-content">';
                 html += '<div class="char-icons-grid">';
                 value.forEach(item => {
-                    html += `<img src="${item}" alt="Icon" class="char-icon-item">`;
+                    const normalizedItem = normalizePath(item);
+                    html += `<img src="${normalizedItem}" alt="Icon" class="char-icon-item">`;
                 });
                 html += '</div>';
                 html += '</div>';
@@ -747,7 +760,7 @@ function processGalleries(markdown) {
             const imgMatch = img.match(/!\[([^\]]*)\]\(([^)]+)\)/);
             if (imgMatch) {
                 const alt = imgMatch[1];
-                const src = imgMatch[2].trim();
+                const src = normalizePath(imgMatch[2].trim());
                 // Use data attribute and add click via event listener instead of inline onclick
                 html += `<img src="${src}" alt="${alt}" class="gallery-image" data-lightbox-src="${src.replace(/"/g, '&quot;')}">`;
             }
