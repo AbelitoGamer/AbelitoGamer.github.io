@@ -233,9 +233,15 @@ async function init() {
     
     // Add click-outside-to-close handler for dropdowns
     document.addEventListener('click', e => {
-        if (!e.target.closest('.dropdown')) {
+        // Check if e.target exists and has the closest method
+        if (e.target && typeof e.target.closest === 'function' && !e.target.closest('.dropdown')) {
+            // Close desktop dropdowns
             document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
                 dropdown.classList.remove('show');
+            });
+            // Close mobile dropdowns
+            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                dropdown.classList.remove('active');
             });
         }
     });
@@ -279,22 +285,44 @@ function populateNav(items) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Get this dropdown element
-                const dropdown = navItem.querySelector('.dropdown-content');
-                const isCurrentlyOpen = dropdown.classList.contains('show');
+                // Check if we're on mobile
+                const isMobile = window.innerWidth <= 768;
                 
-                // Close all other dropdowns
-                document.querySelectorAll('.dropdown-content.show').forEach(openDropdown => {
-                    if (openDropdown !== dropdown) {
-                        openDropdown.classList.remove('show');
+                if (isMobile) {
+                    // Mobile: toggle 'active' class on parent dropdown
+                    const isCurrentlyOpen = navItem.classList.contains('active');
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown.active').forEach(openDropdown => {
+                        if (openDropdown !== navItem) {
+                            openDropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle this dropdown
+                    if (isCurrentlyOpen) {
+                        navItem.classList.remove('active');
+                    } else {
+                        navItem.classList.add('active');
                     }
-                });
-                
-                // Toggle this dropdown (close if open, open if closed)
-                if (isCurrentlyOpen) {
-                    dropdown.classList.remove('show');
                 } else {
-                    dropdown.classList.add('show');
+                    // Desktop: toggle 'show' class on dropdown-content
+                    const dropdown = navItem.querySelector('.dropdown-content');
+                    const isCurrentlyOpen = dropdown.classList.contains('show');
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-content.show').forEach(openDropdown => {
+                        if (openDropdown !== dropdown) {
+                            openDropdown.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle this dropdown
+                    if (isCurrentlyOpen) {
+                        dropdown.classList.remove('show');
+                    } else {
+                        dropdown.classList.add('show');
+                    }
                 }
             });
             
@@ -814,35 +842,6 @@ function setupEvents() {
             }
         }, { passive: false });
     }
-    
-    // Handle dropdowns differently for mobile and desktop
-    document.addEventListener('click', e => {
-        const isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-            // Check if click is on a dropdown toggle
-            const dropdownLink = e.target.closest('.dropdown > a');
-            if (dropdownLink) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Close all other dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                    if (dropdown !== dropdownLink.parentElement) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current dropdown
-                const dropdown = dropdownLink.parentElement;
-                dropdown.classList.toggle('active');
-            } else if (!e.target.closest('.dropdown-content')) {
-                // Close all dropdowns when clicking outside
-                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        }
-    });
     
     // Home navigation
     document.querySelector('.logo').addEventListener('click', () => {
