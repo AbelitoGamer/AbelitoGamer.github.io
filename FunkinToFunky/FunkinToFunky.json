@@ -48,8 +48,16 @@
     ],
     "footerNavigation": [
         {
-            "title": "",
-            "link": ""
+            "title": "Home",
+            "json": "index.json"
+        },
+        {
+            "title": "Update Log",
+            "json": "updatelog.json"
+        },
+        {
+            "title": "Workshop",
+            "json": "workshop.json"
         }
     ],
     "socialLinks": [
