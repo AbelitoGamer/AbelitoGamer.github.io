@@ -10,171 +10,6 @@ function normalizePath(path) {
     return path.replace(/\\/g, '/');
 }
 
-// Parse SUMMARY.md to extract wiki structure (supports nested categories)
-function parseSummaryMarkdown(markdown) {
-    const lines = markdown.split('\n').map(line => line.trimEnd());
-    const structure = {
-        defaultPage: null,
-        categories: [],
-        hiddenSections: [] // Hidden sections like "Rechazados"
-    };
-    
-    let currentSection = null; // Track which section we're in (Indice, Rechazados, etc.)
-    let currentSectionCategories = structure.categories; // Current array to push to
-    const stack = []; // Stack to track parent items at each indent level
-    
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        
-        // Check for "# Default" section
-        if (line.trim() === '# Default') {
-            // Next non-empty line should be the default page link
-            for (let j = i + 1; j < lines.length; j++) {
-                const nextLine = lines[j].trim();
-                if (nextLine && nextLine.startsWith('[')) {
-                    const match = nextLine.match(/\[([^\]]+)\]\(([^)]+)\)/);
-                    if (match) {
-                        structure.defaultPage = match[2]; // Extract file path
-                    }
-                    break;
-                }
-            }
-            continue;
-        }
-        
-        // Check for section headers
-        if (line.trim().startsWith('#') && !line.trim().startsWith('##')) {
-            const sectionName = line.trim().substring(1).trim();
-            
-            if (sectionName === 'Indice') {
-                currentSection = 'indice';
-                currentSectionCategories = structure.categories;
-            } else if (sectionName === 'Rechazados') {
-                currentSection = 'rechazados';
-                const hiddenSection = {
-                    name: sectionName,
-                    categories: [],
-                    hidden: true
-                };
-                structure.hiddenSections.push(hiddenSection);
-                currentSectionCategories = hiddenSection.categories;
-            } else {
-                // Unknown section - skip
-                currentSection = null;
-            }
-            
-            stack.length = 0; // Reset stack for new section
-            continue;
-        }
-        
-        // Skip if not in a recognized section
-        if (!currentSection) continue;
-        
-        const trimmedLine = line.trim();
-        if (!trimmedLine) continue;
-        
-        // Parse list items - support both with and without links
-        if (trimmedLine.startsWith('- ')) {
-            const indentLevel = Math.floor(line.search(/\S/) / 2); // Indent level (2 spaces = 1 level)
-            
-            let item = null;
-            
-            // Try to match link format: - [Title](file.md)
-            const linkMatch = trimmedLine.match(/^- \[([^\]]+)\]\(([^)]+)\)/);
-            if (linkMatch) {
-                item = {
-                    title: linkMatch[1],
-                    file: linkMatch[2],
-                    items: [],
-                    isCategory: false,
-                    section: currentSection // Mark which section this belongs to
-                };
-            } else {
-                // Try to match plain text format: - Category Name
-                const plainMatch = trimmedLine.match(/^- (.+)$/);
-                if (plainMatch) {
-                    item = {
-                        title: plainMatch[1],
-                        file: null, // No file for plain categories
-                        items: [],
-                        isCategory: true, // Plain text items are always categories
-                        section: currentSection
-                    };
-                }
-            }
-            
-            if (item) {
-                // Adjust stack to current indent level
-                stack.length = indentLevel + 1;
-                stack[indentLevel] = item;
-                
-                // Add to appropriate parent
-                if (indentLevel === 0) {
-                    // Top-level category
-                    item.name = item.title;
-                    item.isCategory = true;
-                    currentSectionCategories.push(item);
-                } else {
-                    // Nested item - add to parent
-                    const parent = stack[indentLevel - 1];
-                    if (parent) {
-                        parent.items.push(item);
-                        parent.isCategory = true; // Parent has children, so it's a category
-                    }
-                }
-            }
-        }
-    }
-    
-    console.log('Parsed SUMMARY.md structure:', structure);
-    return structure;
-}
-
-// Parse YAML front matter from markdown content
-function parseFrontMatter(markdown) {
-    const frontMatterRegex = /^---\r?\n([\s\S]*?)\r?\n---/;
-    const match = markdown.match(frontMatterRegex);
-    
-    if (!match) {
-        return {};
-    }
-    
-    const frontMatterText = match[1];
-    const metadata = {};
-    
-    // Parse simple key: value pairs
-    const lines = frontMatterText.split('\n');
-    lines.forEach(line => {
-        const colonIndex = line.indexOf(':');
-        if (colonIndex !== -1) {
-            const key = line.substring(0, colonIndex).trim();
-            const value = line.substring(colonIndex + 1).trim();
-            metadata[key] = value;
-        }
-    });
-    
-    return metadata;
-}
-
-// Fetch and parse front matter from a markdown file
-async function fetchFileFrontMatter(filePath) {
-    try {
-        const encodedPath = filePath.split('/').map(encodeURIComponent).join('/');
-        const response = await fetch(`content/${encodedPath}?v=` + Date.now());
-        
-        if (!response.ok) {
-            console.warn(`Could not fetch front matter for ${filePath}`);
-            return {};
-        }
-        
-        const content = await response.text();
-        return parseFrontMatter(content);
-    } catch (error) {
-        console.warn(`Error fetching front matter for ${filePath}:`, error);
-        return {};
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('FunkyerPlaza Wiki loaded');
     initializeWiki();
@@ -187,22 +22,21 @@ async function initializeWiki() {
         const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
         console.log('Current path:', currentPath);
         console.log('Base path:', basePath);
-        console.log('Attempting to fetch SUMMARY.md');
+        console.log('Attempting to fetch from:', basePath + 'content-index.json');
         
-        // Load wiki structure from SUMMARY.md
-        const response = await fetch('SUMMARY.md?v=' + Date.now());
+        // Load wiki structure from auto-generated index
+        const response = await fetch('content-index.json?v=' + Date.now());
         
         if (!response.ok) {
-            throw new Error(`Failed to fetch SUMMARY.md: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to fetch content-index.json: ${response.status} ${response.statusText}`);
         }
         
-        const summaryText = await response.text();
-        wikiData = parseSummaryMarkdown(summaryText);
+        wikiData = await response.json();
         
         console.log('Loaded wiki structure:', wikiData);
         
-        // Render sidebar navigation (with front matter metadata)
-        await renderSidebar();
+        // Render sidebar navigation
+        renderSidebar();
         
         // Check URL hash for a specific page
         const hash = window.location.hash.substring(1); // Remove the #
@@ -226,9 +60,6 @@ async function initializeWiki() {
         // Listen for hash changes (browser back/forward)
         window.addEventListener('hashchange', handleHashChange);
         
-        // Listen for popstate (browser back/forward with pushState)
-        window.addEventListener('popstate', handleHashChange);
-        
     } catch (error) {
         console.error('Error loading wiki:', error);
         console.error('Error details:', {
@@ -241,14 +72,8 @@ async function initializeWiki() {
                 <h2>Error loading wiki</h2>
                 <p>${error.message}</p>
                 <p>Current URL: ${window.location.href}</p>
-                <p>Please check that SUMMARY.md exists in the FunkyerPlaza folder.</p>
-                <p>The SUMMARY.md file should follow the format:</p>
-                <pre># Default
-[PageName](file.md)
-
-# Indice
-- [Category](category.md)
-  - [Entry](entry.md)</pre>
+                <p>Please check that content-index.json exists in the FunkyerPlaza folder.</p>
+                <p>Run "node Build/build-index.js" from the FunkyerPlaza directory to generate it.</p>
             </div>`;
     }
 }
@@ -257,22 +82,10 @@ function handleHashChange() {
     const hash = window.location.hash.substring(1);
     if (hash) {
         loadWikiPage(hash);
-        updateActiveSidebarItem(hash);
-    } else if (wikiData && wikiData.defaultPage) {
-        // No hash, load default page
-        loadWikiPage(wikiData.defaultPage);
-        updateActiveSidebarItem(wikiData.defaultPage);
-    } else {
-        // No hash and no default page, show welcome
-        showWelcomePage();
-        // Clear active items
-        document.querySelectorAll('.wiki-item').forEach(item => {
-            item.classList.remove('active');
-        });
     }
 }
 
-async function renderSidebar() {
+function renderSidebar() {
     const sidebarNav = document.getElementById('sidebarNav');
     
     if (!wikiData || !wikiData.categories) {
@@ -280,142 +93,55 @@ async function renderSidebar() {
         return;
     }
     
-    sidebarNav.innerHTML = '<div class="loading"><div class="loading-spinner"></div>Cargando metadata...</div>';
-    
-    // Helper function to recursively collect all items (including nested ones)
-    function collectAllItems(items, list = []) {
-        items.forEach(item => {
-            list.push(item);
-            if (item.items && item.items.length > 0) {
-                collectAllItems(item.items, list);
-            }
-        });
-        return list;
-    }
-    
-    // Fetch front matter for all items in parallel (including nested)
-    // But skip categories - they use their title from SUMMARY.md
-    const fetchPromises = [];
-    wikiData.categories.forEach(category => {
-        // Top-level categories always use SUMMARY.md title
-        category.displayTitle = category.title || category.name;
-        
-        if (category.items && category.items.length > 0) {
-            const allItems = collectAllItems(category.items);
-            allItems.forEach(item => {
-                // If this item is a category (has children), use SUMMARY.md title
-                if (item.isCategory) {
-                    item.displayTitle = item.title;
-                    // Don't fetch front matter for categories
-                } else {
-                    // Regular entry - fetch front matter
-                    fetchPromises.push(
-                        fetchFileFrontMatter(item.file).then(frontMatter => {
-                            // Merge front matter into item
-                            item.metadata = frontMatter;
-                            if (frontMatter.title) {
-                                item.displayTitle = frontMatter.title;
-                            } else {
-                                item.displayTitle = item.title; // Fallback to SUMMARY.md title
-                            }
-                            if (frontMatter.icon) {
-                                item.icon = normalizePath(frontMatter.icon);
-                            }
-                        })
-                    );
-                }
-            });
-        }
-    });
-    
-    // Wait for all metadata to be fetched
-    await Promise.all(fetchPromises);
-    
-    // Helper function to render items recursively (supports nested categories)
-    function renderItems(items, container) {
-        items.forEach(item => {
-            // Check if this item is a category (has sub-items) or a regular entry
-            if (item.isCategory && item.items && item.items.length > 0) {
-                // This is a sub-category
-                const subCategoryDiv = document.createElement('div');
-                subCategoryDiv.className = 'wiki-category wiki-subcategory';
-                
-                const subCategoryHeader = document.createElement('div');
-                subCategoryHeader.className = 'category-header';
-                subCategoryHeader.innerHTML = `
-                    <span>${item.displayTitle || item.title}</span>
-                    <i class="fas fa-chevron-down"></i>
-                `;
-                
-                const subCategoryItems = document.createElement('div');
-                subCategoryItems.className = 'category-items';
-                
-                // Recursively render sub-items
-                renderItems(item.items, subCategoryItems);
-                
-                // Toggle functionality
-                subCategoryHeader.addEventListener('click', () => {
-                    subCategoryHeader.classList.toggle('collapsed');
-                    subCategoryItems.classList.toggle('collapsed');
-                });
-                
-                subCategoryDiv.appendChild(subCategoryHeader);
-                subCategoryDiv.appendChild(subCategoryItems);
-                container.appendChild(subCategoryDiv);
-            } else {
-                // This is a regular entry
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'wiki-item';
-                itemDiv.setAttribute('data-page', item.file);
-                
-                // Add icon if provided in front matter
-                if (item.icon) {
-                    const icon = document.createElement('img');
-                    icon.className = 'wiki-item-icon';
-                    icon.src = item.icon;
-                    icon.alt = item.displayTitle || item.title;
-                    icon.loading = 'lazy';
-                    itemDiv.appendChild(icon);
-                }
-                
-                // Add text (use front matter title if available)
-                const textSpan = document.createElement('span');
-                textSpan.className = 'wiki-item-text';
-                textSpan.textContent = item.displayTitle || item.title;
-                itemDiv.appendChild(textSpan);
-                
-                // Click handler
-                itemDiv.addEventListener('click', () => {
-                    loadWikiPage(item.file);
-                    setActiveItem(itemDiv);
-                    window.history.pushState(null, '', `#${item.file}`);
-                });
-                
-                container.appendChild(itemDiv);
-            }
-        });
-    }
-    
-    // Now render the sidebar with metadata
     sidebarNav.innerHTML = '';
     
-    wikiData.categories.forEach((category) => {
+    wikiData.categories.forEach((category, index) => {
         const categoryDiv = document.createElement('div');
         categoryDiv.className = 'wiki-category';
         
         const categoryHeader = document.createElement('div');
         categoryHeader.className = 'category-header';
         categoryHeader.innerHTML = `
-            <span>${category.name || category.title}</span>
+            <span>${category.name}</span>
             <i class="fas fa-chevron-down"></i>
         `;
         
         const categoryItems = document.createElement('div');
         categoryItems.className = 'category-items';
         
-        // Render items (including nested categories)
         if (category.items && category.items.length > 0) {
-            renderItems(category.items, categoryItems);
+            category.items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'wiki-item';
+                itemDiv.setAttribute('data-page', item.file);
+                
+                // Add icon if provided
+                if (item.icon) {
+                    const icon = document.createElement('img');
+                    icon.className = 'wiki-item-icon';
+                    icon.src = item.icon;
+                    icon.alt = item.name;
+                    icon.loading = 'lazy'; // Lazy load images for better mobile performance
+                    itemDiv.appendChild(icon);
+                }
+                
+                // Add text
+                const textSpan = document.createElement('span');
+                textSpan.className = 'wiki-item-text';
+                textSpan.textContent = item.name;
+                itemDiv.appendChild(textSpan);
+                
+                // Click handler
+                itemDiv.addEventListener('click', () => {
+                    loadWikiPage(item.file);
+                    setActiveItem(itemDiv);
+                    
+                    // Update URL hash
+                    window.history.pushState(null, '', `#${item.file}`);
+                });
+                
+                categoryItems.appendChild(itemDiv);
+            });
         }
         
         // Category toggle
@@ -427,80 +153,6 @@ async function renderSidebar() {
         categoryDiv.appendChild(categoryHeader);
         categoryDiv.appendChild(categoryItems);
         sidebarNav.appendChild(categoryDiv);
-    });
-    
-    // Render hidden sections (like "Rechazados")
-    if (wikiData.hiddenSections) {
-        wikiData.hiddenSections.forEach((hiddenSection) => {
-            hiddenSection.categories.forEach((category) => {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'wiki-category hidden-section';
-                categoryDiv.style.display = 'none'; // Hidden by default
-                categoryDiv.dataset.section = hiddenSection.name.toLowerCase();
-                
-                const categoryHeader = document.createElement('div');
-                categoryHeader.className = 'category-header';
-                categoryHeader.innerHTML = `
-                    <span>${category.name || category.title}</span>
-                    <i class="fas fa-chevron-down"></i>
-                `;
-                
-                const categoryItems = document.createElement('div');
-                categoryItems.className = 'category-items';
-                
-                // Render items (including nested categories)
-                if (category.items && category.items.length > 0) {
-                    renderItems(category.items, categoryItems);
-                }
-                
-                // Category toggle
-                categoryHeader.addEventListener('click', () => {
-                    categoryHeader.classList.toggle('collapsed');
-                    categoryItems.classList.toggle('collapsed');
-                });
-                
-                categoryDiv.appendChild(categoryHeader);
-                categoryDiv.appendChild(categoryItems);
-                sidebarNav.appendChild(categoryDiv);
-            });
-        });
-    }
-}
-
-// Function to update visibility of hidden sections based on current page
-function updateHiddenSectionsVisibility(currentPageFile) {
-    if (!wikiData.hiddenSections) return;
-    
-    // Helper to check if a file belongs to a section
-    function fileInSection(file, sectionCategories) {
-        for (const category of sectionCategories) {
-            if (category.file === file) return true;
-            if (category.items && category.items.length > 0) {
-                if (fileInItems(file, category.items)) return true;
-            }
-        }
-        return false;
-    }
-    
-    function fileInItems(file, items) {
-        for (const item of items) {
-            if (item.file === file) return true;
-            if (item.items && item.items.length > 0) {
-                if (fileInItems(file, item.items)) return true;
-            }
-        }
-        return false;
-    }
-    
-    // Check each hidden section
-    wikiData.hiddenSections.forEach((hiddenSection) => {
-        const sectionName = hiddenSection.name.toLowerCase();
-        const isInSection = fileInSection(currentPageFile, hiddenSection.categories);
-        
-        // Show/hide all categories in this section
-        document.querySelectorAll(`.wiki-category.hidden-section[data-section="${sectionName}"]`).forEach(categoryDiv => {
-            categoryDiv.style.display = isInSection ? '' : 'none';
-        });
     });
 }
 
@@ -568,9 +220,6 @@ async function loadWikiPage(pageFile) {
         
         // Update active item in sidebar
         updateActiveSidebarItem(pageFile);
-        
-        // Update hidden sections visibility based on current page
-        updateHiddenSectionsVisibility(pageFile);
         
     } catch (error) {
         console.error('Error loading page:', error);
@@ -645,70 +294,31 @@ function setupSearch() {
             sidebar.classList.remove('collapsed');
         }
         
-        // If search is empty, show everything
-        if (!searchTerm) {
-            document.querySelectorAll('.wiki-item').forEach(item => {
-                item.style.display = '';
-            });
-            document.querySelectorAll('.wiki-category, .wiki-subcategory').forEach(category => {
-                category.style.display = '';
-            });
-            return;
-        }
-        
-        // Search through all items
         document.querySelectorAll('.wiki-item').forEach(item => {
-            const textElement = item.querySelector('.wiki-item-text');
-            if (!textElement) return;
-            
-            const text = textElement.textContent.toLowerCase();
+            const text = item.querySelector('.wiki-item-text').textContent.toLowerCase();
+            const category = item.closest('.wiki-category');
             
             if (text.includes(searchTerm)) {
                 item.style.display = 'flex';
-                
-                // Expand all parent categories/subcategories
-                let parent = item.parentElement;
-                while (parent) {
-                    if (parent.classList.contains('category-items')) {
-                        parent.classList.remove('collapsed');
-                        const header = parent.previousElementSibling;
-                        if (header && header.classList.contains('category-header')) {
-                            header.classList.remove('collapsed');
-                        }
-                    }
-                    parent = parent.parentElement;
+                // Expand category if item matches
+                if (searchTerm) {
+                    category.querySelector('.category-header').classList.remove('collapsed');
+                    category.querySelector('.category-items').classList.remove('collapsed');
                 }
             } else {
                 item.style.display = 'none';
             }
         });
         
-        // Hide categories/subcategories with no visible items
-        function updateCategoryVisibility(category) {
-            const categoryItems = category.querySelector('.category-items');
-            if (!categoryItems) return;
-            
-            // Check for visible items (directly or in subcategories)
-            const visibleItems = categoryItems.querySelectorAll('.wiki-item');
-            let hasVisibleItem = false;
-            
-            visibleItems.forEach(item => {
-                if (item.style.display !== 'none') {
-                    hasVisibleItem = true;
-                }
-            });
-            
-            if (hasVisibleItem) {
-                category.style.display = '';
-            } else {
+        // Hide empty categories
+        document.querySelectorAll('.wiki-category').forEach(category => {
+            const visibleItems = category.querySelectorAll('.wiki-item[style="display: flex"]');
+            if (visibleItems.length === 0 && searchTerm) {
                 category.style.display = 'none';
+            } else {
+                category.style.display = 'block';
             }
-        }
-        
-        // Update visibility for subcategories first (bottom-up)
-        document.querySelectorAll('.wiki-subcategory').forEach(updateCategoryVisibility);
-        // Then update top-level categories
-        document.querySelectorAll('.wiki-category:not(.wiki-subcategory)').forEach(updateCategoryVisibility);
+        });
     });
     
     // Focus search expands sidebar on mobile
@@ -1200,26 +810,6 @@ function processCustomElements(contentDiv) {
             const src = this.getAttribute('data-lightbox-src') || this.src;
             openLightbox(src);
         });
-    });
-    
-    // Intercept internal wiki links (links to .md files)
-    const links = contentDiv.querySelectorAll('a[href]');
-    links.forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Check if it's an internal wiki link (ends with .md and doesn't start with http:// or https://)
-        if (href && href.endsWith('.md') && !href.startsWith('http://') && !href.startsWith('https://')) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Load the wiki page and update the hash
-                loadWikiPage(href);
-                window.history.pushState(null, '', `#${href}`);
-                
-                // Update active sidebar item
-                updateActiveSidebarItem(href);
-            });
-        }
     });
 }
 

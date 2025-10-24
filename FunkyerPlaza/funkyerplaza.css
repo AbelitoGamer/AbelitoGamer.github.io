@@ -83,8 +83,6 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    position: relative;
-    z-index: 1;
 }
 
 .sidebar-header {
@@ -95,7 +93,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
 .sidebar-header h3 {
@@ -206,37 +204,6 @@
     max-height: 0;
 }
 
-/* Subcategories (nested categories) */
-.wiki-subcategory {
-    margin-bottom: 0.25rem;
-    border-left: 2px solid rgba(138, 43, 226, 0.3);
-}
-
-.wiki-subcategory .category-header {
-    padding: 0.75rem 1.5rem;
-    background: rgba(138, 43, 226, 0.15);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
-
-.wiki-subcategory .category-header:hover {
-    background: rgba(138, 43, 226, 0.25);
-}
-
-/* Items inside subcategories should be indented */
-.wiki-subcategory .wiki-item {
-    padding-left: 2.5rem;
-}
-
-.wiki-subcategory .wiki-item:hover {
-    padding-left: 2.75rem;
-}
-
-/* Nested subcategories (categories inside categories) should also be indented */
-.wiki-subcategory .wiki-subcategory {
-    margin-left: 1rem;
-}
-
 /* Wiki Items */
 .wiki-item {
     padding: 0.75rem 1.5rem;
@@ -247,7 +214,6 @@
     align-items: center;
     gap: 1rem;
     border-left: 3px solid transparent;
-    min-height: 56px; /* Reserve space for icon height (40px) + padding */
 }
 
 .wiki-item:hover {
@@ -266,15 +232,10 @@
 
 /* Item Icon */
 .wiki-item-icon {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
     flex-shrink: 0;
-}
-
-/* Reserve icon space even when no icon is present */
-.wiki-item:not(:has(.wiki-item-icon)) .wiki-item-text {
-    margin-left: calc(40px + 1rem); /* Icon width + gap */
 }
 
 .wiki-item-text {
