@@ -1,0 +1,46 @@
+name: Update Cache Version on Push
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.js'
+      - '**.css'
+      - '**.json'
+      - '**.html'
+      - '!Update/**'
+
+jobs:
+  update-cache-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Update cache version
+        run: |
+          cd Update
+          node update-cache-version.js
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Auto-update cache version [skip ci]"
+          git push
