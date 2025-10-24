@@ -1,6 +1,8 @@
 // Global state
 let defaultData = null;
 let bgInitialized = false;
+let globalClickListenerAdded = false;
+let setupEventsCalled = false;
 // DATA_SOURCE is declared in index.html
 
 // Cache busting utility
@@ -231,20 +233,26 @@ async function init() {
     populateFooter(final.footerNavigation);
     populateSocial(final.socialLinks);
     
-    // Add click-outside-to-close handler for dropdowns
-    document.addEventListener('click', e => {
-        // Check if e.target exists and has the closest method
-        if (e.target && typeof e.target.closest === 'function' && !e.target.closest('.dropdown')) {
-            // Close desktop dropdowns
-            document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
-                dropdown.classList.remove('show');
-            });
-            // Close mobile dropdowns
-            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        }
-    });
+    // Add click-outside-to-close handler for dropdowns (only once)
+    if (!globalClickListenerAdded) {
+        globalClickListenerAdded = true;
+        document.addEventListener('click', e => {
+            // Check if e.target exists and has the closest method
+            // Ignore clicks inside the topbar entirely
+            if (e.target && typeof e.target.closest === 'function' && 
+                !e.target.closest('.dropdown') && 
+                !e.target.closest('.topbar')) {
+                // Close desktop dropdowns
+                document.querySelectorAll('.dropdown-content.show').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+                // Close mobile dropdowns
+                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    }
 }
 
 // Populate navigation
@@ -845,6 +853,9 @@ function populateSocial(items) {
 
 // Event listeners
 function setupEvents() {
+    if (setupEventsCalled) return; // Only run once
+    setupEventsCalled = true;
+    
     // Card scrolling
     const wrapper = document.querySelector('.cards-wrapper');
     if (wrapper) {
@@ -857,16 +868,19 @@ function setupEvents() {
     }
     
     // Home navigation
-    document.querySelector('.logo').addEventListener('click', () => {
-        if (DATA_SOURCE !== 'index.json') {
-            const url = new URL(window.location);
-            url.searchParams.delete('json');
-            window.history.pushState({}, '', url);
-            DATA_SOURCE = 'index.json';
-            init();
-            window.scrollTo(0, 0);
-        }
-    });
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', () => {
+            if (DATA_SOURCE !== 'index.json') {
+                const url = new URL(window.location);
+                url.searchParams.delete('json');
+                window.history.pushState({}, '', url);
+                DATA_SOURCE = 'index.json';
+                init();
+                window.scrollTo(0, 0);
+            }
+        });
+    }
 }
 
 // Browser back button
