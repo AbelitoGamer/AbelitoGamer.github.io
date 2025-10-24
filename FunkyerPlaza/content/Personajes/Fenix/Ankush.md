@@ -43,12 +43,10 @@ El menor y único varón de los hermanos Moonred, fue un genio en tecnología y 
 
 ## Apariencia
 
-Una descripción de la apariencia física de tu personaje a detalle. Aquí es donde describes no solo la ropa, sino también mas detalles faciales (como pecas o vello facial) y detalles aun mas generales (Como el estar delgado, o el carecer de alguna extremidad)
 **Ankush** es un joven de complexión media, con una postura relajada pero segura. Suele mantener las manos en los bolsillos, proyectando una actitud tranquila, confiada y algo despreocupada. Su expresión es serena, con una ligera sonrisa que sugiere ironía o calma bajo presión.
 
 ## Personalidad
 
-La personalidad de tu personaje a detalle. Su modo de actuar, formas de hablar, inseguridades, quirks, lo que gustes.
 **Ankush** es tranquilo y reservado, alguien que observa antes de hablar. Su forma de actuar transmite calma, pero también firmeza. No busca llamar la atención; prefiere mantenerse en segundo plano, analizando y entendiendo todo lo que pasa a su alrededor.
 
 Suele expresarse con pocas palabras, y cuando lo hace, su tono es directo y sin rodeos. Tiene un humor sutil, algo seco, que usa para aliviar tensiones sin perder la compostura. Le cuesta abrirse emocionalmente, pero demuestra lo que siente a través de acciones, no de gestos ni palabras.
