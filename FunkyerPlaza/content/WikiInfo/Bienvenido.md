@@ -25,3 +25,8 @@ Haz clic en el nombre de cualquier personaje en la barra lateral para ver su ent
 ## ¿Como añado/actualizo entradas?
 
 Manda tu solicitud de adicion/actualizacion [aqui.](https://forms.gle/BSCdzw3zPhJn1i9g8)
+
+## Aparecieron mas personajes, pero el mio no. Grrrrrrr
+
+Puede ser que simplemente no te haya tocado entrar en esta tanda, o que lo haya rechazado.
+Puedes comprobar las entradas rechazadas [aqui.](Personajes/Anna.md) Si enviaste tu submission, y no aparece ni en la lista principal, ni en la de rechazados, simplemente sigue a espera de que la revise. Se paciente.
