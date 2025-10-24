@@ -73,7 +73,7 @@ De carácter sereno, analítico y reservado, suele actuar con calma incluso en m
 
 ---
 
-![Gpt](content\Resources\\gpt.png)
+![Gpt](content\Resources\gpt.png)
 
 Esta pagina irradia texto generado por ia por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
 -Abelito
