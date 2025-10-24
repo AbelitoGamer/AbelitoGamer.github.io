@@ -81,11 +81,24 @@ En un principio puede actuar un tanto distante, no actuando de manera muy emocio
 ![Molly](content\Resources\Molly\Molly.png)
 ![Molly Chibi](content\Resources\Molly\MollyChibi.png)
 ![Molly Perfil](content\Resources\Molly\MollyPerfil.png)
+![Molly Bandages](content\Resources\Molly\MollyBandages.png)
 ![Molly Barista](content\Resources\Molly\MollyBarista.png)
 ![Molly Pseudo-descuido](content\Resources\Molly\MollyMuchoTexto.png)
 ![Molly todos los caminos llevan al descuido](content\Resources\Molly\MollyTime'sTicking.png)
 ![Molly1](content\Resources\Molly\Molly1.jpg)
 ![Molly Reference-sheet](content\Resources\Molly\MollyReferenceSheet.png)
+:::
+
+## Galeria (Fanarts)
+
+:::gallery
+![Molly sacame del bolsillo](content\Resources\Molly\MollyBolsillo.gif)
+![Molly (Kris Take)](content\Resources\Molly\MollyKrisTake.png)
+![Molly genetic failure](content\Resources\Molly\MollyFailure.png)
+![Molly FMRPG](content\Resources\Molly\MollyFMRPG.png)
+![Molly Greet](content\Resources\Molly\MollyGreet.png)
+![Tomodachi Family Photo](content\Resources\Molly\TomodachiFamilyPhoto.png)
+
 :::
 
 ---
@@ -97,4 +110,6 @@ información que no se ha revelado en otros lugares, así como datos que podría
 :::info-box
 **Autor**: AngelDavid863
 :::
-
+:::info-box
+**Nota del autor**: Gracias por ~~obligarme~~ animarme a compartir a este personaje, los odio.
+:::

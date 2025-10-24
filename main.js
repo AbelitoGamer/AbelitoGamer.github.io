@@ -3,6 +3,7 @@ let defaultData = null;
 let bgInitialized = false;
 let globalClickListenerAdded = false;
 let setupEventsCalled = false;
+let lastDataSource = null; // Track the last loaded data source
 // DATA_SOURCE is declared in index.html
 
 // Cache busting utility
@@ -183,6 +184,9 @@ function initBg() {
 // Main initialization
 async function init() {
     initBg();
+    
+    // Track that we've loaded this data source
+    lastDataSource = DATA_SOURCE;
     
     // Show loading
     const loading = '<div class="loading"><div class="loading-spinner"></div>Loading...</div>';
@@ -906,10 +910,25 @@ function setupEvents() {
 }
 
 // Browser back button
-window.addEventListener('popstate', () => {
+window.addEventListener('popstate', (event) => {
     const params = new URLSearchParams(window.location.search);
-    DATA_SOURCE = params.has('json') ? params.get('json') : 'index.json';
-    init();
+    
+    // Only handle popstate for JSON parameter changes on the main index page
+    // If there's no json parameter and we're not tracking a lastDataSource that came from a json parameter,
+    // then this is likely a hash-only navigation (like FunkyerPlaza wiki)
+    if (params.has('json')) {
+        const newDataSource = params.get('json');
+        // Only re-init if the JSON source actually changed from what was last loaded
+        if (newDataSource !== lastDataSource) {
+            DATA_SOURCE = newDataSource;
+            init();
+        }
+    } else if (lastDataSource && lastDataSource !== 'index.json' && !lastDataSource.startsWith('funkyerplaza')) {
+        // We had a JSON parameter before but now we don't, go back to index
+        DATA_SOURCE = 'index.json';
+        init();
+    }
+    // Otherwise, this is hash-only navigation - let page-specific handlers deal with it
 });
 
 // Add styles
