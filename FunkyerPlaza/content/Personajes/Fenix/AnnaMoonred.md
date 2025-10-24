@@ -32,6 +32,10 @@ list-voz:
 grid-iconos:
 :::
 
+:::info-box
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envia una nueva submission como actualizacion con las correcciones.
+:::
+
 ## Descripción general
 
 **Anna Elizabeth MoonRed** es la hermana mayor del linaje MoonRed, conocida por su carácter sereno, maduro y analítico. Tras graduarse de la universidad, se independizó y vive sola, manteniéndose al margen de las aventuras familiares, aunque continúa siendo una figura sabia y respetada. Porta tatuajes místicos que sellan criaturas invocables de enorme poder, cuyo uso deja secuelas visibles: su cuerpo queda exhausto y su cabello, originalmente negro, adquiere un tono azul claro con matices blancos y cyan, junto a destellos del mismo color en sus ojos y runas, reflejando el desgaste mágico de su habilidad.
@@ -68,6 +72,11 @@ De carácter sereno, analítico y reservado, suele actuar con calma incluso en m
 :::
 
 ---
+
+![Gpt](content\Resources\\GPT.png)
+
+Esta pagina irradia texto generado por ia por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
+-Abelito
 
 :::info-box
 **Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene

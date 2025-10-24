@@ -33,6 +33,10 @@ list-voz:
   - La de su creador lol
 :::
 
+:::info-box
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envia una nueva submission como actualizacion con las correcciones.
+:::
+
 ## Descripción general
 
 El menor y único varón de los hermanos Moonred, fue un genio en tecnología y robótica. Durante una exploración se enfrentó a un fénix, y tras ser consumido por sus llamas, renació fusionado con la criatura. Desde entonces posee poderes de fuego y una seudo inmortalidad, capaz de revivir de sus cenizas. Ha creado tecnología que canaliza el fuego del fénix en su interior, combinando ciencia y poder místico.
@@ -79,6 +83,11 @@ En el fondo, **Ankush** valora la calma, el control y la eficiencia. No le gusta
 :::
 
 ---
+
+![Gpt](content\Resources\\GPT.png)
+
+Esta pagina irradia texto generado por ia por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
+-Abelito
 
 :::info-box
 **Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene
