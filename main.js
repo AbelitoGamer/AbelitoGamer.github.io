@@ -293,8 +293,21 @@ function populateNav(items) {
                 e.preventDefault();
             });
             
+            // Variable to track touch
+            let touchStartTime = 0;
+            
+            // Track touch start time
+            link.addEventListener('touchstart', e => {
+                touchStartTime = Date.now();
+            }, { passive: true });
+            
             // Add click/touch handler to toggle dropdown
             const toggleDropdown = e => {
+                // On mobile, ignore if this was a long press (> 500ms)
+                if (e.type === 'touchend' && Date.now() - touchStartTime > 500) {
+                    return;
+                }
+                
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -339,13 +352,8 @@ function populateNav(items) {
                 }
             };
             
-            // Add both click and touchstart for better mobile support
+            // Add click handler
             link.addEventListener('click', toggleDropdown);
-            link.addEventListener('touchstart', e => {
-                // Prevent default touch behavior that might trigger context menu
-                e.preventDefault();
-                toggleDropdown(e);
-            }, { passive: false });
             
             const dropdown = document.createElement('div');
             dropdown.className = 'dropdown-content';
