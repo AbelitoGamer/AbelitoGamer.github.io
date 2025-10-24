@@ -879,13 +879,27 @@ function setupEvents() {
     const logo = document.querySelector('.logo');
     if (logo) {
         logo.addEventListener('click', () => {
-            if (DATA_SOURCE !== 'index.json') {
-                const url = new URL(window.location);
-                url.searchParams.delete('json');
-                window.history.pushState({}, '', url);
-                DATA_SOURCE = 'index.json';
-                init();
-                window.scrollTo(0, 0);
+            // Check if we're on the main page (index.html or root)
+            const currentPath = window.location.pathname;
+            const isMainPage = currentPath === '/' || 
+                              currentPath === '/index.html' || 
+                              currentPath.endsWith('/index.html') ||
+                              currentPath.endsWith('/');
+            
+            if (isMainPage) {
+                // We're on the main page, just reset to index.json if needed
+                if (DATA_SOURCE !== 'index.json') {
+                    const url = new URL(window.location);
+                    url.searchParams.delete('json');
+                    window.history.pushState({}, '', url);
+                    DATA_SOURCE = 'index.json';
+                    init();
+                    window.scrollTo(0, 0);
+                }
+            } else {
+                // We're on a different page, redirect to the home page
+                const baseUrl = getSiteBaseUrl();
+                window.location.href = baseUrl;
             }
         });
     }
