@@ -1,8 +1,8 @@
 {
     "siteInfo": {
         "name": "Funky Atlas",
-        "title": "Funky Atlas",
-        "subtitle": "El portal entre creaciones relacionadas a FMM",
+        "title": "Funkyer Plaza",
+        "subtitle": "El hogar de las criaturas que orbitan alrededor de la comunidad de FMM gracias a sus creadores",
         "copyright": "© 2025 Funky Atlas. Contenidos de terceros pertenecen a sus autores."
     },
     "topNavigation": [
@@ -48,16 +48,8 @@
     ],
     "footerNavigation": [
         {
-            "title": "Home",
-            "json": "index.json"
-        },
-        {
-            "title": "Update Log",
-            "json": "updatelog.json"
-        },
-        {
-            "title": "Workshop",
-            "json": "workshop.json"
+            "title": "",
+            "link": ""
         }
     ],
     "socialLinks": [

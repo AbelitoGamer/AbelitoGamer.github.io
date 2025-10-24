@@ -7,7 +7,7 @@ order: 2
 # Abelito
 
 :::character-card
-name: Abelito
+name: Abel
 image: content/Resources/Abelito/Abelito.png
 list-aliases:
   - Abelito
@@ -29,7 +29,7 @@ table-información biográfica:
   - Edad: 22
   - Cumpleaños: 31/01/2003
   - Estado: Vivo
-  - Especie: Humano
+  - Especie: Humana
 table-descripción física:
   - Altura: 1.60
   - Ojos: Cafés
