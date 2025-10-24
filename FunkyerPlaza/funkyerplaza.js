@@ -539,6 +539,11 @@ async function loadWikiPage(pageFile) {
         console.log('Original markdown length:', markdown.length);
         console.log('First 200 chars:', markdown.substring(0, 200));
         
+        // Normalize all image paths (convert backslashes to forward slashes)
+        markdown = markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, path) => {
+            return `![${alt}](${normalizePath(path)})`;
+        });
+        
         // Pre-process custom markdown extensions
         markdown = processCustomMarkdown(markdown);
         
