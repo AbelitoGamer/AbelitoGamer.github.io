@@ -280,8 +280,13 @@ function populateNav(items) {
             
             link.href = '#';
             
-            // Add click handler to toggle dropdown
-            link.addEventListener('click', e => {
+            // Prevent context menu on long press
+            link.addEventListener('contextmenu', e => {
+                e.preventDefault();
+            });
+            
+            // Add click/touch handler to toggle dropdown
+            const toggleDropdown = e => {
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -324,7 +329,15 @@ function populateNav(items) {
                         dropdown.classList.add('show');
                     }
                 }
-            });
+            };
+            
+            // Add both click and touchstart for better mobile support
+            link.addEventListener('click', toggleDropdown);
+            link.addEventListener('touchstart', e => {
+                // Prevent default touch behavior that might trigger context menu
+                e.preventDefault();
+                toggleDropdown(e);
+            }, { passive: false });
             
             const dropdown = document.createElement('div');
             dropdown.className = 'dropdown-content';
