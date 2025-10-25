@@ -7,14 +7,14 @@ order: 6
 
 :::character-card
 name: Anna Elizabeth Moonred
-image: content\Resources\AnnaMoonred\AnnaMoonred.png
+image: content/Resources/AnnaMoonred/AnnaMoonred.png
 text-género: Mujer
 text-pronombres: She/Her
 text-orientacion: Asexual
 list-relaciones:
   - Ankush (Hermano menor)
   - Lexa (Hermana Menor)
-text-afiliaciones: Moon Industries
+text-afiliación: Moon Industries
 text-ocupación: Investigación energética y simbología
 table-información biográfica:
   - Edad: 23
@@ -28,21 +28,21 @@ table-descripción física:
 collapse-apariciones:
   - Funky Maker Server
 list-voz:
-  - Leyla Rangel (Los increibles: Violeta)
+  - Leyla Rangel (Los Increíbles: Violeta)
 grid-iconos:
 :::
 
 :::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envia una nueva submission como actualizacion con las correcciones.
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
 :::
 
 ## Descripción general
 
-**Anna Elizabeth MoonRed** es la hermana mayor del linaje MoonRed, conocida por su carácter sereno, maduro y analítico. Tras graduarse de la universidad, se independizó y vive sola, manteniéndose al margen de las aventuras familiares, aunque continúa siendo una figura sabia y respetada. Porta tatuajes místicos que sellan criaturas invocables de enorme poder, cuyo uso deja secuelas visibles: su cuerpo queda exhausto y su cabello, originalmente negro, adquiere un tono azul claro con matices blancos y cyan, junto a destellos del mismo color en sus ojos y runas, reflejando el desgaste mágico de su habilidad.
+**Anna Elizabeth Moonred** es la hermana mayor del linaje Moonred, conocida por su carácter sereno, maduro y analítico. Tras graduarse de la universidad, se independizó y vive sola, manteniéndose al margen de las aventuras familiares, aunque continúa siendo una figura sabia y respetada. Porta tatuajes místicos que sellan criaturas invocables de enorme poder, cuyo uso deja secuelas visibles: su cuerpo queda exhausto y su cabello, originalmente negro, adquiere un tono azul claro con matices blancos y cian, junto a destellos del mismo color en sus ojos y runas, reflejando el desgaste mágico de su habilidad.
 
 ## Apariencia
 
-**Anna Elizabeth MoonRed** es una joven de complexión esbelta y delgada, con piel clara y rasgos finos que transmiten serenidad y madurez. Su cabello, de largo medio y lacio en un estilo lob ligeramente despeinado, presenta un tono azul claro con matices blancos y cyan —resultado del desgaste mágico sobre su color natural negro— y cae con un flequillo irregular que cubre parcialmente uno de sus ojos azules intensos. Su expresión suele ser calmada y reservada, reforzando su aura elegante y mística. En su cuerpo lleva tatuajes arcano-místicos trazados con delicadeza en brazos, espalda y costados, que permanecen discretos hasta que se activan, brillando con tonos cyan; su vestimenta suele ser sobria, cómoda y de estilo urbano elegante, favoreciendo colores oscuros con detalles que armonizan con su estética mágica.
+**Anna Elizabeth Moonred** es una joven de complexión esbelta y delgada, con piel clara y rasgos finos que transmiten serenidad y madurez. Su cabello, de largo medio y lacio en un estilo lob ligeramente despeinado, presenta un tono azul claro con matices blancos y cian —resultado del desgaste mágico sobre su color natural negro— y cae con un flequillo irregular que cubre parcialmente uno de sus ojos azules intensos. Su expresión suele ser calmada y reservada, reforzando su aura elegante y mística. En su cuerpo lleva tatuajes arcano-místicos trazados con delicadeza en brazos, espalda y costados, que permanecen discretos hasta que se activan, brillando con tonos cian; su vestimenta suele ser sobria, cómoda y de estilo urbano elegante, favoreciendo colores oscuros con detalles que armonizan con su estética mágica.
 
 ## Personalidad
 
@@ -62,20 +62,20 @@ De carácter sereno, analítico y reservado, suele actuar con calma incluso en m
   - La improvisación forzada sin planificación especialmente en decisiones importantes
   - Que ignoren consejos razonados o se actúe sin pensar en las consecuencias
 
-## Galeria (Fanarts)
+## Galería (Fanarts)
 
 :::gallery
-![AnnaMoonred](content\Resources\AnnaMoonred\AnnaMoonred.png)
-![ANNAANKUSH](content\Resources\\AnnaMoonred\ANNAANKUSH-1.png)
-![Anna conoce a molly](content\Resources\\AnnaMoonred\Annaconociendoadavid.png)
-![AnnaBanner](content\Resources\\AnnaMoonred\AnnaBanner.png)
+![AnnaMoonred](content/Resources/AnnaMoonred/AnnaMoonred.png)
+![ANNAANKUSH](content/Resources/AnnaMoonred/ANNAANKUSH-1.png)
+![Anna conoce a molly](content/Resources/AnnaMoonred/Annaconociendoadavid.png)
+![AnnaBanner](content/Resources/AnnaMoonred/AnnaBanner.png)
 :::
 
 ---
 
 ![Gpt](content/Resources/gpt.png)
 
-Esta pagina irradia texto generado por ia por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
+Esta página irradia texto generado por IA por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
 -Abelito
 
 :::info-box

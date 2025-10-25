@@ -7,7 +7,7 @@ icon:  content/Resources/Gissel/GisselInactiveIcon.png
 
 :::character-card
 name: Gissel Flare
-image: content\Resources\Gissel\GisselMain.png
+image: content/Resources/Gissel/GisselMain.png
 list-aliases:
   - Perra sucia
 text-género: Mujer
@@ -20,8 +20,8 @@ table-información biográfica:
   - Especie: Humana
 table-descripción física:
   - Altura: 1.68
-  - Ojos: Cafes
-  - Cabello: Marron y blanco
+  - Ojos: Cafés
+  - Cabello: Marrón y blanco
 collapse-apariciones:
   - Funky Maker Server
   - FunkStudio Island
@@ -31,7 +31,7 @@ grid-iconos:
 :::
 
 :::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envia una nueva submission como actualizacion con las correcciones.
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
 :::
 
 ## Descripción general
@@ -43,17 +43,17 @@ Are we deadass
 
 ## Apariencia
 
-Esto esta mas vacio que tus reviews
+Esto está más vacío que tus reviews
 -Abelito
 
 ## Personalidad
 
-Lo mismo aca
+Lo mismo acá
 -Abelito
 
 ## Naturaleza
 
-Amorosa, tranquila y admirar a los demas
+Amorosa, tranquila y admirar a los demás
 
 Pero echale ganas guey
 -Abelito
@@ -61,13 +61,13 @@ Pero echale ganas guey
 ### Le gusta
   - Encebollado
   - Música
-  - Admirar a otra personas
+  - Admirar a otras personas
 
 ### No le gusta
   - Que la hagan enojar
   - Estar sola
 
-Hay que añadir mas bro
+Hay que añadir más bro
 -Abelito
 
 ## Trivia
@@ -77,19 +77,19 @@ Hay que añadir mas bro
 Kill yourself
 -Abelito
 
-## Galeria (Fanarts)
+## Galería (Fanarts)
 
 :::gallery
-![Gissel Main Render](content\Resources\Gissel\GisselMain.png)
-![Gissel Swimsuit](content\Resources\Gissel\GisselSwimsuit.png)
-![Gissel Birthday](content\Resources\Gissel\GisselBirthday.png)
-![Gissel FMRPG](content\Resources\Gissel\GisselFMRPG.png)
+![Gissel Main Render](content/Resources/Gissel/GisselMain.png)
+![Gissel Swimsuit](content/Resources/Gissel/GisselSwimsuit.png)
+![Gissel Birthday](content/Resources/Gissel/GisselBirthday.png)
+![Gissel FMRPG](content/Resources/Gissel/GisselFMRPG.png)
 
 :::
 
 ---
 :::info-box
-**Nota**: Este personaje es un trabajo en proceso. Puede sufrir de cambios mayores a su entrada en un futuro mientras este se define mas.
+**Nota**: Este personaje es un trabajo en proceso. Puede sufrir cambios mayores a su entrada en un futuro mientras este se define más.
 :::
 :::info-box
 **Autor**: gisflare

@@ -21,7 +21,7 @@ list-relaciones:
   - Clay (Mascota)
   - Chriss Miller (Empleado)
   - Meiden (Rival)
-text-afiliaciones: Empresa sin nombre
+text-afiliación: Empresa sin nombre
 text-ocupación: ????? - Hace Home Office
 table-información biográfica:
   - Edad: 25
@@ -35,7 +35,7 @@ table-descripción física:
 collapse-apariciones:
   - Funky Maker Server
   - FunkStudio Island
-  - Universo "Glass" (Aun no-canon)
+  - Universo "Glass" (Aún no canon)
 list-voz:
   - Karla Falcon (Posiblemente)
 grid-iconos:
@@ -74,29 +74,29 @@ En un principio puede actuar un tanto distante, no actuando de manera muy emocio
   - Anteriormente, su nombre iba a ser Marie Thompson, pero fue cambiado porque HailRoberto mencionó una broma de "hola amigue", lo que hizo que me diera cáncer y lo cambiara 
   - Por si no resultaba obvio, está fuertemente inspirada en Super Mario, no solo en su vestimenta, siendo su estatura 1.85 metros en base a 1985.
 
-## Galeria
+## Galería
 
 :::gallery
-![Molly](content\Resources\Molly\Molly.png)
-![Molly Chibi](content\Resources\Molly\MollyChibi.png)
-![Molly Perfil](content\Resources\Molly\MollyPerfil.png)
-![Molly Bandages](content\Resources\Molly\MollyBandages.png)
-![Molly Barista](content\Resources\Molly\MollyBarista.png)
-![Molly Pseudo-descuido](content\Resources\Molly\MollyMuchoTexto.png)
-![Molly todos los caminos llevan al descuido](content\Resources\Molly\MollyTime'sTicking.png)
-![Molly1](content\Resources\Molly\Molly1.jpg)
-![Molly Reference-sheet](content\Resources\Molly\MollyReferenceSheet.png)
+![Molly](content/Resources/Molly/Molly.png)
+![Molly Chibi](content/Resources/Molly/MollyChibi.png)
+![Molly Perfil](content/Resources/Molly/MollyPerfil.png)
+![Molly Bandages](content/Resources/Molly/MollyBandages.png)
+![Molly Barista](content/Resources/Molly/MollyBarista.png)
+![Molly Pseudo-descuido](content/Resources/Molly/MollyMuchoTexto.png)
+![Molly todos los caminos llevan al descuido](content/Resources/Molly/MollyTime'sTicking.png)
+![Molly1](content/Resources/Molly/Molly1.jpg)
+![Molly Reference-sheet](content/Resources/Molly/MollyReferenceSheet.png)
 :::
 
-## Galeria (Fanarts)
+## Galería (Fanarts)
 
 :::gallery
-![Molly sacame del bolsillo](content\Resources\Molly\MollyBolsillo.gif)
-![Molly (Kris Take)](content\Resources\Molly\MollyKrisTake.png)
-![Molly genetic failure](content\Resources\Molly\MollyFailure.png)
-![Molly FMRPG](content\Resources\Molly\MollyFMRPG.png)
-![Molly Greet](content\Resources\Molly\MollyGreet.png)
-![Tomodachi Family Photo](content\Resources\Molly\TomodachiFamilyPhoto.png)
+![Molly sacame del bolsillo](content/Resources/Molly/MollyBolsillo.gif)
+![Molly (Kris Take)](content/Resources/Molly/MollyKrisTake.png)
+![Molly genetic failure](content/Resources/Molly/MollyFailure.png)
+![Molly FMRPG](content/Resources/Molly/MollyFMRPG.png)
+![Molly Greet](content/Resources/Molly/MollyGreet.png)
+![Tomodachi Family Photo](content/Resources/Molly/TomodachiFamilyPhoto.png)
 
 :::
 

@@ -22,7 +22,7 @@ list-relaciones:
   - Merry (Amiga)
   - ????? (Ex-pareja)
   - ????? (Hermano)
-text-afiliacion: TrueStudio
+text-afiliación: TrueStudio
 text-ocupación: Programador
 table-información biográfica:
   - Edad: 22
@@ -38,7 +38,7 @@ collapse-apariciones:
   - Funky Maker Server
   - Funky Maker: Bodrio Collection
   - FunkStudio Island
-list-Voz:
+list-voz:
   - La de su creador lol
 grid-iconos:
   - content/Resources/Abelito/AbelitoInactiveIcon.png
@@ -62,13 +62,13 @@ Después de un poco de introspección, se definió a sí mismo como "Extrovertid
 
 ### Le gusta
   - Programar y jugar videojuegos
-  - La musica
+  - La música
   - Cocinar
 
 ### No le gusta
-  - Lugares concurridos (Fisicos)
+  - Lugares concurridos (Físicos)
   - El ruido
-  - Cualquier contacto fisico, por muy menor que sea, con gente que no considere de confianza
+  - Cualquier contacto físico, por muy menor que sea, con gente que no considere de confianza
   - Los bullies o comportamientos dignos de uno
 
 ## Trivia
@@ -84,9 +84,9 @@ Después de un poco de introspección, se definió a sí mismo como "Extrovertid
     - Durante el invierno, se deja crecer el cabello hasta el cuello.
     - En su cumpleaños, se destiñe el cabello.
 
-## Galeria
+## Galería
 :::gallery
-![Abelito](content\Resources\Abelito\Abelito.png)
+![Abelito](content/Resources/Abelito/Abelito.png)
 :::
 
 ---

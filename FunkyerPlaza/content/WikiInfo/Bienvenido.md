@@ -9,7 +9,7 @@ Bienvenido a la Funkyer Plaza, tu wiki de confianza para consultar todo lo que h
 
 ## Cómo usar la wiki
 
-- **Buscar categorías**: Usa la barra de navegacion para buscar categorías
+- **Buscar categorías**: Usa la barra de navegación para buscar categorías
 - **Búsqueda**: Usa la barra de búsqueda para encontrar personajes específicos
 - **Móvil**: En dispositivos móviles, toca el ícono del menú para alternar la barra lateral
 
@@ -22,11 +22,11 @@ La única categoría por ahora. Contendrá todos los personajes, y sus variacion
 
 Haz clic en el nombre de cualquier personaje en la barra lateral para ver su entrada completa.
 
-## ¿Como añado/actualizo entradas?
+## ¿Cómo añado/actualizo entradas?
 
-Manda tu solicitud de adicion/actualizacion [aqui.](https://forms.gle/BSCdzw3zPhJn1i9g8)
+Manda tu solicitud de adición/actualización [aquí.](https://forms.gle/BSCdzw3zPhJn1i9g8)
 
-## Aparecieron mas personajes, pero el mio no. Grrrrrrr
+## Aparecieron más personajes, pero el mío no. Grrrrrrr
 
 Puede ser que simplemente no te haya tocado entrar en esta tanda, o que lo haya rechazado.
-Puedes comprobar las entradas rechazadas [aqui.](Personajes/Anna.md) Si enviaste tu submission, y no aparece ni en la lista principal, ni en la de rechazados, simplemente sigue a espera de que la revise. Se paciente.
+Puedes comprobar las entradas rechazadas [aquí.](Personajes/Anna.md) Si enviaste tu submission, y no aparece ni en la lista principal, ni en la de rechazados, simplemente sigue a la espera de que la revise. Sé paciente.
