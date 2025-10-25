@@ -7,12 +7,15 @@
 - Personajes
   - [Abelito](Personajes/Abelito.md)
   - [Molly](Personajes/Molly.md)
+  - [Less](Personajes/Less.md)
 
 # Rechazados
 
 - Rechazados
   - [Anna](Personajes/Anna.md)
   - [Form Nogales](Personajes/FormNogales.md)
+  - [Gissel](Personajes/Gissel.md)
+  - [Abel](Personajes/Abel.md)
   - Personajes de Fenix
     - [Ankush](Personajes/Fenix/Ankush.md)
     - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)

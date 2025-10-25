@@ -8,6 +8,15 @@
   "updatelog": {
     "updates": [
       {
+        "version": "3.5.2",
+        "date": "24/10/2025",
+        "title": "Mas entradas",
+        "changes": [
+          "Mas entradas añadidas a FunkyerPlaza",
+          "Ahora las entradas rechazadas no apareceran en la busqueda. Para ver las entradas rechazadas, necesitaras accederlas desde la entrada de bienvenida, o con link directo"
+        ]
+      },
+      {
         "version": "3.5.1",
         "date": "24/10/2025",
         "title": "When le preguntan a FunkyerPlaza cuanto duro su sistema de content-index. SOLO 7 MINUTOS",

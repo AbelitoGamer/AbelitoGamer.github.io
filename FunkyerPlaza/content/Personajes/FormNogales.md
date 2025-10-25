@@ -1,6 +1,5 @@
 ---
 title: Nogales
-order: 4
 ---
 
 # Nogales

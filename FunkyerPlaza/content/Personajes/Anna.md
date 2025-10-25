@@ -1,6 +1,5 @@
 ---
 title: Anna
-order: 7
 ---
 
 # Anna

@@ -1,7 +1,6 @@
 ---
 title: Molly
 icon: content/Resources/Molly/MollyInactiveIcon.png
-order: 3
 ---
 
 # Molly

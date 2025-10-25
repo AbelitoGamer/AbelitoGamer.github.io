@@ -1,7 +1,6 @@
 ---
 title: Abelito
 icon: content/Resources/Abelito/AbelitoInactiveIcon.png
-order: 2
 ---
 
 # Abelito

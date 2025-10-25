@@ -367,6 +367,10 @@ async function renderSidebar() {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'wiki-item';
                 itemDiv.setAttribute('data-page', item.file);
+                // Persist section information for robust filtering (e.g., 'indice' or 'rechazados')
+                if (item.section) {
+                    itemDiv.dataset.section = String(item.section).toLowerCase();
+                }
                 
                 // Add icon if provided in front matter
                 if (item.icon) {
@@ -437,6 +441,7 @@ async function renderSidebar() {
                 categoryDiv.className = 'wiki-category hidden-section';
                 categoryDiv.style.display = 'none'; // Hidden by default
                 categoryDiv.dataset.section = hiddenSection.name.toLowerCase();
+                categoryDiv.dataset.shouldBeHidden = 'true'; // Track that this should be hidden by default
                 
                 const categoryHeader = document.createElement('div');
                 categoryHeader.className = 'category-header';
@@ -499,7 +504,13 @@ function updateHiddenSectionsVisibility(currentPageFile) {
         
         // Show/hide all categories in this section
         document.querySelectorAll(`.wiki-category.hidden-section[data-section="${sectionName}"]`).forEach(categoryDiv => {
-            categoryDiv.style.display = isInSection ? '' : 'none';
+            if (isInSection) {
+                categoryDiv.style.display = '';
+                categoryDiv.dataset.shouldBeHidden = 'false'; // Mark as temporarily visible
+            } else {
+                categoryDiv.style.display = 'none';
+                categoryDiv.dataset.shouldBeHidden = 'true'; // Mark as should be hidden
+            }
         });
     });
 }
@@ -644,18 +655,43 @@ function setupSearch() {
     
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
+
+        // Helper: is a hidden section currently visible?
+        const isSectionVisible = (name) => {
+            const sectionEl = document.querySelector(`.wiki-category.hidden-section[data-section="${name.toLowerCase()}"]`);
+            if (!sectionEl) return true; // If no hidden section node, treat as visible to avoid over-filtering
+            return sectionEl.dataset.shouldBeHidden !== 'true';
+        };
         
         // Expand sidebar if user is searching on mobile
         if (searchTerm && window.innerWidth <= 968) {
             sidebar.classList.remove('collapsed');
         }
         
-        // If search is empty, show everything
+        // If search is empty, show everything except hidden sections
         if (!searchTerm) {
             document.querySelectorAll('.wiki-item').forEach(item => {
-                item.style.display = '';
+                // Keep items from hidden sections hidden
+                const section = (item.dataset.section || '').toLowerCase();
+                const isRechazados = section === 'rechazados';
+                const rechazadosVisible = isSectionVisible('rechazados');
+                if (isRechazados && !rechazadosVisible) {
+                    // Keep items in hidden sections hidden
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = '';
+                }
             });
             document.querySelectorAll('.wiki-category, .wiki-subcategory').forEach(category => {
+                // Restore hidden sections to their proper state
+                if (category.classList.contains('hidden-section')) {
+                    if (category.dataset.shouldBeHidden === 'true') {
+                        category.style.display = 'none';
+                    } else {
+                        category.style.display = '';
+                    }
+                    return;
+                }
                 category.style.display = '';
             });
             return;
@@ -668,10 +704,21 @@ function setupSearch() {
             
             const text = textElement.textContent.toLowerCase();
             
+            // Check if this item belongs to a hidden section (by data-section) and that section is hidden
+            const section = (item.dataset.section || '').toLowerCase();
+            const isRechazados = section === 'rechazados';
+            const rechazadosVisible = isSectionVisible('rechazados');
+            
+            // Skip items from hidden sections that should be hidden
+            if (isRechazados && !rechazadosVisible) {
+                item.style.display = 'none';
+                return;
+            }
+            
             if (text.includes(searchTerm)) {
                 item.style.display = 'flex';
                 
-                // Expand all parent categories/subcategories
+                // Expand all parent categories/subcategories (but not hidden sections)
                 let parent = item.parentElement;
                 while (parent) {
                     if (parent.classList.contains('category-items')) {
@@ -680,6 +727,11 @@ function setupSearch() {
                         if (header && header.classList.contains('category-header')) {
                             header.classList.remove('collapsed');
                         }
+                    }
+                    // Don't make hidden sections visible
+                    if (parent.classList.contains('hidden-section')) {
+                        // If we hit a hidden section, stop here
+                        break;
                     }
                     parent = parent.parentElement;
                 }
@@ -690,6 +742,14 @@ function setupSearch() {
         
         // Hide categories/subcategories with no visible items
         function updateCategoryVisibility(category) {
+            // Don't modify hidden sections - keep them in their proper state
+            if (category.classList.contains('hidden-section')) {
+                if (category.dataset.shouldBeHidden === 'true') {
+                    category.style.display = 'none';
+                }
+                return;
+            }
+            
             const categoryItems = category.querySelector('.category-items');
             if (!categoryItems) return;
             
