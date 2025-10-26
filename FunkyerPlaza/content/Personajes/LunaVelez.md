@@ -94,7 +94,7 @@ Usa de inspiración el resto de entradas para escribir una más completa
 **Nota**: Este personaje es un trabajo en proceso. Puede sufrir cambios mayores a su entrada en un futuro mientras este se define más.
 :::
 :::info-box
-**Autor**: AnnaHolOl
+**Autor**: JustTakeMeran
 :::
 :::info-box
 **Nota del autor**: funkyerplaza? whats funkyerplaza?
