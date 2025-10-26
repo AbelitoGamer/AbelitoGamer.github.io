@@ -9,6 +9,7 @@
   - [Molly](Personajes/Molly.md)
   - [Less](Personajes/Less.md)
 
+
 # Rechazados
 
 - Rechazados
@@ -16,6 +17,7 @@
   - [Form Nogales](Personajes/FormNogales.md)
   - [Gissel](Personajes/Gissel.md)
   - [Abel](Personajes/Abel.md)
+  - [Noah](Personajes/Noah.md)
   - Personajes de Fenix
     - [Ankush](Personajes/Fenix/Ankush.md)
     - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
