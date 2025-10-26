@@ -296,6 +296,7 @@ async function renderSidebar() {
     // Fetch front matter for all items in parallel (including nested)
     // But skip categories - they use their title from SUMMARY.md
     const fetchPromises = [];
+    // Visible sections (e.g., Indice)
     wikiData.categories.forEach(category => {
         // Top-level categories always use SUMMARY.md title
         category.displayTitle = category.title || category.name;
@@ -327,6 +328,38 @@ async function renderSidebar() {
             });
         }
     });
+    // Hidden sections (e.g., Rechazados) - need metadata too so icons/titles render
+    if (wikiData.hiddenSections && wikiData.hiddenSections.length > 0) {
+        wikiData.hiddenSections.forEach(hiddenSection => {
+            if (!hiddenSection || !hiddenSection.categories) return;
+            hiddenSection.categories.forEach(category => {
+                // Ensure category display title
+                category.displayTitle = category.title || category.name;
+                if (category.items && category.items.length > 0) {
+                    const allItems = collectAllItems(category.items);
+                    allItems.forEach(item => {
+                        if (item.isCategory) {
+                            item.displayTitle = item.title;
+                        } else {
+                            fetchPromises.push(
+                                fetchFileFrontMatter(item.file).then(frontMatter => {
+                                    item.metadata = frontMatter;
+                                    if (frontMatter.title) {
+                                        item.displayTitle = frontMatter.title;
+                                    } else {
+                                        item.displayTitle = item.title;
+                                    }
+                                    if (frontMatter.icon) {
+                                        item.icon = normalizePath(frontMatter.icon);
+                                    }
+                                })
+                            );
+                        }
+                    });
+                }
+            });
+        });
+    }
     
     // Wait for all metadata to be fetched
     await Promise.all(fetchPromises);

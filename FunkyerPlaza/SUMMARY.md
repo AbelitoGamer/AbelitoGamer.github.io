@@ -10,7 +10,6 @@
   - [Less](Personajes/Less.md)
   - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
 
-
 # Rechazados
 
 - Rechazados
@@ -21,5 +20,6 @@
   - [Noah](Personajes/Noah.md)
   - [Luna Velez](Personajes/LunaVelez.md)
   - [dew](Personajes/dew.md)
-  - Personajes de Fenix
-    - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
+  - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
+  - [SemiNoirrrr](Personajes/SemiNoirrrr.md)
+  - [King](Personajes/King.md)
