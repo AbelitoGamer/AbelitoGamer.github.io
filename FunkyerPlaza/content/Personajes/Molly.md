@@ -17,10 +17,10 @@ text-género: Mujer
 text-pronombres: She/Her
 text-orientacion: Heterosexual
 list-relaciones:
-  - Roberta (Conocido)
   - Clay (Mascota)
   - Chriss Miller (Empleado)
   - Meiden (Rival)
+  - Roberta (Rival)
 text-afiliación: Empresa sin nombre
 text-ocupación: ????? - Hace Home Office
 table-información biográfica:

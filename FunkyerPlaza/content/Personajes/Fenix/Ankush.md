@@ -11,6 +11,7 @@ image: content/Resources/Ankush/AnkushMain.png
 list-aliases:
   - Fenix
   - El vagabundo
+  - Felix
 text-género: Hombre
 text-pronombres: He/Him
 text-orientacion: Heterosexual
@@ -18,13 +19,13 @@ list-relaciones:
   - Anna (Hermana Mayor)
   - Lexa (Hermana Menor)
 table-información biográfica:
-  - Edad: 22
+  - Edad: 21
   - Cumpleaños: 06/07/2004
   - Estado: Vivo
   - Especie: Humano
 table-descripción física:
   - Altura: 1.78
-  - Ojos: Negro
+  - Ojos: Negros
   - Cabello: Azul Marino, mechones rubio-claros
 collapse-apariciones:
   - Funky Maker Server
@@ -33,41 +34,31 @@ list-voz:
   - La de su creador lol
 :::
 
-:::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
-:::
-
 ## Descripción general
 
-El menor y único varón de los hermanos Moonred, fue un genio en tecnología y robótica. Durante una exploración se enfrentó a un fénix, y tras ser consumido por sus llamas, renació fusionado con la criatura. Desde entonces posee poderes de fuego y una seudoinmortalidad, capaz de revivir de sus cenizas. Ha creado tecnología que canaliza el fuego del fénix en su interior, combinando ciencia y poder místico.
+Ankush es el más joven entre los tres hermanos Moonred, siendo el único varón. Originalmente se dedicaba a la tecnología, la robótica y la programación. Después de una exploración (parte del lore fue recortada porque, pues, la v2 no tenía los poderes hasta que salga la versión rediseñada).
+
+L, pues rellenalo de algo mas de mientras.
+-Abelito
 
 ## Apariencia
 
-**Ankush** es un joven de complexión media, con una postura relajada pero segura. Suele mantener las manos en los bolsillos, proyectando una actitud tranquila, confiada y algo despreocupada. Su expresión es serena, con una ligera sonrisa que sugiere ironía o calma bajo presión.
+Ankush posee una chaqueta de color azul marino, una camisa de color azul, un pantalón verde marino militar y unas botas negras de tipo militar.
 
 ## Personalidad
 
-**Ankush** es tranquilo y reservado, alguien que observa antes de hablar. Su forma de actuar transmite calma, pero también firmeza. No busca llamar la atención; prefiere mantenerse en segundo plano, analizando y entendiendo todo lo que pasa a su alrededor.
-
-Suele expresarse con pocas palabras, y cuando lo hace, su tono es directo y sin rodeos. Tiene un humor sutil, algo seco, que usa para aliviar tensiones sin perder la compostura. Le cuesta abrirse emocionalmente, pero demuestra lo que siente a través de acciones, no de gestos ni palabras.
-
-Su estilo refleja su forma de ser: relajado pero preciso, con un aire entre práctico y despreocupado. Camina con paso seguro, manos en los bolsillos, mirada atenta. No se apresura; actúa cuando es necesario.
-
-En el fondo, **Ankush** valora la calma, el control y la eficiencia. No le gustan los conflictos innecesarios, pero cuando debe actuar, lo hace con convicción.
+Ankush es una persona bastante buena gente; explora mucho y, además, apoya siempre a sus amigos y a sus hermanas. Algo a tomar en cuenta de su personalidad es que no le gusta que sus amigos sean maltratados ni dañados; por lo cual, si te ve haciendo eso, no la contará para otro día.
 
 ### Le gusta
-  - La ingeniería y la robótica
-  - La tranquilidad del laboratorio o los talleres
-  - El calor y la luz
-  - El silencio y la soledad productiva
-  - Los pequeños gestos sinceros
+  - La tecnología y la robótica (revisa descripción general)
+  - Las aventuras
+  - La programación
+  - Los dulces
 
 ### No le gusta
-  - El desorden o la improvisación sin propósito
-  - Ser interrumpido mientras trabaja
-  - Las mentiras y la falsedad
-  - Mostrar debilidad emocional
-  - Los lugares fríos y sin vida
+  - Que lo molesten
+  - Que dañen a sus amigos
+  - Ser interrumpido mientras utiliza su tecnología
 
 ## Galería (Fanarts)
 
@@ -82,11 +73,6 @@ En el fondo, **Ankush** valora la calma, el control y la eficiencia. No le gusta
 
 ---
 
-![Gpt](content/Resources/gpt.png)
-
-Esta página irradia texto generado por IA por donde la veas. Si no le tienes el cariño a tus personajes de escribirles sus detalles manualmente, mejor mierda.
--Abelito
-
 :::info-box
 **Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene
 información que no se ha revelado en otros lugares, así como datos que podrían cambiar conforme el creador lo defina aún más.
@@ -95,5 +81,8 @@ información que no se ha revelado en otros lugares, así como datos que podría
 **Autor**: thisisankush
 :::
 :::info-box
-**Nota del autor**: Mama aparezco en la funkyer plaza hola hola
+**Nota del autor**: Que no fue hecho en IA, mamón
+:::
+:::info-box
+**Nota del admin**: Mis huevos, crack
 :::

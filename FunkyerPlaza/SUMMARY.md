@@ -8,6 +8,7 @@
   - [Abelito](Personajes/Abelito.md)
   - [Molly](Personajes/Molly.md)
   - [Less](Personajes/Less.md)
+  - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
 
 
 # Rechazados
@@ -21,5 +22,4 @@
   - [Luna Velez](Personajes/LunaVelez.md)
   - [dew](Personajes/dew.md)
   - Personajes de Fenix
-    - [Ankush](Personajes/Fenix/Ankush.md)
-    - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
+    - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
