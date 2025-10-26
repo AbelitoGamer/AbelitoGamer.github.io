@@ -85,7 +85,7 @@ todo
 
 ## Galería (Fanarts)
 :::gallery
-![Areyouokay](content/Resources/Nogales/AreYouOkay.png)
+![Areyouokay](content/Resources/Nogales/Areyouokay.png)
 ![Areyouokay](content/Resources/Nogales/Justtalking.png)
 :::
 

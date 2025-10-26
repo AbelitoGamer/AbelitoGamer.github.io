@@ -27,7 +27,7 @@ collapse-apariciones:
   - FunkStudio Island
 grid-iconos:
   - content/Resources/Gissel/GisselInactiveIcon.png
-  - content/Resources/Gissel/GisselIDKIcon.png
+  - content/Resources/Gissel/GisselIdkIcon.png
 :::
 
 :::info-box
