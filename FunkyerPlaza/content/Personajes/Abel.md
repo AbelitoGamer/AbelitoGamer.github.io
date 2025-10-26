@@ -1,14 +1,12 @@
 ---
 title: iA777
-icon:  content/Resources/Abel/AbelInactiveIcon.png
+icon: content/Resources/Abel/AbelInactiveIcon.png
 ---
 
 # iA777
 
 :::character-card
 name: iA777
-image: content\Resources\Abel\AbelMain.png
-image: content/Resources/Abel/AbelMain.png
 list-aliases:
   - Bob
   - Noli del tianguis
@@ -26,9 +24,9 @@ table-información biográfica:
   - Estado: Muerto
   - Especie: Robot
 table-descripción física:
-  - Altura: 1.75
-  - Ojos (Izquierda): Negro
-  - Ojos (Derecho): Morado
+  - Altura: 1.80
+  - Ojo (izquierdo): Negro
+  - Ojo (derecho): Morado
 collapse-apariciones:
   - Funky Maker Server
   - FunkStudio Island
@@ -41,53 +39,46 @@ grid-iconos:
   - content/Resources/Abel/AbelLosingIcon.png
 :::
 
-:::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
-:::
-
 ## Descripción general
 
-Dicho por unos, el ser que ayuda el pueblo, dicho por otros, el ser que apareció de la nada a estorbar, pero todo aparece por algo, y ese algo fue para acabar con el mal que había ahí
-
-Nota: se escucha medio sonso el "pero todo aparece por algo". Siéntete libre de ignorar esto, o de modificarlo si así lo deseas
--Abelito
+Es un robot creado por una persona de nombre desconocido. El motivo de su creación es proteger a las personas de su pueblo de la fuerza maligna del robótico Maxwell. iA777 no está solo: cuenta con su compañera Iris, quien lo apoya siempre.
 
 ## Apariencia
 
-La parte derecha es de color negro y la parte izquierda es de color blanco
-Tiene tres propulsores, uno en la espalda y dos en los pies
-Su apariencia no se ve como la de un robot porque su exoesqueleto tapa las partes metálicas
-
-Con más ganas porfa. Mira las de las otras entradas.
--Abelito
+Aunque es un robot, su apariencia no lo parece, ya que su exoesqueleto cubre toda la parte robótica.
+Él tiene dos colores principales en su cuerpo: blanco y negro, en proporciones de mitad y mitad; aún no se conoce el porqué de esos colores.
+También está equipado con armamento: unos cañones que, a la vez, son sus manos. Además, cuenta con propulsores en los pies para poder volar y uno en la espalda para desplazarse más rápido de lo normal.
+Su ojo morado le sirve como localizador y, en zonas oscuras, le proporciona visión nocturna.
 
 ## Personalidad
 
-Es generalmente alguien tranquilo, que intentará no molestar. Sus estados de ánimo pueden cambiar mucho. Si este es molestado por mucho tiempo, se volverá progresivamente menos tolerante.
-
-Pues todo bien hasta que te das cuenta de que esta descripción se la puedes pegar a 400 personajes más. No conozco a nadie que no se enoje si lo molestan, y lo de que sus estados de ánimo cambien mucho, escrito así, solo da a entender que, efectivamente, tiene emociones, cuando el mensaje que creo quieres dar, es que puede cambiar de emociones muy rápido. Sea o no sea, está raro. Échale un ojo.
--Abelito
+Aunque fue creado con un objetivo específico, se le dotó de una inteligencia artificial para que pudiera tener sus propias emociones. En general, es alguien tranquilo; a veces puede ser gracioso, aunque normalmente es muy callado. Todas las veces que ha combatido contra las máquinas de Maxwell han provocado que sufra mucho estrés y que sus emociones negativas se exacerben.
 
 ### Le gusta
   - Los gatos
+  - La cocina
   - Lugares tranquilos
   - Videos y películas de terror
 
 ### No le gusta
+  - El peligro
   - La destrucción
   - La muerte
 
 ## Trivia
-  - Posee un modo protección. Al entrar a este modo, su ojo morado se vuelve rojo. Suele activarse cuando él o sus seres queridos están en riesgo mortal. 
-  - Su modo protección también activa una autodestrucción. Esta solo se desactiva si el modo protección es desactivado primero.
-  - Su primera versión aún seguirá apareciendo, solo que ahora no es canon en el universo principal
-  - Le gusta soltar datos curiosos, aunque nadie los haya pedido
+  - Posee un modo protección. Al activarse, su ojo morado se vuelve rojo. Suele activarse cuando él o sus seres queridos están en riesgo mortal.
+  - El modo protección también activa un protocolo de autodestrucción. Este solo se desactiva si primero se desactiva el modo protección.
+  - Le gusta soltar datos curiosos, aunque nadie los haya pedido.
+  - Su primera versión seguirá apareciendo, solo que ahora no es canon en el universo principal.
+  - Esta versión tuvo un diseño antiguo que se descartó por "skill issue" (ese diseño se puede ver en un fanart).
+  - Su muerte es algo extensa, así que solo lo simplificaré a que explotó para acabar con los problemas que causaba Maxwell.
 
 ## Galería
 
 :::gallery
-![Abel Main](content/Resources/Abel/AbelMain.png)
+![Abel Main](content/Resources/Abel/AbelMain1.png)
 ![Abel Pose](content/Resources/Abel/AbelPose.png)
+![Abel Old Main](content/Resources/Abel/AbelOldMain.png)
 ![Abel OG](content/Resources/Abel/AbelOG.png)
 
 :::
@@ -103,12 +94,11 @@ Pues todo bien hasta que te das cuenta de que esta descripción se la puedes peg
 
 ---
 :::info-box
-**Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene
-información que no se ha revelado en otros lugares, así como datos que podrían cambiar conforme el creador lo defina aún más.
+**Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene información que no se ha revelado en otros lugares, así como datos que podrían cambiar conforme el creador lo desarrolle.
 :::
 :::info-box
 **Autor**: abel_777
 :::
 :::info-box
-**Nota del autor**: Ola chavales
+**Nota del autor**: Bro, imagina ser el único rechazado que tuvo menos problemas.
 :::

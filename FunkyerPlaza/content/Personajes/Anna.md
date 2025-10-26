@@ -10,7 +10,7 @@ image: content/Resources/Anna/AnnaHJD.png
 list-aliases:
   - Annal
   - Babosanna Ragebaits
-  - HolOl
+  - Hol Ol
   - Anita
 text-género: Mujer
 list-pronombres:
@@ -19,11 +19,13 @@ list-pronombres:
 text-orientacion: Pansexual
 list-relaciones:
   - Noah (Hermano)
-  - Abelito (Amigo)
+  - Abelito (Admiración)
   - NotJG (Amigo)
-  - Molly (Amiga)
-  - GisFlare (Amiga)
-  - Ankush (Amigo)
+  - Molly (Conocida)
+  - Lat (Conocido)
+  - Chris (Conocido)
+  - Katniss (Conocida)
+  - Wilberth (Conocido)
 text-afiliación: Funkin Market
 text-ocupación: Revisora
 table-información biográfica:
@@ -33,59 +35,50 @@ table-información biográfica:
   - Especie: Humana
 table-descripción física:
   - Altura: 1.55
-  - Ojos: Cafe oscuro
-  - Cabello: Cafe oscuro
+  - Ojos: Café oscuro
+  - Cabello: Café oscuro
 collapse-apariciones:
   - Funky Maker Server
   - FunkStudio Island
+  - Call NotJG Island
+  - Funky Maker: Bodrio Collection
 list-voz:
-  - La que posee su MII en Tomodachi Life
-:::
-
-:::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
+  - La de su Mii en Tomodachi Life
 :::
 
 ## Descripción general
 
-Anna, de ser descrita por alguna de sus amistades (no tiene), sería definida como aquella persona que odias con fervor hasta que por azares del destino terminas odiando más. Si le das el tiempo suficiente, te darás cuenta de que, de hecho, es bastante estúpida. Anna es una persona amigable, un tanto dependiente y sobre todo incompetente. Si bien no se relaciona mucho con nuevas personas o experiencias, siempre se opone a estas siempre que lo vea. (WIP)
-
-Estás parodiando la entrada de Abelito en lugar de crear una propia. Work in progress no excusa esto, se supone que eso representa algo que está a medias y puede cambiar, no esto, que es más un placeholder.
--Abelito
+**Anna** es una persona tímida y tranquila, pero a la vez algo enérgica e hiperactiva. Le cuesta relacionarse con las personas, es algo dependiente, un poco tonta y no tiene muchas habilidades o talentos.
 
 ## Apariencia
 
-Bajita, Pelo corto café, Algo morena, Chamarra gris, Pantalones gris oscuro, Camisa café oscura, Zapatos cafés con la base café tirando a naranjo claro
-
-Está bien, pero podrías explicarlo de forma más fluida que simplemente un listado de todas sus cualidades. Toma la apariencia en la entrada de Molly como ejemplo
--Abelito
+**Anna** es bajita y de piel un poco oscura. Suele salir usando una chamarra gris, pantalón negro oscuro, zapatos cafés y lleva el cabello descuidado; en lugares cerrados usa la gorra de su chamarra. En casa o en lugares de confianza, suele usar una camisa amarilla y pantalones cortos rojos.
 
 ## Personalidad
 
-Autista (WIP)
-
-Ni lo intentaste
--Abelito 
+**Anna** es tímida pero extrovertida. Evita socializar, pero cuando entra en confianza puede llegar a ser molesta por ser intensa e hiperactiva. Necesita estar hablando constantemente con gente de confianza o se aburre. Se preocupa mucho por las personas más cercanas y le gusta decirles a menudo cuánto las quiere.
 
 ### Le gusta
   - Helado de menta con trozos de chocolate
-  - Hurones
   - Juegos de ritmo
-  - Not
+  - Escuchar música
+  - Que le hagan dibujitos
+  - Que le digan que la quieren
 
 ### No le gusta
-  - Lugares concurridos (Físicos)
-  - El ruido
-  - Not
+  - Lugares con mucha gente
+  - La cebolla y el ajo
+  - Juegos shooters (excepto los Garden Warfare)
+  - Que la fuercen a socializar
+  - Limón
 
 ## Trivia
-  - Prefiere los alimentos salados sobre los dulces.
-  - Su saga de videojuegos favorita sería la saga de Five Nights At Freddy's.
-  - Anteriormente, su nombre iba a ser Jane o Jenna o Alejandra, pero fue cambiado porque Anna me gustó más.
-  - Por si no resultaba obvio, está fuertemente inspirada en Ruby de Step Right Up, no solo en su apariencia, siendo su apariencia el icono de Ruby con cosas cambiadas.
-
-Aquí también está parodiando, esta vez de la entrada de Molly. Obviamente, cosas como el videojuego favorito o sus inspiraciones son cosas no exclusivas, pero esto está literalmente escrito igual pero con los detalles reemplazados. Do better
--Abelito
+  - Anna tiene TEA y TDA
+  - Anna prefiere la comida salada
+  - Casi se llamó Jane, Jenna o Alejandra en vez de Anna.
+  - El día y mes de su nacimiento coinciden con la fecha en la que se hizo su primer dibujo.
+  - Está inspirada en Ruby de Step Right Up: Adventure Isle y Cassie de FNAF.
+  - Anna NO activará cam.
 
 ## Galería
 :::gallery
@@ -117,11 +110,11 @@ Aquí también está parodiando, esta vez de la entrada de Molly. Obviamente, co
 ---
 
 :::info-box
-**Nota**: Este personaje es un trabajo en proceso. Puede sufrir de cambios mayores a su entrada en un futuro mientras este se define mas.
+**Nota**: Este personaje es un trabajo en progreso. Puede sufrir cambios importantes en el futuro mientras se define más.
 :::
 :::info-box
 **Autor**: annaholol
 :::
 :::info-box
-**Nota del autor**: los quiero amikis
+**Nota del autor**: Los quiero, amikis.
 :::

@@ -61,7 +61,7 @@ Esto, como descripcion general, es muy pobre. Toma las de el resto de entradas c
 
 ## Apariencia
 
-King tiene el cuerpo de un robot asistente creado en masa, de unos 1.55 metros de altura, sin destacar mucho en cualidades físicas.
+**King** tiene el cuerpo de un robot asistente creado en masa, de unos 1.55 metros de altura, sin destacar mucho en cualidades físicas.
 
 Va vestido con un disfraz de rey muy significativo para él.
 Se compone de guantes y botas rojas, una capa, una peluca azul, y una corona quizás demasiado grande.
@@ -70,7 +70,7 @@ Sus ojos verdes son hologramas, no existen físicamente, por lo que si se llegas
 
 ## Personalidad
 
-King tiene una personalidad enérgica y crédula, es bastante extrovertido.
+**King** tiene una personalidad enérgica y crédula, es bastante extrovertido.
 Siempre intenta ayudar y hacer feliz a los humanos, sin importar cuan insignificante sea la tarea.
 
 También, tiene mucho miedo al rechazo, generado por no encontrar a nadie similar a él y no poder compartir o entender cosas que para otros son tan naturales, como simplemente comer algo.

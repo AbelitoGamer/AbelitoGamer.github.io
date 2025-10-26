@@ -40,18 +40,18 @@ list-voz:
 
 ## Descripción general
 
-Ankush es el más joven entre los tres hermanos Moonred, siendo el único varón. Originalmente se dedicaba a la tecnología, la robótica y la programación. Después de una exploración (parte del lore fue recortada porque, pues, la v2 no tenía los poderes hasta que salga la versión rediseñada).
+**Ankush** es el más joven entre los tres hermanos Moonred, siendo el único varón. Originalmente se dedicaba a la tecnología, la robótica y la programación. Después de una exploración (parte del lore fue recortada porque, pues, la v2 no tenía los poderes hasta que salga la versión rediseñada).
 
 L, pues rellenalo de algo mas de mientras.
 -Abelito
 
 ## Apariencia
 
-Ankush posee una chaqueta de color azul marino, una camisa de color azul, un pantalón verde marino militar y unas botas negras de tipo militar.
+**Ankush** posee una chaqueta de color azul marino, una camisa de color azul, un pantalón verde marino militar y unas botas negras de tipo militar.
 
 ## Personalidad
 
-Ankush es una persona bastante buena gente; explora mucho y, además, apoya siempre a sus amigos y a sus hermanas. Algo a tomar en cuenta de su personalidad es que no le gusta que sus amigos sean maltratados ni dañados; por lo cual, si te ve haciendo eso, no la contará para otro día.
+**Ankush** es una persona bastante buena gente; explora mucho y, además, apoya siempre a sus amigos y a sus hermanas. Algo a tomar en cuenta de su personalidad es que no le gusta que sus amigos sean maltratados ni dañados; por lo cual, si te ve haciendo eso, no la contará para otro día.
 
 ### Le gusta
   - La tecnología y la robótica (revisa descripción general)

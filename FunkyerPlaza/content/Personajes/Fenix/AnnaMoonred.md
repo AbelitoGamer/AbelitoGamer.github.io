@@ -1,5 +1,5 @@
 ---
-title: Anna
+title: Anna (Moonred)
 ---
 
 # Anna
@@ -38,11 +38,11 @@ Es la hermana mayor de los tres hermanos Moonred. Vive sola en un departamento, 
 
 ## Apariencia
 
-Anna viste un suéter de tirantes y lleva guantes sin dedos. Sobre ella porta una bolsa que lleva a todos lados y una falda de color negro; además, usa medias largas rotas. En su piel tiene tatuajes que activan animales místicos que la protegen.
+**Anna** viste un suéter de tirantes y lleva guantes sin dedos. Sobre ella porta una bolsa que lleva a todos lados y una falda de color negro; además, usa medias largas rotas. En su piel tiene tatuajes que activan animales místicos que la protegen.
 
 ## Personalidad
 
-Anna ama a los animales; esa es la razón de su trabajo. Quiere muchísimo a su hermano Ankush Moonred, a tal punto que, si a él le pasa algo, se preocupa en exceso. Es una persona muy amable; si haces daño a algún animal, te irá muy mal con ella.
+**Anna** ama a los animales; esa es la razón de su trabajo. Quiere muchísimo a su hermano Ankush Moonred, a tal punto que, si a él le pasa algo, se preocupa en exceso. Es una persona muy amable; si haces daño a algún animal, te irá muy mal con ella.
 
 ### Le gusta
   - Los animales (especialmente los gatos)

@@ -40,14 +40,14 @@ El render principal no es transparente
 
 ## Descripción general
 
-Luna es una persona que casi nadie conoce porque es antisocial; se le ha visto muy pocas veces hablando con personas (en Discord). ❤️‍🩹
+**Luna** es una persona que casi nadie conoce porque es antisocial; se le ha visto muy pocas veces hablando con personas (en Discord). ❤️‍🩹
 
 Necesitará más que esto
 -Abelito
 
 ## Apariencia
 
-Luna tiene un suéter verde y, a la vez, cambia de ropa según la estación del año; usa pantalón gris, pero a veces le gusta llevar shorts. Tiene el pelo rosa (naturalmente castaño), usa lentes verdes, coletas (depende si le gusta tenerlas o no) y zapatos cafés.
+**Luna** tiene un suéter verde y, a la vez, cambia de ropa según la estación del año; usa pantalón gris, pero a veces le gusta llevar shorts. Tiene el pelo rosa (naturalmente castaño), usa lentes verdes, coletas (depende si le gusta tenerlas o no) y zapatos cafés.
 
 ## Personalidad
 

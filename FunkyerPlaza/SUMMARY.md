@@ -9,17 +9,21 @@
   - [Molly](Personajes/Molly.md)
   - [Less](Personajes/Less.md)
   - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
+  - [Form Nogales](Personajes/FormNogales.md)
+  - [Abel](Personajes/Abel.md)
+  - [Anna](Personajes/Anna.md)
+  - [Katniss](Personajes/Katniss.md)
+- Wiki Info
+  - [Katniss](WikiInfo/Bienvenido.md)
 
 # Rechazados
 
 - Rechazados
-  - [Anna](Personajes/Anna.md)
-  - [Form Nogales](Personajes/FormNogales.md)
   - [Gissel](Personajes/Gissel.md)
-  - [Abel](Personajes/Abel.md)
   - [Noah](Personajes/Noah.md)
   - [Luna Velez](Personajes/LunaVelez.md)
-  - [dew](Personajes/dew.md)
   - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
   - [SemiNoirrrr](Personajes/SemiNoirrrr.md)
   - [King](Personajes/King.md)
+  - Dew
+    - [dew](Personajes/dew.md)

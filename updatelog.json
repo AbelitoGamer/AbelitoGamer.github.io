@@ -8,6 +8,15 @@
   "updatelog": {
     "updates": [
       {
+        "version": "3.5.3",
+        "date": "26/10/2025",
+        "title": "(Aun mas) entradas",
+        "changes": [
+          "Mas entradas añadidas a FunkyerPlaza",
+          "Ahora las entradas rechazadas mostrarán sus iconos"
+        ]
+      },
+      {
         "version": "3.5.2",
         "date": "24/10/2025",
         "title": "Mas entradas",

@@ -29,4 +29,4 @@ Manda tu solicitud de adición/actualización [aquí.](https://forms.gle/BSCdzw3
 ## Aparecieron más personajes, pero el mío no. Grrrrrrr
 
 Puede ser que simplemente no te haya tocado entrar en esta tanda, o que lo haya rechazado.
-Puedes comprobar las entradas rechazadas [aquí.](Personajes/Anna.md) Si enviaste tu submission, y no aparece ni en la lista principal, ni en la de rechazados, simplemente sigue a la espera de que la revise. Sé paciente.
+Puedes comprobar las entradas rechazadas [aquí.](Personajes/Gissel.md) Si enviaste tu submission, y no aparece ni en la lista principal, ni en la de rechazados, simplemente sigue a la espera de que la revise. Sé paciente.
