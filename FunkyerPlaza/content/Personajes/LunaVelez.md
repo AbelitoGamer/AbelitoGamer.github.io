@@ -35,6 +35,9 @@ grid-iconos:
 **Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
 :::
 
+El render principal no es transparente
+-Abelito
+
 ## Descripción general
 
 Luna es una persona que casi nadie conoce porque es antisocial; se le ha visto muy pocas veces hablando con personas (en Discord). ❤️‍🩹
