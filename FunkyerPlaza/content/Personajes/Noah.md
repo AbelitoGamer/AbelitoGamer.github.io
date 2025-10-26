@@ -10,8 +10,6 @@ image: content/Resources/Noah/Noah.png
 list-aliases:
   - Anno
   - Emo
-  - Anno
-  - Emo
 text-género: Hombre
 list-pronombres: 
   - He/Him
@@ -26,31 +24,35 @@ table-información biográfica:
   - Especie: Humano
 table-descripción física:
   - Altura: 1.60
-  - Ojos: Negro
+  - Ojos: Negros
   - Cabello: Negro
 collapse-apariciones:
   - Funky Maker Server
   - Gacha Online
-  - Call notjg island
+  - Call NotJG Island
+:::
+
+:::info-box
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
 :::
 
 El render principal que proporcionaste no es transparente. -Abelito
 
 ## Descripción general
 
-adolescente edgy promedio jeje
+Adolescente edgy promedio, jeje
 
 Oh my fucking god bruh -Abelito
 
 ## Apariencia
 
-piel clara, cabello de longitud media y oscuro, chamarra gris oscuro tirando muy poquito a morado, camisa tirando un poquito mas a morado, pantalones gris oscuro
+Piel clara, cabello de longitud media y oscuro, chamarra gris oscuro tirando muy poquito a morado, camisa tirando un poquito más a morado, pantalones gris oscuro
 
-Otra lista de compras. Describelo como en otras entradas -Abelito
+Otra lista de compras. Descríbelo como en otras entradas -Abelito
 
 ## Personalidad
 
-timido onichan uwu
+Tímido onii-chan uwu
 
 bro -Abelito
 
@@ -62,9 +64,9 @@ bro -Abelito
 
 ## Trivia
 
-  - el primer diseño fue en gacha club jeje 
+  - El primer diseño fue en Gacha Club, jeje 
 
-Ponle mas broly
+Ponle más broly -Abelito
 
 ## Galería
 
@@ -85,8 +87,7 @@ Ponle mas broly
 ---
 
 :::info-box
-**Nota**: Este personaje no se encuentra totalmente definido aún, y el universo donde opera tampoco existe en papel. Esta página contiene
-información que no se ha revelado en otros lugares, así como datos que podrían cambiar conforme el creador lo defina aún más.
+**Nota**: Este personaje es un trabajo en proceso. Puede sufrir cambios mayores a su entrada en un futuro mientras este se define más.
 :::
 :::info-box
 **Autor**: AnnaHolOl

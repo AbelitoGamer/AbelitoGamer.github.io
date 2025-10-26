@@ -8,6 +8,7 @@
   - [Abelito](Personajes/Abelito.md)
   - [Molly](Personajes/Molly.md)
   - [Less](Personajes/Less.md)
+  - [Luna Velez](Personajes/LunaVelez.md)
 
 
 # Rechazados
