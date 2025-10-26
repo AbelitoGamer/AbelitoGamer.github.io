@@ -34,6 +34,10 @@ list-voz:
   - La de su creador lol
 :::
 
+:::info-box
+**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
+:::
+
 ## Descripción general
 
 Ankush es el más joven entre los tres hermanos Moonred, siendo el único varón. Originalmente se dedicaba a la tecnología, la robótica y la programación. Después de una exploración (parte del lore fue recortada porque, pues, la v2 no tenía los poderes hasta que salga la versión rediseñada).
