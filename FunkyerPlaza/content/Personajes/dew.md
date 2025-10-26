@@ -68,5 +68,8 @@ dew
 **Nota**: dew
 :::
 :::info-box
-**Autor**: hola
+**Autor**: supdewww
+:::
+:::info-box
+**Nota del Autor**: dew
 :::
