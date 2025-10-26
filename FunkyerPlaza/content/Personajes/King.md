@@ -48,16 +48,11 @@ grid-iconos:
   - content/Resources/King/KingLosingIcon.png
 :::
 
-:::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
-:::
-
 ## Descripción general
 
-Decide aprender de magia para poder ayudar a todas las personas posibles, y dedica su vida a ello.
+King es un robot con un núcleo que simula un alma humana, lo que le permite, entre otras cosas, manipular energía mágica como cualquier otra entidad viva en su universo, y a su vez le otorga personalidad, haciendo que no sea un simple robot del montón, si no, una persona con cuerpo de robot.
 
-Esto, como descripcion general, es muy pobre. Toma las de el resto de entradas como inspiracion, y mueve esto a Personalidad.
--Abelito
+Decide aprender de magia para poder ayudar a todas las personas posibles, y dedica su vida a ello.
 
 ## Apariencia
 

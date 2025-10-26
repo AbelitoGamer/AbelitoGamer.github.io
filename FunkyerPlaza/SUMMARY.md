@@ -13,8 +13,12 @@
   - [Abel](Personajes/Abel.md)
   - [Anna](Personajes/Anna.md)
   - [Katniss](Personajes/Katniss.md)
+  - [King](Personajes/King.md)
+- Las mejores entradas
+  - [dew](Personajes/dew.md)
+  - [Radsi](Personajes/Radsi.md)
 - Wiki Info
-  - [Katniss](WikiInfo/Bienvenido.md)
+  - [Bienvenido](WikiInfo/Bienvenido.md)
 
 # Rechazados
 
@@ -24,6 +28,3 @@
   - [Luna Velez](Personajes/LunaVelez.md)
   - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
   - [SemiNoirrrr](Personajes/SemiNoirrrr.md)
-  - [King](Personajes/King.md)
-  - Dew
-    - [dew](Personajes/dew.md)
