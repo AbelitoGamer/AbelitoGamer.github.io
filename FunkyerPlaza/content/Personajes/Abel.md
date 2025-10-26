@@ -7,6 +7,7 @@ icon: content/Resources/Abel/AbelInactiveIcon.png
 
 :::character-card
 name: iA777
+image: content/Resources/Abel/AbelMain1.png
 list-aliases:
   - Bob
   - Noli del tianguis
