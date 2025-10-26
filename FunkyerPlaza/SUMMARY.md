@@ -19,6 +19,7 @@
   - [Abel](Personajes/Abel.md)
   - [Noah](Personajes/Noah.md)
   - [Luna Velez](Personajes/LunaVelez.md)
+  - [dew](Personajes/dew.md)
   - Personajes de Fenix
     - [Ankush](Personajes/Fenix/Ankush.md)
     - [Anna Moonred](Personajes/Fenix/AnnaMoonred.md)
