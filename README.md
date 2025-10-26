@@ -5,10 +5,8 @@
 > No reclamo derecho de ninguno de los assets utilizados tanto en las paginas,
 > de esta web, como dentro de los mismos niveles.
 
-Parece que has encontrado el repositorio super-secreto de AbelitoGamer.
-Esta pagina actua como un atlas para descargar todos los niveles de los
-ports que se realicen a Funky Maker: Mobile!
+Bienvenido al Funky Atlas, una pagina creada por mi (AbelitoGamer) pero aun mas por
+[Claude.ai](https://claude.ai), porque yo soy un incompetente de los cojones para programar.
 
-Los ports son descargados desde Google Drive, si va lento, chillenle a ellos.
-La pagina fue creada casi por completo por mi mismo, usando Bootstrap con Popper y JQuery.
-El extra de ayuda fue de [Claude.ai](https://claude.ai), sobre todo para el soporte de movil. (El futuro es hoy, ¿Oiste viejo?)
+En resumidas cuentas, aqui se almacenaran todos los recursos sobre Funky Maker: Mobile! o su comunidad
+que vea pertinentes. Encuentra ports, herramientas, y mas aqui.
