@@ -781,7 +781,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-right: 1px solid rgba(138, 43, 226, 0.2);
-    text-transform: uppercase;
+    text-align: center !important;
 }
 
 .char-tab:last-child {
@@ -1160,6 +1160,7 @@
     .char-tab {
         font-size: 0.8rem;
         padding: 0.6rem 0.4rem;
+        text-align: center !important;
     }
     
     .char-card-main-image {

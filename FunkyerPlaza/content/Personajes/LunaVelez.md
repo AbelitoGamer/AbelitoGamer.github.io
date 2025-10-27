@@ -13,10 +13,10 @@ list-pronombres:
   - She/Her
 text-orientacion: Bisexual
 list-relaciones:
-  - Nogales (amigo)
+  - Nogales (Amigo)
 table-información biográfica:
   - Edad: 16
-  - Cumpleaños: 25/07/2025?????
+  - Cumpleaños: 25/07/2009
   - Estado: Viva
   - Especie: Humana
 table-descripción física:
@@ -31,19 +31,9 @@ grid-iconos:
   - content/Resources/Luna/LunaInactiveIcon.png
 :::
 
-:::info-box
-**Nota**: Esta entrada ha sido rechazada. Revisa los comentarios que he dejado y envía una nueva submission como actualización con las correcciones.
-:::
-
-El render principal no es transparente
--Abelito
-
 ## Descripción general
 
-**Luna** es una persona que casi nadie conoce porque es antisocial; se le ha visto muy pocas veces hablando con personas (en Discord). ❤️‍🩹
-
-Necesitará más que esto
--Abelito
+**Luna** es una persona bastante tímida; no se relaciona mucho con otras personas. Su hobbie puede ser el arte, pero a la vez es talentosa haciendo música.
 
 ## Apariencia
 
@@ -51,12 +41,11 @@ Necesitará más que esto
 
 ## Personalidad
 
-Ella puede ser agresiva al entablar una conversación, pero en algún momento puede tranquilizarse si al menos no es pérdida de tiempo.
+Aunque es introvertida, llega a hablar en algunas ocasiones, pero sin expresar sus emociones. Si llega a tener confianza, tal vez pueda expresar algunas emociones.
 
-Llega a ser sarcástica si el entorno es demasiado fiable, llegando a ser casi buena onda.
+Aunque puede llegar a ser algo hiperactiva cuando habla con un amigo, tiende a ser humorística y sarcástica.
 
-Usa de inspiración el resto de entradas para escribir una más completa
--Abelito
+Ella es tranquila e intenta evitar problemas.
 
 ### Le gusta
   - El arte
@@ -70,10 +59,11 @@ Usa de inspiración el resto de entradas para escribir una más completa
 
 ## Trivia
 
-  - Por un momento casi se llamaba takeshi ranbue (yo no hice ese nombre btw)
-  - Le gustan las sitcom
-  - Su comida favorita es el sushi
-
+  - Por un momento casi se llamó Takeshi Ranbue (yo no hice ese nombre, btw).
+  - Le gustan las sitcoms.
+  - Su comida favorita es el sushi.
+  - Le gusta hacer cosplays.
+  - Su primer boceto era muy diferente comparado con la versión final.
 ## Galería
 
 :::gallery

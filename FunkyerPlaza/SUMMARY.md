@@ -14,6 +14,7 @@
   - [Anna](Personajes/Anna.md)
   - [Katniss](Personajes/Katniss.md)
   - [King](Personajes/King.md)
+  - [Luna Velez](Personajes/LunaVelez.md)
 - Las mejores entradas
   - [dew](Personajes/dew.md)
   - [Radsi](Personajes/Radsi.md)
@@ -25,6 +26,5 @@
 - Rechazados
   - [Gissel](Personajes/Gissel.md)
   - [Noah](Personajes/Noah.md)
-  - [Luna Velez](Personajes/LunaVelez.md)
   - [Ankush (UPD)](Personajes/Fenix/Ankush.md)
   - [SemiNoirrrr](Personajes/SemiNoirrrr.md)

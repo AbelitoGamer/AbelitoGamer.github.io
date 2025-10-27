@@ -1,12 +1,18 @@
 ---
 title: Anna
+icon: content/Resources/Anna/AnnaInactiveIcon.png
 ---
 
 # Anna
 
 :::character-card
-name: Anna
-image: content/Resources/Anna/AnnaHJD.png
+name: Anna Bloom Star
+form1: Anna
+form1image: content/Resources/Anna/AnnaHJD.png
+form2: Gomanna
+form2image: content/Resources/Anna/Gomanna.png
+form3: NOOOOOO
+form3image: content/Resources/Anna/Gomannaisfuckingdead.jpg
 list-aliases:
   - Annal
   - Babosanna Ragebaits
@@ -18,6 +24,7 @@ list-pronombres:
   - They/Them
 text-orientacion: Pansexual
 list-relaciones:
+  - Misty (Pareja)
   - Noah (Hermano)
   - Abelito (Admiración)
   - NotJG (Amigo)
@@ -42,8 +49,8 @@ collapse-apariciones:
   - FunkStudio Island
   - Call NotJG Island
   - Funky Maker: Bodrio Collection
-list-voz:
-  - La de su Mii en Tomodachi Life
+grid-iconos:
+  - content/Resources/Anna/AnnaInactiveIcon.png
 :::
 
 ## Descripción general

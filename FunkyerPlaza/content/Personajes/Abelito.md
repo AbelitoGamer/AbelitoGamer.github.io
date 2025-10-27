@@ -17,10 +17,9 @@ list-pronombres:
   - They/Them
 text-orientacion: Pansexual
 list-relaciones:
-  - ????? (Amigo)
+  - Owen (Amigo)
   - Noel (Amigo / Ex-pareja)
   - Merry (Amiga)
-  - ????? (Ex-pareja)
   - ????? (Hermano)
 text-afiliación: TrueStudio
 text-ocupación: Programador

@@ -304,6 +304,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const xmlText = await readFileAsText(xmlFile);
         const frameData = parseSparrowXml(xmlText);
         
+        // Check for rotated frames
+        const rotatedCount = frameData.filter(f => f.rotated).length;
+        if (rotatedCount > 0) {
+            console.log(`Detectados ${rotatedCount} frames rotados. El resultado podria tener errores. Aplicando rotación...`);
+        }
+        
         elements.statusText.textContent = "Extrayendo frames...";
         elements.progressBar.style.width = '60%';
 
@@ -343,7 +349,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Display results
         displayResults(spritesheetPreviews, duplicatesRemoved, shouldRemoveDuplicates, false);
         
-        elements.statusText.textContent = "¡Procesamiento completado!";
+        elements.statusText.textContent = rotatedCount > 0 ? 
+            `¡Procesamiento completado! (${rotatedCount} frames rotados corregidos)` : 
+            "¡Procesamiento completado!";
         elements.progressBar.style.width = '100%';
         elements.progressBar.classList.add('bg-success');
     }
@@ -374,19 +382,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
         subTextures.forEach(subTexture => {
             const name = subTexture.getAttribute('name');
-            const x = parseInt(subTexture.getAttribute('x') || '0');
-            const y = parseInt(subTexture.getAttribute('y') || '0');
-            const width = parseInt(subTexture.getAttribute('width') || '0');
-            const height = parseInt(subTexture.getAttribute('height') || '0');
-            const frameX = parseInt(subTexture.getAttribute('frameX') || '0');
-            const frameY = parseInt(subTexture.getAttribute('frameY') || '0');
-            const frameWidth = parseInt(subTexture.getAttribute('frameWidth') || width);
-            const frameHeight = parseInt(subTexture.getAttribute('frameHeight') || height);
+            let x = parseInt(subTexture.getAttribute('x') || '0');
+            let y = parseInt(subTexture.getAttribute('y') || '0');
+            let width = parseInt(subTexture.getAttribute('width') || '0');
+            let height = parseInt(subTexture.getAttribute('height') || '0');
+            let frameX = parseInt(subTexture.getAttribute('frameX') || '0');
+            let frameY = parseInt(subTexture.getAttribute('frameY') || '0');
+            let frameWidth = parseInt(subTexture.getAttribute('frameWidth') || width);
+            let frameHeight = parseInt(subTexture.getAttribute('frameHeight') || height);
+            
+            // Check if frame is rotated
+            const rotated = subTexture.getAttribute('rotated') === 'true';
+            
+            // If rotated, swap width and height (following Funkin-Packer logic)
+            if (rotated) {
+                let temp = width;
+                width = height;
+                height = temp;
+            }
 
             frames.push({
                 name,
                 x, y, width, height,
-                frameX, frameY, frameWidth, frameHeight
+                frameX, frameY, frameWidth, frameHeight,
+                rotated
             });
         });
 
@@ -407,16 +426,34 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear canvas with transparent background
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Draw the frame from spritesheet at the correct position
-            // Account for frameX and frameY offsets
-            const drawX = -frame.frameX;
-            const drawY = -frame.frameY;
-            
-            ctx.drawImage(
-                spritesheet,
-                frame.x, frame.y, frame.width, frame.height,  // Source rectangle
-                drawX, drawY, frame.width, frame.height        // Destination rectangle
-            );
+            if (frame.rotated) {
+                // Handle rotated frames (following Funkin-Packer logic)
+                ctx.save();
+                
+                // Translate to center point and rotate
+                ctx.translate(-frame.frameX + frame.width / 2, -frame.frameY + frame.height / 2);
+                ctx.rotate(-Math.PI / 2); // Rotate counter-clockwise 90 degrees
+                
+                // Draw the rotated frame
+                ctx.drawImage(
+                    spritesheet,
+                    frame.x, frame.y, frame.height, frame.width,  // Note: swapped height/width for source
+                    -frame.height / 2, -frame.width / 2, frame.height, frame.width  // Draw centered
+                );
+                
+                ctx.restore();
+            } else {
+                // Draw non-rotated frames normally
+                // Account for frameX and frameY offsets
+                const drawX = -frame.frameX;
+                const drawY = -frame.frameY;
+                
+                ctx.drawImage(
+                    spritesheet,
+                    frame.x, frame.y, frame.width, frame.height,
+                    drawX, drawY, frame.width, frame.height
+                );
+            }
             
             const img = await createImageBitmap(canvas);
             extractedFrames.push({

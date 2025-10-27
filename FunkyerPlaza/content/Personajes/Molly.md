@@ -18,11 +18,12 @@ text-pronombres: She/Her
 text-orientacion: Heterosexual
 list-relaciones:
   - Clay (Mascota)
-  - Chriss Miller (Empleado)
-  - Meiden (Rival)
   - Roberta (Rival)
-text-afiliación: Empresa sin nombre
-text-ocupación: ????? - Hace Home Office
+  - Chriss (Empleado)
+  - Katniss (Empleado)
+  - Meiden (Rival)
+text-afiliación: Corner Brew
+text-ocupación: Gerente
 table-información biográfica:
   - Edad: 25
   - Cumpleaños: 04/04/2000
@@ -35,7 +36,7 @@ table-descripción física:
 collapse-apariciones:
   - Funky Maker Server
   - FunkStudio Island
-  - Universo "Glass" (Aún no canon)
+  - Universo "Glass"
 list-voz:
   - Karla Falcon (Posiblemente)
 grid-iconos:
@@ -81,7 +82,6 @@ En un principio puede actuar un tanto distante, no actuando de manera muy emocio
 ![Molly Chibi](content/Resources/Molly/MollyChibi.png)
 ![Molly Perfil](content/Resources/Molly/MollyPerfil.png)
 ![Molly Bandages](content/Resources/Molly/MollyBandages.png)
-![Molly Barista](content/Resources/Molly/MollyBarista.png)
 ![Molly Pseudo-descuido](content/Resources/Molly/MollyMuchoTexto.png)
 ![Molly todos los caminos llevan al descuido](content/Resources/Molly/MollyTime'sTicking.png)
 ![Molly1](content/Resources/Molly/Molly1.jpg)

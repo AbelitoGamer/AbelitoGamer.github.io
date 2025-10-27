@@ -105,6 +105,25 @@ Está, constantemente, buscando una respuesta sobre quién es y dónde debe esta
 ![King 1, 2, 3](content/Resources/King/King123.png)
 :::
 
+## Galería (Fanarts)
+:::gallery
+![Fua](content/Resources/King/fua.png)
+![King Anime Style 1](content/Resources/King/KingAnime1.jpg)
+![KingKrisPreparation](content/Resources/King/KingKrisPreparation.png)
+![King Anime Style 2](content/Resources/King/KingAnime2.png)
+![King Plushies](content/Resources/King/KingPlushies.png)
+![King Detailed](content/Resources/King/KingDetailed.png)
+![King Erm](content/Resources/King/KingErm.gif)
+![King haciendo el rework](content/Resources/King/KingZZZ.png)
+![King Throne](content/Resources/King/KingThrone.png)
+![King & Some Dumbass](content/Resources/King/King&Dumbass.png)
+
+
+
+
+
+:::
+
 ---
 
 :::info-box

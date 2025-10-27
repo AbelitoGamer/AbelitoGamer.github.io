@@ -8,6 +8,15 @@
   "updatelog": {
     "updates": [
       {
+        "version": "3.6.0",
+        "date": "27/10/2025",
+        "title": "¿De verdad? ¿Solo entrad...? Ah no, que actualizaron tambien el FunkinToFunky",
+        "changes": [
+          "Modificaciones a algunas entradas de la FunkyerPlaza",
+          "FunkinToFunky ahora soporta spritesheets con frames rotados. Viva dios"
+        ]
+      },
+      {
         "version": "3.5.3",
         "date": "26/10/2025",
         "title": "(Aun mas) entradas",
