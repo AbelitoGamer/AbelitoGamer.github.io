@@ -1,5 +1,6 @@
 ---
 title: SemiNoirrrr
+icon: content/Resources/SemiNoirrrr/SeminoirrrrInactiveIcon.png
 ---
 
 # SemiNoirrrr
@@ -13,22 +14,30 @@ list-aliases:
   - Bergakay
 text-género: Hombre
 text-pronombres: He/Him
-text-orientacion: Heterosexual (Quizas)
+text-orientacion: Heterosexual
 list-relaciones:
   - Nogales (amigo)
   - Just Shadow (amigo)
-  - Samy (amiga) 
-  - S (???)
+  - Samy (amiga)
+  - Wilber (amigo)
+  - S (mejor amiga)
+text-afiliación: Mcdonald's
+text-ocupación: Conserje
 table-información biográfica:
   - Edad: 25
   - Cumpleaños: 03/11/2000
   - Estado: Vivo
-  - Especie: Esquibidi
+  - Especie: Skibidisigma
 table-descripción física:
   - Altura: 1.80
   - Ojos: Negros
+collapse-apariciones:
+  - Funky Maker Server
+  - En mi casa padre
 list-voz:
   - La de su creador lol
+grid-iconos:
+  - content/Resources/SemiNoirrrr/SeminoirrrrInactiveIcon.png
 :::
 
 :::info-box
@@ -37,48 +46,67 @@ list-voz:
 
 ## Descripción general
 
-Pendejo, aveces hace buenos niveles en fmm,
-Apesar de ser ms 4 con culokid, Slasher, Shedletsky, Guest 1337 no sabe jugar muy bien con ellos y lo violan todo el rato
-Es mejor en Pillar Chase 2
-Medio que sabe dibujar
-Obsesionado con S
+SemiNoirrrr o Berkay es una persona tranquila que no le toma mucha importancia a lo que pasa alrededor suyo. Es muy antisocial.
 
-Hay que ponerle un poco mas de seriedad a esto. Habla mas de sus pasatiempos que de su persona, lo cual no deberia ser asi. Echale un vistazo.
--Abelito
+Si no te conoce o no hablas mucho con él, suele ser más reservado, pero si eres un amigo suyo, te puede contar sobre cosas que le pasan en su vida, algo que no comparte con cualquiera.
+
+Originalmente era un pelotocino, pero después de un accidente con los limones del Bodega Aurrera, se quedó calvo.
+
+Su madre se llamaba Semi y su padre se llamaba Noirrrr, de ahí su nombre.
 
 ## Apariencia
 
-DEBES describir la apariencia
+  - Tiene cuerpo de robloxiano
+  - Esta pelón el pendejo
+  - Tiene cadenas en su torso (nadie sabe pq o como las consiguió)
+  - Utiliza la ropa de un pelo tocino
+  - En los hombros tiene una cosa que es como un peluche o algo asi
+  - Le salen cristales así como al Xenophanes
+  - Tiene la corona de Yaal Noli
+  - Detras de el tiene unos cuadros del famoso virus de "You are an idiot"
+
+La descripcion de la apariencia no debe tener el formato de una lista
 -Abelito
 
 ## Personalidad
 
-Por lo general es muy inseguro, se encariña muy rápido, puede ser muy cariñoso unas veces y otras puede ser un caga palos tremendo
+Es muy inseguro a causa de lo antisocial que es (aparte, el sitio en el que vive no coopera).
 
-Podrias expandir esto
--Abelito
+También suele ser muy amable con todas las personas, pero si te conoce, te insultará como lo hace con sus demás amigos.
+
+Se encariña muy rápido, así que si no te cae bien, no le hables demasiado o no le hables porque luego no te dejará en paz.
+
+Procura ayudar siempre que puede.
 
 ### Le gusta
-  - FMM
-  - Roblox
-  - animar
-  - la mamá de Nogales 
-  - S
+  - Crear niveles en Funky Maker Mobile
+  - Roblox (más juegos como Forsaken o Pillar Chase 2)
+  - Dibujar y animar sprites para fnf
+  - Leer (más libros como los de FNaF ya que no tiene de otros)
+  - La mama de Nogales 💥💥💥
 
 ### No le gusta
-  - Casi todo menos lo que mencioné recien
+  - Que la gente sea muy ruidosa
+  - Que lo molesten mientras hace algo
+  - Que vean sus cosas
+  - Que lo vean mientras hace algo
+  - Estar con mucha gente
 
 ## Trivia
-  - De chiquito se cayó de la bicicleta y lo atropello un camionero borracho
+  - De pequeño se cayó de su cama, por eso está medio pendejete
+  - Es antisocial porque a todos los que ha llegado a conocer tienen gustos muy distintos a los suyos y, por lo tanto, no disfruta estar con ellos
+  - Le hacían la vida imposible de pequeño, por eso ahora quiere ayudar para no caer tan bajo como aquellos que lo humillaban
+  - Piensa que si intenta hacer algo fracasará en el acto, pero aún así lo intenta y fracasa como pendejo
+  - Le gusta su mejor amiga en Secreto
 
-Are we deadass
+Si su mejor amiga es su interes amoroso, eso tambien deberia indicarse en las relaciones
 -Abelito
 
 ## Galería
 
 :::gallery
 ![SemiNoirrrr main](content/Resources/SemiNoirrrr/SemiNoirrrr.png)
-
+![SemiNoirrrr peek](content/Resources/SemiNoirrrr/SemiNoirrrrPeek.png)
 :::
 
 
@@ -90,18 +118,6 @@ Are we deadass
 **Autor**: berkay_1512
 :::
 :::info-box
-**Nota del autor**: Si llegas a ver esto
-
-Lo admito...
-
-Shucks me parece buena canción
-
-Otra cosa
-
-Aaaaaaaa
-
-Solo pienso en S
+**Nota del autor**: Si abelito me la acepta es gei y yo tambien
 :::
-:::info-box
-**Nota del admin**: who tf is S
-:::
+
