@@ -33,8 +33,6 @@ collapse-apariciones:
   - Funky Maker Server
   - Kristino's Village
 list-voz:
-  - Karla Falcon (Posiblemente)
-list-voz:
   - La de su creador lol
 grid-iconos:
   - content/Resources/Pom/PomInactiveIcon.png
