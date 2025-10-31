@@ -7,7 +7,7 @@ icon: content/Resources/Abelito/AbelitoInactiveIcon.png
 
 :::character-card
 name: Abelito
-image: content/Resources/Abelito/Abelito.png
+image: content/Resources/Abelito/AbelitoHalloween.png
 list-aliases:
   - Abelito
   - El resto de sobrenombres solo añaden una palabra extra al final del alias anterior
